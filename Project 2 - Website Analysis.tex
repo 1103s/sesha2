@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage[utf8]{inputenc}
+\usepackage{chngcntr}
+\counterwithin*{subsection}{section}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\title{Project 2 - Website Analysis}
+
+\author{Purple Rabbits:\\Natalie Schneider and Thomas Merl}
+\date{September 2 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Background}
+
+Natalie has had some professional experience creating offline versions of websites for educational resources, which were usually intended for distribution on flash drives with the educational material. These were generally intended to replace DVDs by being both higher quality and more accessible. The idea of bringing this online is to provide additional flexibility to distribution by allowing a link to be additionally provided to access the material.\vspace{\baselineskip}
+
+Tommy has yet to have a pleasant experience with supplemental educational sites currently in use. MyMathLab, Person Online, etc. almost seem to degrade the education process more than they help.
+
+\section{Website Analysis}
+\subsection{Relevant Websites}
+    
+\textbf{Udemy} (\url{https://www.udemy.com/})
+
+Educators list courses for sale at a set price and Udemy aggregates the courses. Each course has a review system based on a 5 star rating. Courses are divided up into categories and are then further divided into topics within those categories. Udemy has often sales to make courses look at a better value than they are.
+
+Each course has a playlist, which is then separated into sections. Within these sections video lectures, quizzes, coding exercises, practice tests, and assignments can be added. There is a minimum amount of video hours required for the course.
+
+To the user it appears as a constant flow of content, and each section is marked as completed after it is viewed. The video player has a 2x speed function, a captions function, and allows for taking notes at specific timecodes in the video. There are also ways to ask a forum of people who are in the course questions about the course. \vspace{\baselineskip}
+
+\textbf{Skill Share} (\url{https://www.skillshare.com/})
+
+\textbf{EDx} (\url{https://www.edx.org/})
+
+\textbf{Ted Ed} (\url{https://ed.ted.com/})
+
+\textbf{Coursera} (\url{https://www.coursera.org/})
+
+
+\subsection{Functions to Implement}
+
+
+
+\subsection{Comparison Table}
+\begin{tabular}{ | m{10em} | m{2cm}| m{1cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1.5cm} | } 
+  \hline
+   & My proposed system & Udemy & Skill Share & EDx & Ted Ed & Coursera\\ 
+  \hline
+  Individual sale of courses & V & V & X & & & \\ 
+  \hline
+  User rating system &  & V & & & & \\ 
+  \hline
+  Categorization of courses on main page & V & V & & & & \\ 
+  \hline
+  Ability to set a sale/discout code & V & V & & & & \\ 
+  \hline
+  Playlist of Content & & V & & & & \\ 
+  \hline
+  Auto play between videos & & V & & & & \\ 
+  \hline
+  Supplementary content to videos & V & & & & & \\ 
+  \hline
+  Keeping notes in Videos & & V & & & & \\ 
+  \hline
+  Keep track of user's place in courses & & V & & & & \\ 
+  \hline
+  2X speed function & & V & & & & \\ 
+  \hline
+  Video Captions & & V & & & & \\ 
+  \hline
+  Note taking capabilities & & V & & & & \\ 
+  \hline
+  Supplementary forum to go with courses & & V & & & & \\ 
+  \hline
+  Function & & & & & & \\ 
+  \hline
+\end{tabular}
+V: Able to perform the task; X: Unable to perform the task; O: Able to perform the task with poor interactive design
+\end{document}
