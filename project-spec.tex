@@ -1,0 +1,139 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage[utf8]{inputenc}
+\usepackage{chngcntr}
+\counterwithin*{subsection}{section}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\title{Project 2 - Website Analysis}
+\author{Purple Rabbits:\\Natalie Schneider and Thomas Merl}
+\date{September 2 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Background}
+
+Natalie has had some professional experience creating offline versions of websites for educational resources, which were usually intended for distribution on flash drives with the educational material. These were generally intended to replace DVDs by being both higher quality and more accessible. The idea of bringing this online is to provide additional flexibility to distribution by allowing a link to be additionally provided to access the material.\vspace{\baselineskip}
+
+Tommy has yet to have a pleasant experience with supplemental educational sites currently in use. MyMathLab, Person Online, etc. almost seem to degrade the education process more than they help.
+
+\section{Website Analysis}
+\subsection{Relevant Websites}
+    
+\textbf{Udemy} (\url{https://www.udemy.com/})
+
+Educators list courses for sale at a set price and Udemy aggregates the courses. Each course has a review system based on a 5 star rating. Courses are divided up into categories and are then further divided into topics within those categories. Udemy has often sales to make courses look at a better value than they are. Instructors have an instructor profile, where all of their courses can be viewed.
+
+Each course has a playlist, which is then separated into sections. Within these sections video lectures, quizzes, coding exercises, practice tests, and assignments can be added. There is a minimum amount of video hours required for the course.
+
+To the user it appears as a constant flow of content, and each section is marked as completed after it is viewed. The video player has a 2x speed function, a captions function, and allows for taking notes at specific timecodes in the video. There are also ways to ask a forum of people who are in the course questions about the course. \vspace{\baselineskip}
+
+\textbf{Skill Share} (\url{https://www.skillshare.com/})
+Skill Share has a similar setup. Anyone may list a course on the platform,
+however they may be quick to notice the lack of rich content elements they can
+add to a course. Without quizzes, code environments, etc., instructors are
+left with building their course through video alone.
+
+That being said, the UI is fluid and easy to use. The video player is fully
+featured, with all the fixings found in Udamy. The largest point of friction is
+that you are required to give a credit card, even if you use the free
+plan.
+
+The courses seem to be regularly updated with content, and are all at your own
+pace. Instructors make money by the number of minutes watched from their
+courses. \vspace{\baselineskip}
+
+\textbf{EDx} (\url{https://www.edx.org/})
+Edx provides a more traditional educational environment not too dissimilar to a 100%
+online collage. Most courses are in fact provided by collages like MIT and NYU.
+In some, one can even earn credit towards the linked institution, even leading
+to an accredited degree. While there are at your own pace courses,
+most, especially ones with linked institutions, follow an IRL schedule.
+
+To support this more formal approach the site behaves more like a learning
+management system akin to Canvas; Just one where you can pick your courses.
+There is a quiz, grade, and work submission system. Work is often graded by a
+teacher or TA with human feedback. \vspace{\baselineskip}
+
+\textbf{Ted Ed} (\url{https://ed.ted.com/})
+Ted Ed has a list of videos, not courses, that are separated by category and sub category. There is a sub function to string together a list of related videos. The videos are not tied together on their individual pages, only on this main page. The videos are hosted on YouTube, and the player is embedded into the website. Each video has watch, think (quiz), Dig Deeper (resources), and discussion sections.
+
+Anyone can create a lesson by adding a YouTube video and questions. This can then be shared and data can be collected by the instructors. There is also a blog section for updates from the website itself to explain the purpose and features of the website. \vspace{\baselineskip}
+
+\textbf{Coursera} (\url{https://www.coursera.org/})
+Last but not least, Coursera is one of the original sites of this style. With
+this, they provide an environment closest to Edx. Courses are built around short
+video chunks with test checkpoints spaced throughout.
+
+The UI is much less smooth than the other contenders; One has to weave through
+a maze of drop downs to even browse available courses. What they do well though
+is online discussion boards where classmates can chat about the course content.
+From our investigation one need to contact Coursera to produce content for the
+platform. \vspace{\baselineskip}
+
+\subsection{Functions to Implement}
+
+Each individual course should be available for sale, combined with the PDF or shipped physical copy of the book. This will have the option to be done on the publisher's site or on the website itself. A rudimentary user rating system should be implemented. There should be the ability to generate free or discounted codes for the courses that are for sale through the website.
+
+The content will not be designed in a way to auto play between each video, rather each video will be treated as a separate thing in a list. Each video and supplementary material will show in a different color if the user has watched it, and the time they stopped the video will be saved when they click off the video. Supplementary content with the video, such as pdf files related to the lecture will be able to be put with the lecture or as individual lecture elements. Each video will be able to have a topic category and sub category. There will be clickable links to sort by all videos in that category.
+
+Each course will be able to have custom HTML, but templates will be provided if desired. (Something more akin to how MySpace was). The goal is to have the site provide services to design a custom landing page for a course, or to have the company design it and then have staff vet it before hosting it.
+
+Courses can either be accessible through a link only or they can be accessible through a code given with the book. For courses that are accessible through a link, hosting will be done on YouTube. Otherwise hosting will optionally be done on site. There could also be an option to download the HTML page for the course for offline use.
+
+Videos will have captions and a 2x speed function. Instructors will be restricted to people selling educational materials outside of the platform. This will be designed mainly for books with supplementary materials.
+
+There will be separate accounts for instructors and for students. The site itself will have a blog for updates and other basic functions. \vspace{\baselineskip}
+
+\subsection{Comparison Table}
+\begin{tabular}{ | m{10em} | m{2cm}| m{1cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1.5cm} | } 
+  \hline
+   & My proposed system & Udemy & Skill Share & EDx & Ted Ed & Coursera\\ 
+  \hline
+  Individual sale of courses & V & V & X & O & X & O\\ 
+  \hline
+  User rating system & V & V & V & U & X & V \\ 
+  \hline
+  Categorization of courses on main page & V & V & V & V & V & O \\ 
+  \hline
+  Ability to set a sale/discount code & V & V & X & U & X & U \\ 
+  \hline
+  Auto play between videos & X & V & X & V & X & U \\ 
+  \hline
+  Supplementary content to videos & V & V & X & V & O & V \\ 
+  \hline
+  Keeping notes in Videos & U & V & U & U & X & V \\ 
+  \hline
+  Keep track of user's place in courses & V & V & V & V & X & V \\ 
+  \hline
+  2X speed function & V & V & V & V & V & V \\ 
+  \hline
+  Video Captions & V & V & V & V & V & V \\ 
+  \hline
+  Supplementary forum to go with courses & X & V & X & V & V & V \\ 
+  \hline
+  On site video hosting & V & V & V & V & X & V \\ 
+  \hline
+  Anyone can be an instructor & X & V & X & X & V & X \\ 
+  \hline
+  Courses are vetted & V & V & U & V & X & V \\ 
+  \hline
+  Watch data and other metrics for instructors & X & V & X & & V & \\ 
+  \hline
+  Accounts for instructors and students & V & V & O & V & V & V \\ 
+  \hline
+  Blog for site updates & V & V & V & V & V & V\\ 
+  \hline
+  Sortable categories for individual videos in the course & V & X & U & V & O & U \\ 
+  \hline
+  Customizable interface for courses & V & X & O & U & X & U \\ 
+  \hline
+  Downloadable lectures & V & V & V & U & X & U \\ 
+  \hline
+\end{tabular}
+V: Able to perform the task; X: Unable to perform the task; O: Able to perform the task with poor interactive design, U: Unsure at this time.
+\end{document}
