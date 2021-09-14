@@ -1,15 +1,17 @@
 \documentclass{article}
 
 \usepackage{hyperref}
+\usepackage{graphicx}
 \usepackage{array}
 \usepackage[utf8]{inputenc}
 \usepackage{chngcntr}
 \counterwithin*{subsection}{section}
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\graphicspath{ {./images/} }
 
 \title{Project 2 - Website Analysis}
 \author{Purple Rabbits:\\Natalie Schneider and Thomas Merl}
-\date{September 2 2021}
+\date{September 14 2021}
 
 \begin{document}
 
@@ -21,8 +23,8 @@ Natalie has had some professional experience creating offline versions of websit
 
 Tommy has yet to have a pleasant experience with supplemental educational sites currently in use. MyMathLab, Person Online, etc. almost seem to degrade the education process more than they help.
 
-\section{Website Analysis}
-\subsection{Relevant Websites}
+\subsection{Website Analysis}
+\subsubsection{Relevant Websites}
     
 \textbf{Udemy} (\url{https://www.udemy.com/})
 
@@ -75,7 +77,7 @@ is online discussion boards where classmates can chat about the course content.
 From our investigation one need to contact Coursera to produce content for the
 platform. \vspace{\baselineskip}
 
-\subsection{Functions to Implement}
+\subsubsection{Functions to Implement}
 
 Each individual course should be available for sale, combined with the PDF or shipped physical copy of the book. This will have the option to be done on the publisher's site or on the website itself. A rudimentary user rating system should be implemented. There should be the ability to generate free or discounted codes for the courses that are for sale through the website.
 
@@ -89,7 +91,7 @@ Videos will have captions and a 2x speed function. Instructors will be restricte
 
 There will be separate accounts for instructors and for students. The site itself will have a blog for updates and other basic functions. \vspace{\baselineskip}
 
-\subsection{Comparison Table}
+\subsubsection{Comparison Table}
 \begin{tabular}{ | m{10em} | m{2cm}| m{1cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1.5cm} | } 
   \hline
    & My proposed system & Udemy & Skill Share & EDx & Ted Ed & Coursera\\ 
@@ -136,4 +138,105 @@ There will be separate accounts for instructors and for students. The site itsel
   \hline
 \end{tabular}
 V: Able to perform the task; X: Unable to perform the task; O: Able to perform the task with poor interactive design, U: Unsure at this time.
+
+\section{Story Board}
+\subsubsection{Who will use the website?}
+TODO
+
+\subsubsection{User Page Flow}
+The User flow through the sight is described with the diagram below.
+Implementation details for each page follow.
+
+\includegraphics[width=\textwidth]{flow}
+
+\newpage
+
+\paragraph{Public Homepage}\\ 
+\begin{itemize}
+    \item \textbf{GET /}
+    \begin{itemize}
+        \item Returns a public homepage with:
+        \item Link to Login / signup, Takes you to /login
+        \item Listing of courses available
+        \item Pulls data from course data table
+        \item Has links to each courses' homepage
+    \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+    \caption{Mock-up of the public homepage}
+    \includegraphics[width=\textwidth]{public_homepage}
+\end{figure}
+
+\newpage
+
+\paragraph{Login}\\ 
+\begin{itemize}
+    \item \textbf{GET /login?redirect=\<redirect path\>}
+    \begin{itemize}
+        \item A button to sign in / sign up with OAuth2 
+        \item A new, randomly generated state var to pass to oauth, this should be saved in a temp buffer server side
+        \item If a session cookie is passed with the request, void it in the auth database
+        \item If a session is passed with a redirect path param, set the redirect cookie to the given path so the user can be sent there after login
+    \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+    \caption{Mock-up of the public homepage}
+    \includegraphics[width=\textwidth]{public_homepage}
+\end{figure}
+
+\newpage
+
+\paragraph{Oauth}\\
+\begin{itemize}
+    \item \textbf{GET /oauth?code=oauth code\&state=oauth state}
+    \begin{itemize}
+        \item Backend takes the code and state params and exchanges them for an auth token
+        \item Backend takes the code and state params and exchanges them for an auth tokenBackend should also ensure state is in that temp buffer from before, then remove it to protect from CSRF attacks
+        \item Backend takes the code and state params and exchanges them for an auth tokenBackend also adds a new user implicitly if they are not already in the db
+        \item Backend takes the code and state params and exchanges them for an auth tokenIf an auth token is received, Set the auth token as the new seBackend takes the code and state params and exchanges them for an auth tokenssion for that user in the auth table of the db, Returns a logged in page that redirects the user to whatever is set in the redirect cookie. Remember to clear cookie!
+        \item If one is not received, redirect user to /login after error message
+    \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+    \caption{Mock-up of the public homepage}
+    \includegraphics[width=\textwidth]{public_homepage}
+\end{figure}
+
+\newpage
+
+\paragraph{Dashboard}\\
+\begin{itemize}
+    \item \textbf{GET /oauth?code=oauth code\&state=oauth state}
+        \begin{itemize}
+        \item Page in secure area and backend needs to check for valid session token before serving page, if one is not found send the user to login
+        \item Backend Looks up session id to get user id. Takes user id and looks up user info and user course ids in the user info table of the db
+        \item Takes this info and serves a custom dashboard that has Links to courses and Links to user settings
+    \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+    \caption{Mock-up of the public homepage}
+    \includegraphics[width=\textwidth]{public_homepage}
+\end{figure}
+
+\newpage
+
+\paragraph{User Settings}\\
+\begin{itemize}
+    \item \textbf{GET /profile}
+        \begin{itemize}
+        \item Backend Looks up session id to get user id. Takes user id and looks up user info and user course ids in the user info table of the db
+        \item Takes this info and serves a custom dashboard that has The above info displayed, Input fields to modify mutable data, A save button that sends the forum data via POST to the same route.
+        \item There should also be a “Make New Course” link that redirects to /c/edit?new=true
+    \end{itemize}
+\item \textbf{GET /profile}
+    \begin{itemize}
+        \item Backend takes key:values passed in the body and updates user database with valid keys.
+        \item Return the same page but with an updated prompt or an error message.
+    \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+    \caption{Mock-up of the public homepage}
+    \includegraphics[width=\textwidth]{public_homepage}
+\end{figure}
 \end{document}
+
