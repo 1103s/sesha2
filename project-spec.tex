@@ -145,14 +145,15 @@ The site is to be used by two different types of people. The first are students
 who will be accessing the course material provided by the second type of user:
 instructors. For the sake of this course we will start with only implementing
 the student side of the user experience which is detailed in the below section.
-Students will be of all ages so the ui should be familiar and as friction less as
+Students will be of all ages so the ui should be familiar and as friction-less as
 possible. This is a non-technical interface.
 
 \subsubsection{User Page Flow}
-The User flow through the sight is described with the diagram below.
+The User flow through the site is described with the diagram below.
 Implementation details for each page follow.
 
 \includegraphics[width=\textwidth]{flow}
+\includegraphics[width=\textwidth]{flow2}
 
 \newpage
 
@@ -160,24 +161,23 @@ Implementation details for each page follow.
 \begin{itemize}
     \item \textbf{GET /}
     \begin{itemize}
-        \item Returns a public homepage with:
-        \item Link to open Login / sign up prompt
-        \item Listing of courses available
-        \item Pulls data from course data table
-        \item Has links to each courses' homepage
+        \item Link to open Login / sign up prompt.
+        \item Listing of courses available.
+        \item Pulls data from course data table.
+        \item Has links to each courses' homepage.
         \item links to instructors and support are placeholders at professors request.
-        \item User side search powered by js
+        \item User side search powered by js.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mock-up of the public homepage.}
     \includegraphics[width=\textwidth]{home_page}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Home page with categories extended.}
     \includegraphics[width=\textwidth]{hompage_expanded}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Moc-up of home page with user logged in and user bar extended.
     This is replaced with a login prompt when user is not logged in.}
     \includegraphics[width=\textwidth]{user_side_bar}
@@ -190,14 +190,18 @@ Implementation details for each page follow.
 \begin{itemize}
     \item \textbf{Login Popup}
     \begin{itemize}
-        \item A button to sign in / sign up with OAuth2 
-        \item A new, randomly generated state var to pass to oauth, this should be saved in a temp buffer server side
-        \item If a session cookie is passed with the request, void it in the auth database
-        \item If a session is passed with a redirect path param, set the redirect cookie to the given path so the user can be sent there after login
-        \item Caries out the rest of oauth
+        \item A button to sign in / sign up with OAuth2.
+        \item A new, randomly generated state var to pass to oauth, this should
+            be saved in a temp buffer server side.
+        \item If a session cookie is passed with the request, void it in the
+            auth database.
+        \item If a session is passed with a redirect path param, set the
+            redirect cookie to the given path so the user can be sent there
+            after login.
+        \item Caries out the rest of oauth.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mock-up of the login popup.}
     \includegraphics[width=\textwidth]{login}
 \end{figure}
@@ -215,7 +219,7 @@ Implementation details for each page follow.
 %        \item If one is not received, redirect user to /login after error message
 %    \end{itemize}
 %\end{itemize}
-%\begin{figure}[h]
+%\begin{figure}[h!]
 %    \caption{Mock-up of the public homepage}
 %    \includegraphics[width=\textwidth]{public_homepage}
 %\end{figure}
@@ -226,18 +230,23 @@ Implementation details for each page follow.
 \begin{itemize}
     \item \textbf{GET /dash}
         \begin{itemize}
-        \item Page in secure area and backend needs to check for valid session token before serving page, if one is not found send the user to login
-        \item Backend Looks up session id to get user id. Takes user id and looks up user info and user course ids in the user info table of the db
-        \item Takes this info and serves a custom dashboard that has Links to courses and Links to user settings
+        \item Page in secure area and backend needs to check for valid session
+            token before serving page, if one is not found send the user to
+                login.
+        \item Backend Looks up session id to get user id. Takes user id and
+            looks up user info and user course ids in the user info table of
+                the db.
+        \item Takes this info and serves a custom dashboard that has Links to
+            courses and Links to user settings.
         \item links to instructors and support are placeholders at professors request.
-        \item User side search powered by js
+        \item User side search powered by js.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mock-up of the users dashboard}
     \includegraphics[width=\textwidth]{user_page}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{In the users dash, the categories are only what categories of
     lessons the user has in their library, and the red means that's the active
     section.}
@@ -250,7 +259,9 @@ Implementation details for each page follow.
 \begin{itemize}
     \item \textbf{GET /profile}
         \begin{itemize}
-        \item Backend Looks up session id to get user id. Takes user id and looks up user info and user course ids in the user info table of the db
+        \item Backend Looks up session id to get user id. Takes user id and
+            looks up user info and user course ids in the user info table of
+                the db.
         \item Takes this info and serves a custom dashboard that has The above info displayed, Input fields to modify mutable data, A save button that sends the forum data via POST to the same route.
     \end{itemize}
 \item \textbf{POST /profile}
@@ -259,20 +270,20 @@ Implementation details for each page follow.
         \item Return the same page but with an updated prompt or an error message.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mock-up of the main settings page.}
     \includegraphics[width=\textwidth]{user_settings_page}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{You can change the profile picture.}
     \includegraphics[width=\textwidth]{user_settings_page_pfp}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{You can change your display name.}
     \includegraphics[width=\textwidth]{user_settings_page_display_name}
 \end{figure}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{You can change many other things.}
     \includegraphics[width=\textwidth]{user_settings_page_change_account}
 \end{figure}
@@ -283,14 +294,16 @@ Implementation details for each page follow.
 \begin{itemize}
     \item \textbf{GET /c/home?id=course\_id}
         \begin{itemize}
-        \item Page in secure area and backend needs to check for valid session token before serving page, if one is not found send the user to login
+        \item Page in secure area and backend needs to check for valid session
+            token before serving page, if one is not found send the user to
+                login.
         \item Backend Looks up the course id and returns details about the course.
         \item Lists a set of links to each of the courses modules.
         \item links to instructors and support are placeholders at professors request.
-        \item User side search powered by js
+        \item User side search powered by js.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mock-up of the course homepage}
     \includegraphics[width=\textwidth]{course_preview}
 \end{figure}
@@ -299,20 +312,21 @@ Implementation details for each page follow.
 
 \paragraph{View Module}\\
 \begin{itemize}
-    \item \textbf{GET /c/home?id=course_id}
+    \item \textbf{GET /c/home?id=course\_id}
         \begin{itemize}
-        \item Page in secure area and backend needs to check for valid session token before serving page, if one is not found send the user to login
+        \item Page in secure area and backend needs to check for valid session
+            token before serving page, if one is not found send the user to
+                login.
         \item Backend Looks up the course id and returns details about the course.
         \item Lists a set of links to each of the courses modules.
         \item links to instructors and support are placeholders at professors request.
-        \item User side search powered by js
+        \item User side search powered by js.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mock-up of the module view.}
     \includegraphics[width=\textwidth]{course_preview}
 \end{figure}
-\end{document}
 
 \newpage
 
@@ -320,28 +334,26 @@ Implementation details for each page follow.
 \begin{itemize}
     \item \textbf{Code Popup}
         \begin{itemize}
-        \item Link to get code available on most pages
+        \item Link to get code available on most pages.
         \item Backend Looks up the course id to validate code.
         \item If valid add user to the course table entry.
         \item links to instructors and support are placeholders at professors request.
-        \item User side search powered by js
+        \item User side search powered by js.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mock-up of the code popup.}
     \includegraphics[width=\textwidth]{enter_code}
 \end{figure}
-\end{document}
-
 
 \newpage
 
 \paragraph{Mobile Content}\\
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mobile view of the video player.}
     \includegraphics[width=\textwidth]{mobile_course_video}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
     \caption{Mobile view of course page.}
     \includegraphics[width=\textwidth]{mobile_course_page}
 \end{figure}

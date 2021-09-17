@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.8.23)  16 SEP 2021 23:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.8.23)  17 SEP 2021 00:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -348,12 +348,17 @@ File: ./images/flow.png Graphic file (type png)
 <use ./images/flow.png>
 Package pdftex.def Info: ./images/flow.png  used on input line 155.
 (pdftex.def)             Requested size: 345.0pt x 215.62437pt.
+<./images/flow2.png, id=66, 2509.375pt x 1673.25125pt>
+File: ./images/flow2.png Graphic file (type png)
+<use ./images/flow2.png>
+Package pdftex.def Info: ./images/flow2.png  used on input line 156.
+(pdftex.def)             Requested size: 345.0pt x 230.04085pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 155--156
-[][] 
+Overfull \hbox (15.0pt too wide) in paragraph at lines 155--157
+[][]
  []
 
-[5 <./images/flow.png>]
+[5 <./images/flow.png>] [6 <./images/flow2.png>]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -361,33 +366,33 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.160 \begin
+l.161 \begin
             {itemize}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<./images/home_page.png, id=71, 1138.2525pt x 640.3925pt>
+<./images/home_page.png, id=77, 1138.2525pt x 640.3925pt>
 File: ./images/home_page.png Graphic file (type png)
 <use ./images/home_page.png>
 Package pdftex.def Info: ./images/home_page.png  used on input line 174.
 (pdftex.def)             Requested size: 345.0pt x 194.10286pt.
-<./images/hompage_expanded.png, id=72, 1138.2525pt x 640.3925pt>
+<./images/hompage_expanded.png, id=78, 1138.2525pt x 640.3925pt>
 File: ./images/hompage_expanded.png Graphic file (type png)
 <use ./images/hompage_expanded.png>
 Package pdftex.def Info: ./images/hompage_expanded.png  used on input line 178.
 
 (pdftex.def)             Requested size: 345.0pt x 194.10286pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./images/user_side_bar.png, id=73, 1138.2525pt x 640.3925pt>
+<./images/user_side_bar.png, id=79, 1138.2525pt x 640.3925pt>
 File: ./images/user_side_bar.png Graphic file (type png)
 <use ./images/user_side_bar.png>
 Package pdftex.def Info: ./images/user_side_bar.png  used on input line 183.
 (pdftex.def)             Requested size: 345.0pt x 194.10286pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ! LaTeX Error: \begin{document} ended by \end{itemize}.
@@ -409,7 +414,7 @@ l.185 \end{itemize}
                    
 Things are pretty mixed up, but I think the worst is over.
 
-[6 <./images/home_page.png>]
+[7 <./images/home_page.png>]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -423,15 +428,13 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<./images/login.png, id=82, 1138.2525pt x 640.3925pt>
+[8 <./images/hompage_expanded.png> <./images/user_side_bar.png>]
+<./images/login.png, id=98, 1138.2525pt x 640.3925pt>
 File: ./images/login.png Graphic file (type png)
 <use ./images/login.png>
-Package pdftex.def Info: ./images/login.png  used on input line 202.
+Package pdftex.def Info: ./images/login.png  used on input line 206.
 (pdftex.def)             Requested size: 345.0pt x 194.10286pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7 <./images/hompage_expanded.png>]
+ [9 <./images/login.png>]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -439,29 +442,26 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.226 \begin
+l.230 \begin
             {itemize}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<./images/user_page.png, id=91, 1138.2525pt x 640.3925pt>
+<./images/user_page.png, id=105, 1138.2525pt x 640.3925pt>
 File: ./images/user_page.png Graphic file (type png)
 <use ./images/user_page.png>
-Package pdftex.def Info: ./images/user_page.png  used on input line 238.
+Package pdftex.def Info: ./images/user_page.png  used on input line 247.
 (pdftex.def)             Requested size: 345.0pt x 194.10286pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./images/user_page_red.png, id=92, 668.4975pt x 376.40625pt>
+<./images/user_page_red.png, id=106, 668.4975pt x 376.40625pt>
 File: ./images/user_page_red.png Graphic file (type png)
 <use ./images/user_page_red.png>
-Package pdftex.def Info: ./images/user_page_red.png  used on input line 244.
+Package pdftex.def Info: ./images/user_page_red.png  used on input line 253.
 (pdftex.def)             Requested size: 345.0pt x 194.26204pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8 <./images/user_side_bar.png>]
+[10 <./images/user_page.png>]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -469,50 +469,50 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.250 \begin
+l.259 \begin
             {itemize}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (9.44507pt too wide) in paragraph at lines 258--259
+Overfull \hbox (9.44507pt too wide) in paragraph at lines 269--270
 []\OT1/cmr/m/n/10 Backend takes key:values passed in the body and up-dates user
  database
  []
 
-<./images/user_settings_page.png, id=100, 668.4975pt x 376.40625pt>
+<./images/user_settings_page.png, id=114, 668.4975pt x 376.40625pt>
 File: ./images/user_settings_page.png Graphic file (type png)
 <use ./images/user_settings_page.png>
-Package pdftex.def Info: ./images/user_settings_page.png  used on input line 26
-4.
+Package pdftex.def Info: ./images/user_settings_page.png  used on input line 27
+5.
 (pdftex.def)             Requested size: 345.0pt x 194.26204pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./images/user_settings_page_pfp.png, id=101, 668.4975pt x 376.40625pt>
+<./images/user_settings_page_pfp.png, id=115, 668.4975pt x 376.40625pt>
 File: ./images/user_settings_page_pfp.png Graphic file (type png)
 <use ./images/user_settings_page_pfp.png>
 Package pdftex.def Info: ./images/user_settings_page_pfp.png  used on input lin
-e 268.
+e 279.
 (pdftex.def)             Requested size: 345.0pt x 194.26204pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./images/user_settings_page_display_name.png, id=102, 668.4975pt x 376.40625pt
+<./images/user_settings_page_display_name.png, id=116, 668.4975pt x 376.40625pt
 >
 File: ./images/user_settings_page_display_name.png Graphic file (type png)
 <use ./images/user_settings_page_display_name.png>
 Package pdftex.def Info: ./images/user_settings_page_display_name.png  used on 
-input line 272.
+input line 283.
 (pdftex.def)             Requested size: 345.0pt x 194.26204pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ! Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.274 \end{figure}
+l.285 \end{figure}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
@@ -524,7 +524,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.274 \end{figure}
+l.285 \end{figure}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -533,43 +533,21 @@ or  <return>  to continue without it.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.274 \end{figure}
+l.285 \end{figure}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-<./images/user_settings_page_change_account.png, id=103, 668.4975pt x 376.40625
+<./images/user_settings_page_change_account.png, id=117, 668.4975pt x 376.40625
 pt>
 File: ./images/user_settings_page_change_account.png Graphic file (type png)
 <use ./images/user_settings_page_change_account.png>
 Package pdftex.def Info: ./images/user_settings_page_change_account.png  used o
-n input line 277.
+n input line 288.
 (pdftex.def)             Requested size: 345.0pt x 194.26204pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9 <./images/login.png>]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.283 \begin
-            {itemize}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-<./images/course_preview.png, id=111, 1138.2525pt x 640.3925pt>
-File: ./images/course_preview.png Graphic file (type png)
-<use ./images/course_preview.png>
-Package pdftex.def Info: ./images/course_preview.png  used on input line 295.
-(pdftex.def)             Requested size: 345.0pt x 194.10286pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10 <./images/user_page.png>]
+[11 <./images/user_page_red.png>]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -577,123 +555,135 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.301 \begin
+l.294 \begin
             {itemize}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.302     \item \textbf{GET /c/home?id=course_id}
-                                                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.302     \item \textbf{GET /c/home?id=course_id}
-                                                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.303         \begin{itemize}
-                             
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.303         \begin{itemize}
-                             
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.303         \begin{itemize}
-                             
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+[12 <./images/user_settings_page.png> <./images/user_settings_page_pfp.png>]
+<./images/course_preview.png, id=134, 1138.2525pt x 640.3925pt>
+File: ./images/course_preview.png Graphic file (type png)
+<use ./images/course_preview.png>
+Package pdftex.def Info: ./images/course_preview.png  used on input line 308.
+(pdftex.def)             Requested size: 345.0pt x 194.10286pt.
 
 
-! LaTeX Error: \begin{document} ended by \end{itemize}.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[13 <./images/user_settings_page_display_name.png> <./images/user_settings_page
+_change_account.png>]
+
+! LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.310 \end{itemize}
-                   
+l.314 \begin
+            {itemize}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.310 \end{itemize}
-                   
-Things are pretty mixed up, but I think the worst is over.
-
 File: ./images/course_preview.png Graphic file (type png)
 <use ./images/course_preview.png>
-Package pdftex.def Info: ./images/course_preview.png  used on input line 313.
+Package pdftex.def Info: ./images/course_preview.png  used on input line 328.
 (pdftex.def)             Requested size: 345.0pt x 194.10286pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 315.
-[11 <./images/user_page_red.png>] [12 <./images/user_settings_page.png> <./imag
-es/user_settings_page_pfp.png>] [13 <./images/user_settings_page_display_name.p
-ng> <./images/user_settings_page_change_account.png>] [14 <./images/course_prev
-iew.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 315.
+[14 <./images/course_preview.png>]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.334 \begin
+            {itemize}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+<./images/enter_code.png, id=151, 668.4975pt x 376.40625pt>
+File: ./images/enter_code.png Graphic file (type png)
+<use ./images/enter_code.png>
+Package pdftex.def Info: ./images/enter_code.png  used on input line 346.
+(pdftex.def)             Requested size: 345.0pt x 194.26204pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.352 \begin
+            {figure}[h!]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+<./images/mobile_course_video.png, id=158, 348.30125pt x 619.31375pt>
+File: ./images/mobile_course_video.png Graphic file (type png)
+<use ./images/mobile_course_video.png>
+Package pdftex.def Info: ./images/mobile_course_video.png  used on input line 3
+54.
+(pdftex.def)             Requested size: 345.0pt x 613.47217pt.
+
+LaTeX Warning: Float too large for page by 83.36105pt on input line 355.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./images/mobile_course_page.png, id=159, 348.30125pt x 619.31375pt>
+File: ./images/mobile_course_page.png Graphic file (type png)
+<use ./images/mobile_course_page.png>
+Package pdftex.def Info: ./images/mobile_course_page.png  used on input line 35
+8.
+(pdftex.def)             Requested size: 345.0pt x 613.47217pt.
+
+LaTeX Warning: Float too large for page by 83.36105pt on input line 359.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 360.
+[16 <./images/enter_code.png>] [17 <./images/mobile_course_video.png>] [18 <./i
+mages/mobile_course_page.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 360.
  (./project-spec.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 315.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 315.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 360.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 360.
 Package rerunfilecheck Info: File `project-spec.out' has not changed.
 (rerunfilecheck)             Checksum: 62D6D3CF4932EA2FB23D531795E6D143;545.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 315.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 360.
  ) 
 Here is how much of TeX's memory you used:
- 5393 strings out of 482555
- 84450 string characters out of 5952145
+ 5430 strings out of 482555
+ 85221 string characters out of 5952145
  352469 words of memory out of 6000000
- 20911 multiletter control sequences out of 15000+600000
+ 20939 multiletter control sequences out of 15000+600000
  537096 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,8n,29p,677b,311s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,8n,29p,677b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-sup
-er/sfrm1000.pfb>
-Output written on project-spec.pdf (14 pages, 942165 bytes).
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/cm-super/sfrm1000.pfb>
+Output written on project-spec.pdf (18 pages, 1317927 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 219 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 
