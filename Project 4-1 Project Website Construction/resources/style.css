@@ -1,3 +1,21 @@
 @charset "utf-8";
 /* CSS Document */
-
+.navBar{
+	display: inline-block;
+	padding: 15px 25px 15px 25px;
+}
+.navBar a{
+	text-decoration: none;
+	color: #00032F;
+}
+.current{
+	background-color: #003557;
+}
+.current a{
+	color: white;
+}
+nav{	
+  margin: auto;
+  width: 50%;
+  border: 3px solid #003557;
+}
