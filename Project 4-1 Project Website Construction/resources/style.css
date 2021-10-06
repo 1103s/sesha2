@@ -17,6 +17,7 @@ header{
 	width: 75%;
 }
 header h1{
+	color: #003557;
 	font-weight: bold;
 	font-size: 50px;
   	margin-top: 25px;
@@ -24,29 +25,35 @@ header h1{
 	text-align: center;
 }
 header h2{
+	color: #003557;
 	font-size: 20px;
 	margin-bottom: 20px;
 }
 
 .navBar{	
-	width: 60px;
 	display: inline-block;
 	text-align: center;
-	padding: 15px 25px 15px 25px;
+	padding: 0px;
 }
 .navBar a{
+	display: inline-block;
+	padding: 15px 25px 15px 25px;
+	width: 60px;
 	text-decoration: none;
 	color: #00032F;
+	margin-right: -4px;
 }
-.current{
+.navBar a:hover{
 	background-color: #003557;
+	color: white;
 }
 .current a{	
+	background-color: #003557;
 	color: white;
 }
 nav{	
   margin: auto;
-  width: 452px;
+  width: 440px;
   border: 3px solid #003557;
 }
 
@@ -56,12 +63,49 @@ section{
 	margin-right: auto;
 	margin-left: auto;
 	width: 75%;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+}
+section p{
+	width: 95%;
+	margin: auto;
+}
+.summary p{
+	padding-bottom: 15px;
+}
+#features table{
+	margin-top: 10px;
+	border-collapse: collapse;
+}
+#features td{
+	border: 1px solid black;
+	padding: 5px;
+	max-width: 500px;
+}
+#features th{
+	background-color:#CCEFFF;
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
 }
 
+.fullPic{
+	width: 500px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.picDescription{
+	margin-top: 15px;
+	width: 500px;
+}
+.contact{
+	margin-bottom: 50px;
+}
+.name{
+	font-weight: bold;
+}
 
 footer{	
-	text-align: center;
-	
+	text-align: center;	
 	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
 	padding-top: 25px;
 	padding-bottom: 10px;
