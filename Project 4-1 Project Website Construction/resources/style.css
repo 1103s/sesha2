@@ -1,7 +1,17 @@
 @charset "utf-8";
-/* CSS Document */
-.navBar{
+html, body {
+	margin:0;
+	padding:0;	
+}
+body{
+	display:flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+.navBar{	
+	width: 60px;
 	display: inline-block;
+	text-align: center;
 	padding: 15px 25px 15px 25px;
 }
 .navBar a{
@@ -11,11 +21,30 @@
 .current{
 	background-color: #003557;
 }
-.current a{
+.current a{	
 	color: white;
 }
 nav{	
   margin: auto;
-  width: 50%;
+  width: 452px;
   border: 3px solid #003557;
+}
+
+
+section{
+	flex: 1;
+}
+
+
+footer{	
+	text-align: center;
+	
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+	padding-top: 25px;
+	padding-bottom: 10px;
+	background-color: #003557;
+	color: white;
+}
+footer a{
+	color: white;
 }
