@@ -8,6 +8,26 @@ body{
 	min-height: 100vh;
 	flex-direction: column;
 }
+
+header{
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	text-align: center;
+	background-color: #92B9FF;
+	margin: auto;
+	width: 75%;
+}
+header h1{
+	font-weight: bold;
+	font-size: 50px;
+  	margin-top: 25px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+header h2{
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
 .navBar{	
 	width: 60px;
 	display: inline-block;
@@ -33,6 +53,9 @@ nav{
 
 section{
 	flex: 1;
+	margin-right: auto;
+	margin-left: auto;
+	width: 75%;
 }
 
 
