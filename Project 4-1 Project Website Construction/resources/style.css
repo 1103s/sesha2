@@ -115,3 +115,16 @@ footer{
 footer a{
 	color: white;
 }
+
+@media only screen and (max-width: 960px) {
+	section{width: 100%; }
+	header{width: 100%;}
+}
+@media only screen and (max-width: 510px) {
+	.fullPic{width: 100%}
+	.picDescription{width: 100%}
+	#features{width: 100%}
+}
+@media only screen and (max-width: 446px) {
+	nav{width: 95%;}
+}
