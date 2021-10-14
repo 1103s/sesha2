@@ -64,13 +64,68 @@ nav{
 	padding-top: 5px;
 }
 
-main{
+
+main #exampleCourses{
+	min-height: calc(100vh - 244px);
 	flex: 1;
+	display: inline-block;
+	float: left;
+	width: 75vw;
+	max-width: 1040px; 
 	margin-right: auto;
 	margin-left: auto;
-	width: 75%;
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+	padding-left: 10vw;
 }
+
+#exampleCourses h2{
+	clear: both;
+	width: 100%;
+	float: none;
+}
+#exampleCourses img{
+	float: left;
+	width: 200px;
+}
+#exampleCourses .textInfo{	
+	padding: 0px 0px 0px 10px;
+	float: left;
+	width: 300px;
+	height: 113px;
+}
+#exampleCourses .coursePreview{
+	float:left;
+	padding: 0px 10px 10px 0px;
+}
+#exampleCourses .description{
+	font-size: 15px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+   	display: -webkit-box;
+   	-webkit-line-clamp: 2; /* number of lines to show */
+   	-webkit-box-orient: vertical;
+}
+#exampleCourses .categoryExpander{
+	clear: both;
+	width: 100%; 
+	border-top: 2px solid black;
+  	height: 50px;
+}
+#exampleCourses .triangle{
+	width: 20%;
+	display: flex;
+	margin: auto;
+}
+
+aside{
+	display: flex;
+	float: left;
+	padding: 0px 50px 0px 10vw;
+}
+aside elementCategory{
+	padding-left: 10px;
+}
+
 
 footer{	
 	text-align: center;	
