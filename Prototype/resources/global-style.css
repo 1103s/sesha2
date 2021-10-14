@@ -110,6 +110,7 @@ main #exampleCourses{
 	width: 100%; 
 	border-top: 2px solid black;
   	height: 50px;
+	margin-top: 20px;
 }
 #exampleCourses .triangle{
 	width: 20%;
