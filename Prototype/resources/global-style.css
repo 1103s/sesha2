@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+html, body {
+	margin:0;
+	padding:0;	
+}
+body{
+	display:flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+header{
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	text-align: center;
+	background-color: #92B9FF;
+	margin: auto;
+	width: 100%;
+}
+header h1{
+	color: #003557;
+	font-weight: bold;
+	font-size: 50px;
+  	margin-top: 25px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.navBar{	
+	display: inline-block;
+	text-align: center;
+	padding: 0px;
+}
+.navBar a{
+	display: inline-block;
+	padding: 15px 15px 15px 15px;
+	width: 80px;
+	text-decoration: none;
+	color: #00032F;
+	margin-right: -4px;
+}
+.navBar a:hover{
+	background-color: #003557;
+	color: white;
+}
+.current a{	
+	background-color: #003557;
+	color: white;
+}
+#selectorNav{	
+	float: left;
+  	width: 550px;
+  	border: 3px solid #003557;
+}
+#searchNav{
+  	margin-left: 100px;
+	font-size: 15px;
+	font-family: Montserrat , sans-serif;
+	float: left;
+}
+nav{
+	margin: auto;
+	display: inline-block;
+	padding-top: 5px;
+}
+
+
+main #exampleCourses{
+	min-height: calc(100vh - 244px);
+	flex: 1;
+	display: inline-block;
+	float: left;
+	width: 75vw;
+	max-width: 1040px; 
+	margin-right: auto;
+	margin-left: auto;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+	padding-left: 10vw;
+}
+
+#exampleCourses h2{
+	clear: both;
+	width: 100%;
+	float: none;
+}
+#exampleCourses img{
+	float: left;
+	width: 200px;
+}
+#exampleCourses .textInfo{	
+	padding: 0px 0px 0px 10px;
+	float: left;
+	width: 300px;
+	height: 113px;
+}
+#exampleCourses .coursePreview{
+	float:left;
+	padding: 0px 10px 10px 0px;
+}
+#exampleCourses .description{
+	font-size: 15px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+   	display: -webkit-box;
+   	-webkit-line-clamp: 2; /* number of lines to show */
+   	-webkit-box-orient: vertical;
+}
+#exampleCourses .categoryExpander{
+	clear: both;
+	width: 100%; 
+	border-top: 2px solid black;
+  	height: 50px;
+}
+#exampleCourses .triangle{
+	width: 20%;
+	display: flex;
+	margin: auto;
+}
+
+aside{
+	display: flex;
+	float: left;
+	padding: 0px 50px 0px 10vw;
+}
+aside elementCategory{
+	padding-left: 10px;
+}
+
+
+footer{	
+	text-align: center;	
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+	padding-top: 25px;
+	padding-bottom: 10px;
+	background-color: #003557;
+	color: white;
+}
+footer a{
+	color: white;
+}
