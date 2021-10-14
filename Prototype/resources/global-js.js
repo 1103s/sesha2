@@ -82,7 +82,7 @@ function createSection(categoryID,length){
 	{
 		if(courseCategories[i][1] == categoryName && length>0){
 			length--;
-			tempString += "<div class=\"coursePreview\"> <img class=\"thumb\" src=\"./resources/images/" + courseCategories[i][0] +" - thumbnail.png\">";
+			tempString += "<div class=\"coursePreview\"> <img class=\"thumb\" src=\"./resources/images/" + courseCategories[i][0] +"-thumbnail.png\">";
 			tempString += "<div class=\"textInfo\"> <h4 class=\"title\">" +  courses[courseCategories[i][0]][1] + "</h4>";
 			tempString += "<div class=\"description\">" +  courses[courseCategories[i][0]][2] + "</div></div></div>";			
 		}
