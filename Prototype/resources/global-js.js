@@ -127,6 +127,13 @@ function displayCategories()
 {
 	//Creates the outermost div for each element
 	document.getElementById("categories").innerHTML = "";
+	
+	//creates the bar divider
+	outerDiv = document.createElement('div');
+	outerDiv.className = "categoryDivider";	
+	document.getElementById("categories").appendChild(outerDiv);	
+	
+	//Creates the categories
 	outerDiv = document.createElement('div');
 	outerDiv.className = "categoryList";
 	

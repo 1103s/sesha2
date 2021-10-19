@@ -82,6 +82,12 @@ main #exampleCourses{
 	clear: both;
 	width: 100%;
 	float: none;
+	text-align: center;
+	font-size: 35px;
+}
+#exampleCourses h4{
+	
+		margin-top: 0px;
 }
 #exampleCourses img{
 	float: left;
@@ -113,18 +119,24 @@ main #exampleCourses{
 	margin-top: 20px;
 }
 #exampleCourses .triangle{
-	width: 20%;
-	display: flex;
-	margin: auto;
+	width: 175px;
 }
 
 aside{
 	display: flex;
 	float: left;
-	padding: 0px 50px 0px 10vw;
 }
-aside elementCategory{
-	padding-left: 10px;
+aside .categoryList{
+	width: 175px;
+}
+aside .elementCategory{
+	margin-left:  10px;
+}
+aside .categoryDivider{
+	width: 2px;
+	background-color: black;
+	height: calc(100vh - 264px);
+	margin: 10px 5vw 10px 5vw;
 }
 
 
@@ -138,4 +150,91 @@ footer{
 }
 footer a{
 	color: white;
+}
+@media only screen and (max-width: 1542px) {
+	main #exampleCourses{width: 95vw; padding: 0px; margin: 0px 2.5vw 0px 2.5vw;}
+}
+@media only screen and (max-width: 1455px) {
+	aside .categoryDivider{
+		width: 0px;
+		background-color: none;
+		height: 0px;
+		margin: 0px;
+	}
+	#exampleCourses h2{
+	font-size: 45px;
+}
+	main #exampleCourses .thumb{
+		min-width: 215px;
+		width: 18vw;
+	} 
+	main #exampleCourses .description{
+		font-size: 20px;
+	}
+	main #exampleCourses h4{
+		font-size: 25px;
+		margin-top: 0px;
+	}
+	main #exampleCourses .textInfo{
+		width: calc(29.5vw - 40px);
+	}
+	main #exampleCourses{
+		max-width: none;
+	}
+	aside .categoryList{
+		margin-left: 2.5vw;
+		font-size: 25px;
+		width: 100%;
+	}
+	aside .elementCategory{
+		margin-bottom: 10px;
+	}
+	nav{
+		width: 556px;
+		margin: auto;
+	}
+	#selectorNav{
+		margin: auto;
+	}
+	#searchNav{
+		margin-top: 10px;
+		margin-left: 20px;
+		width: 274px;
+	}
+	#textBox{
+		font-size: 20px;
+	}
+}
+@media only screen and (max-width: 1083px) {
+	main #exampleCourses .thumb{
+		width: 30vw;
+	} 
+	main #exampleCourses .textInfo{
+		width: calc(65vw - 20px);
+	}
+}
+@media only screen and (max-width: 760px) {
+	main #exampleCourses .textInfo{
+		width: 100%;
+	}
+	
+}
+
+@media only screen and (max-width: 556px) {
+	#selectorNav{
+		width: 330px;
+	}
+	nav{
+		width: 330px;
+	}
+}
+
+@media only screen and (max-width: 330px) {
+	
+	#selectorNav{
+		width: 110px;
+	}
+	nav{
+		width: 100vw;
+	}
 }
