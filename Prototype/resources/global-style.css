@@ -45,53 +45,53 @@ header #seshaLogo{
 	margin-top: 33px;
 	margin-left: 40px;
 }
+
 header h1{
 	color: #003557;
 	font-weight: bold;
 	font-size: 50px;
-  	margin-top: 25px;
-	margin-bottom: 10px;
 	text-align: center;
 }
 
 .navBar{	
-	display: inline-block;
+    border-color: #003557;
+	border: solid;
 	text-align: center;
-	padding: 0px;
-}
-.navBar a{
-	display: inline-block;
-	padding: 15px 15px 15px 15px;
-	width: 80px;
-	text-decoration: none;
 	color: #00032F;
-	margin-right: -4px;
-}
-.navBar a:hover{
-	background-color: #003557;
-	color: white;
-}
-.current a{	
-	background-color: #003557;
-	color: white;
-}
-#selectorNav{	
-	float: left;
-  	width: 550px;
-  	border: 3px solid #003557;
-}
-#searchNav{
-  	margin-left: 100px;
-	font-size: 15px;
-	font-family: Montserrat , sans-serif;
-	float: left;
-}
-nav{
-	margin: auto;
-	display: inline-block;
-	padding-top: 5px;
 }
 
+.navBar a{
+	text-decoration: none;
+	text-align: center;
+}
+
+.navBar a:hover{
+    color: white;
+}
+
+.navBar:hover{
+	color: white;
+}
+.current{	
+	background-color: #003557;
+	color: white;
+}
+
+.current a{
+    color: white;
+}
+#selectorNav{	
+  	border: 3px solid #003557;
+}
+
+#searchNav{
+	font-size: 15px;
+	font-family: Montserrat , sans-serif;
+}
+
+nav {
+	background-color: #92B9FF;
+}
 
 main #bigContent{
 	min-height: calc(100vh - 244px);
@@ -102,6 +102,9 @@ main #bigContent{
 	max-width: 1040px; 
 	margin-right: auto;
 	margin-left: auto;
+}
+
+main{
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
 	padding-left: 10vw;
 }
@@ -175,14 +178,13 @@ aside .categoryDivider{
 footer{	
 	text-align: center;	
 	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
-	padding-top: 25px;
-	padding-bottom: 10px;
 	background-color: #003557;
 	color: white;
 }
 footer a{
 	color: white;
 }
+
 @media only screen and (max-width: 1542px) {
 	main #bigContent{width: 95vw; padding: 0px; margin: 0px 2.5vw 0px 2.5vw;}
 }
