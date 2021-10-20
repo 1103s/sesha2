@@ -221,15 +221,12 @@ footer a{
 }
 
 @media only screen and (max-width: 556px) {
-	#selectorNav{
-		width: 330px;
-	}
-	nav{
-		width: 330px;
-	}
+	#exampleCourses h2{	font-size: 35px;}
+	#selectorNav{width: 330px;}
+	nav{width: 330px;}
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 364px) {
 	
 	#selectorNav{
 		width: 110px;
