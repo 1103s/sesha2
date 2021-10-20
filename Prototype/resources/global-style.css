@@ -93,7 +93,7 @@ nav{
 }
 
 
-main #exampleCourses{
+main #bigContent{
 	min-height: calc(100vh - 244px);
 	flex: 1;
 	display: inline-block;
@@ -106,36 +106,36 @@ main #exampleCourses{
 	padding-left: 10vw;
 }
 
-main #exampleCourses a{
+main #bigContent a{
 	text-decoration: none;
 	color: black;
 }
-#exampleCourses h2{
+#bigContent h2{
 	clear: both;
 	width: 100%;
 	float: none;
 	text-align: center;
 	font-size: 35px;
 }
-#exampleCourses h4{
+#bigContent h4{
 	
 		margin-top: 0px;
 }
-#exampleCourses img{
+#bigContent img{
 	float: left;
 	width: 200px;
 }
-#exampleCourses .textInfo{	
+#bigContent .textInfo{	
 	padding: 0px 0px 0px 10px;
 	float: left;
 	width: 300px;
 	height: 113px;
 }
-#exampleCourses .coursePreview{
+#bigContent .coursePreview{
 	float:left;
 	padding: 0px 10px 10px 0px;
 }
-#exampleCourses .description{
+#bigContent .description{
 	font-size: 15px;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -143,14 +143,14 @@ main #exampleCourses a{
    	-webkit-line-clamp: 2; /* number of lines to show */
    	-webkit-box-orient: vertical;
 }
-#exampleCourses .categoryExpander{
+#bigContent .categoryExpander{
 	clear: both;
 	width: 100%; 
 	border-top: 2px solid black;
   	height: 50px;
 	margin-top: 20px;
 }
-#exampleCourses .triangle{
+#bigContent .triangle{
 	width: 175px;
 }
 
@@ -184,7 +184,7 @@ footer a{
 	color: white;
 }
 @media only screen and (max-width: 1542px) {
-	main #exampleCourses{width: 95vw; padding: 0px; margin: 0px 2.5vw 0px 2.5vw;}
+	main #bigContent{width: 95vw; padding: 0px; margin: 0px 2.5vw 0px 2.5vw;}
 }
 @media only screen and (max-width: 1455px) {
 	aside .categoryDivider{
@@ -193,24 +193,24 @@ footer a{
 		height: 0px;
 		margin: 0px;
 	}
-	#exampleCourses h2{
+	#bigContent h2{
 	font-size: 45px;
 }
-	main #exampleCourses .thumb{
+	main #bigContent .thumb{
 		min-width: 215px;
 		width: 18vw;
 	} 
-	main #exampleCourses .description{
+	main #bigContent .description{
 		font-size: 20px;
 	}
-	main #exampleCourses h4{
+	main #bigContent h4{
 		font-size: 25px;
 		margin-top: 0px;
 	}
-	main #exampleCourses .textInfo{
+	main #bigContent .textInfo{
 		width: calc(29.5vw - 40px);
 	}
-	main #exampleCourses{
+	main #bigContent{
 		max-width: none;
 	}
 	aside .categoryList{
@@ -238,22 +238,22 @@ footer a{
 	}
 }
 @media only screen and (max-width: 1083px) {
-	main #exampleCourses .thumb{
+	main #bigContent .thumb{
 		width: 30vw;
 	} 
-	main #exampleCourses .textInfo{
+	main #bigContent .textInfo{
 		width: calc(65vw - 20px);
 	}
 }
 @media only screen and (max-width: 760px) {
-	main #exampleCourses .textInfo{
+	main #bigContent .textInfo{
 		width: 100%;
 	}
 	
 }
 
 @media only screen and (max-width: 556px) {
-	#exampleCourses h2{	font-size: 35px;}
+	#bigContent h2{	font-size: 35px;}
 	#selectorNav{width: 330px;}
 	nav{width: 330px;}
 }
