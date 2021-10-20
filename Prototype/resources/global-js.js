@@ -58,7 +58,7 @@ const typeHandler = function(e) {
 }
 
 function displayHome(){
-	var mainHtml = document.getElementById("exampleCourses");
+	var mainHtml = document.getElementById("bigContent");
 	for(var i = 0; i < 5;i++)
 	{
 		mainHtml.appendChild(createSection(featuredCategories[i][0],featuredCategories[i][1]));
@@ -82,9 +82,9 @@ function createSection(categoryID,length){
 	{
 		if(courseCategories[i][1] == categoryName && length>0){
 			length--;
-			tempString += "<div class=\"coursePreview\"> <img class=\"thumb\" src=\"./resources/images/" + courseCategories[i][0] +"-thumbnail.png\">";
+			tempString += "<a href=\"./resources/courses/" + courseCategories[i][0] + "/coursePreview.html \"class=\"coursePreview\"> <img class=\"thumb\" src=\"./resources/images/" + courseCategories[i][0] +"-thumbnail.png\">";
 			tempString += "<div class=\"textInfo\"> <h4 class=\"title\">" +  courses[courseCategories[i][0]][1] + "</h4>";
-			tempString += "<div class=\"description\">" +  courses[courseCategories[i][0]][2] + "</div></div></div>";			
+			tempString += "<div class=\"description\">" +  courses[courseCategories[i][0]][2] + "</div></div></a>";			
 		}
 	}
 	if (length == 0)
@@ -116,7 +116,7 @@ function bySearchTerm(term){
 }
 
 function byCategory(categoryID){	
-	var mainHtml = document.getElementById("exampleCourses");
+	var mainHtml = document.getElementById("bigContent");
 	mainHtml.innerHTML = "";
 	
 	mainHtml.appendChild(createSection(categoryID,20));
@@ -147,6 +147,14 @@ function displayCategories()
 	
 	//Appends the final div to the document itself
 	document.getElementById("categories").appendChild(outerDiv);		
+}
+
+function displayEnterCode(){
+	document.getElementById("codeEntryOverlay").style.visibility = "visible";
+	
+}
+function hideEnterCode(){	
+	document.getElementById("codeEntryOverlay").style.visibility = "hidden";
 }
 
 $search.addEventListener('input', typeHandler)

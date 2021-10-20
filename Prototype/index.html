@@ -16,13 +16,48 @@
 	</head>
 
 	<body onLoad="displayCategories();displayHome()">
-        <header>			
-            <div class="container px-8">
-                <div class="row justify-content-center gx-5">
-                    <div class="col p-3">
-                        <h1 id="siteName">Sesha</h1>
-                    </div>
-                </div>
+		<div id="codeEntryOverlay">
+			<div id="background" onClick="hideEnterCode()"></div>
+			<div id="codeEntry">
+				<h2>Enter code</h2>
+				<input type="text" id="codeTextBox" name="Search" placeholder="xxxx-xxxx-xxxx">
+				<button onClick="hideEnterCode()">Enter</button>
+			</div>
+		</div>
+		<header>
+			<a id="seshaLogo" href="#"><img src="resources/images/sesha_logo.png" alt="sesha logo">	</a>			
+            <h1 id="siteName">Sesha</h1>
+		</header>
+		<nav>
+			<div id ="selectorNav">
+				<div class="navBar current"><a href="./index.html">Home</a></div>
+				<div class="navBar"><a onclick="displayEnterCode()" href="#">Enter Code</a></div>
+				<div class="navBar"><a href="#">My Courses</a></div>
+				<div class="navBar"><a href="#">Support</a></div>
+				<div class="navBar"><a href="#">Instructor</a></div>
+			</div>
+			<div id="searchNav">
+				<table>
+					<tr id="searchBoxButton"  valign="bottom">
+						<td id="search"><input type="text" id="textBox" name="Search" placeholder="Search Courses        &#x1F50E;"></td>
+						<td > <button id="reset" onclick="bySection(1000)">Reset</button></td>
+					</tr>
+					<tr id="about" valign="bottom">						
+					</tr>
+				</table>
+			</div>		
+		</nav>
+		<main id="main">
+			<main id="bigContent">
+			</main>
+			<aside id="categories">		
+			</aside>
+		</main>
+		<footer>
+			<div id="copyright">©2021 Team Purple Rabbits</div>
+            <div id="techLink">
+                Project created at <a href="https://nmt.edu/" target="_blank">
+                    nmt.edu</a>
             </div>
         </header>
         <nav>

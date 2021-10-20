@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="shortcut icon" href="IMG/favicon.ico">
+	<meta charset="utf-8">
+	<title>Digital Video Resource Library</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onLoad="displayTags();bySection(5000)">
+
+<div id="videooverlay">
+	<div id = "playercontainer">
+		<div id = "close" onClick="closeVideo()">Close Video [X]</div>
+		<video controls id="player" autoplay></video>
+	</div>
+	<h1 id="title"></h1>
+	<div id = "description"></div>			
+</div>
+<div id = "background" onClick="closeVideo()"></div>
+
+<header id="redSpacer">
+	<a id="seshaLogo" href="../../../../index.html"><img src="../../../images/sesha_logo.png" alt="sesha logo">	</a>
+	<h1 id="siteName">Sesha</h1>
+</header>
+	
+<div id="displaySection">
+	<table>
+		<tr>
+			<th width="300px">
+				<a href="./displaySection5000.html" ><img src="IMG/FUTURES_Channel_logo.png" alt="The Futures Channel Logo" height = "150" ></a>
+			</th>
+			<th id="displaySectionText" valign="bottom">
+				DISPLAY SECTION: 
+				<a href="./displaySection1000.html" class="otherLink">1000</a><a class="spacer"> | </a>
+				<a href="./displaySection2000.html" class="otherLink">2000</a><a class="spacer"> | </a>
+				<a href="./displaySection3000.html" class="otherLink">3000</a><a class="spacer"> | </a>
+				<a href="./displaySection4000.html" class="otherLink">4000</a><a class="spacer"> | </a>
+				<a href="./displaySection5000.html" id="currentLink">5000</a>
+			</th>
+		</tr>
+	</table>
+</div>
+<div id="searchBox">
+	<table class="headder">
+		<tr id="searchBoxButton"  valign="bottom">
+			<td id="search"><input type="text" id="textBox" name="Search" placeholder="Search All                &#x1F50E;"></td>
+		  	<td > <button id="reset" onclick="bySection(5000)">Reset</button></td>
+		</tr>
+		<tr id="about" valign="bottom">						
+		</tr>
+	</table>
+</div>
+<div id="aboutTagContainer">
+	<a id="aboutTag"></a>
+	<button id="resetTag" onclick="bySection(5000)">Reset</button>
+</div>
+<div id="mainpage"></div>
+<div id="tags"></div>
+<div id="footer">© 2019 The Futures Channel<br><a href="https://thefutureschannel.com" id="weblink" target="_blank">https://thefutureschannel.com</a></div>
+<script src="scpript.js">
+
+</script>
+
+</body>
+</html>
