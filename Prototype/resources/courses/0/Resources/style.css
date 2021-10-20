@@ -1,0 +1,268 @@
+html, body {
+	height: 100%;
+	margin:0;
+	padding:0;
+	
+}
+
+#videooverlay{	
+	/* positions the video overlay in x/y and z space correctly */
+	position: fixed;
+	z-index: 3;
+
+	/* sets the width to the video size */
+	width: 720px;
+
+	/* adds a scroll bar if the content is bigger than the height */
+	max-height: 100%;
+	max-width: 100%;
+	overflow: auto;
+
+	/* positions the div in the middle */
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);	
+}
+#close{
+	/* puts the close button to right */
+	float: right;
+	/* styles the text */
+	cursor: pointer;			
+	color: white;
+	font-family: Montserrat , sans-serif;
+}
+#close:hover{
+	text-shadow: 0px 0px 5px white;
+}
+#player{
+	/* ensures the video is never bigger than the container */
+	max-width: 100%;
+}
+#playercontainer{ 
+	margin: 0 auto;
+}
+#title{		
+	font-family: Montserrat , sans-serif;		
+	color: white;
+	text-shadow: 0px 0px 5px black;	
+}
+#description{
+	font-family: Arial , sans-serif;				
+	color: white;	
+	text-shadow: 0px 0px 5px black;	
+}
+#background{		
+	/* sets the background overlay up */
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.75);
+	z-index: 2;
+	cursor: pointer;			
+}
+
+@media (max-width:720px)
+{
+	/* handles the edge case where the width is smaller than the video size*/
+	 #playercontainer {max-width: 60vh}
+}
+
+@media (min-width:720px)
+{
+	/* bases the width on the height, such that the video stays on screen */
+	 #playercontainer {max-width: 80vh}
+}
+
+.spacer{
+	color: #DF1717;
+}
+.element{
+	margin-left: 50px;
+	margin-right: 10px;
+}	
+.row1{
+	font-size: 25px;
+	font-family: Montserrat , sans-serif;
+	text-transform: uppercase;
+}
+.row2{
+	font-family: Montserrat , sans-serif;
+	margin-left: 5px;
+}
+.row3{	
+	font-family: Arial , sans-serif;
+	color: #DF1717;
+	margin-bottom: 10px;
+	margin-left: 2px;
+	font-size: 14px;
+	display: block;
+}
+.tag{
+	display: inline-block;
+}
+.elementTag{	
+	margin-left: 0px;
+}
+.button{
+	background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+	color: #DF1717;
+}
+.tagList{
+	font-family: Arial , sans-serif;
+	margin-left: 20px;
+	width: 100 px;
+}
+.about{
+	height: 25px;
+}
+	
+
+a{ 
+	color: black;
+	text-decoration: none;
+}
+
+.video:hover, .button:hover,.pdf:hover,#weblink:hover{	
+	text-shadow: 0px 0px 5px lightgray;
+}
+
+.video, .button{
+	cursor: pointer;	
+}
+
+
+#redSpacer{	
+	height: 112px;
+	background-color:#DF1717;
+	float: left;
+}
+#redSpacer #seshaLogo{
+	position: absolute;
+	margin-top: 33px;
+	margin-left: 40px;
+}
+#redSpacer h1{		
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	color: #000000;
+	font-weight: bold;
+	font-size: 50px;
+  	margin-top: 25px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+#displaySection{
+	float: left;
+	margin-top: 10px;	
+	margin-bottom: 25px;
+	
+}
+#logo
+{
+	float: left;	
+}
+#displaySectionText{
+	text-align: Right;
+	font-family: Montserrat , sans-serif;	
+}
+#currentLink{
+  background-color: #DF1717;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;	
+}
+.otherLink{	
+  padding: 5px 15px;
+  text-align: center;
+  display: inline-block;
+}
+#searchBox{
+	font-size: 15px;
+	font-family: Montserrat , sans-serif;
+	float: left;
+}
+#reset{
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+}
+#resetTag{
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+}
+#aboutTagContainer{	
+	float: left;
+	font-size: 20px;
+	font-family: Montserrat , sans-serif;
+}
+#aboutTag{
+	margin-left: 20px;
+}
+#mainpage{
+	padding-top: 10px;
+	margin-top: 10px;
+	float: left;
+	border-style: solid;
+	min-height: inherit;
+}
+#tags{
+	float: left;
+}
+
+#footer{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 40px;
+	font-family: Montserrat , sans-serif;
+	text-align: center;
+	float: left;
+	width: 100%;
+	
+}
+#weblink{
+	text-decoration: underline;
+}
+
+
+@media only screen and (max-width: 960px) {
+	#redSpacer {width: 100%}
+	#displaySection {width: 100%}
+	#searchBox {width: 100%}
+	#aboutTagContainer {width: 100%}
+	#mainpage {width: 100%; border-width: 1px 0px 1px 0px}
+	#tags {width: 100%}
+}
+@media only screen and (min-width: 960px) {
+	#redSpacer {width: 100%}
+	#displaySection {height: 150px; width: 100%}
+	#searchBox {width: 100%}
+	#aboutTagContainer{width: 100%}
+	#mainpage {width: 80%;  min-height: calc(100vh - 399px) ; border-width: 1px 1px 1px 0px}
+	#tags {width: 15%}
+}
+@media only screen and (min-width: 1140px) {
+	#redSpacer {width: 100%}
+	#displaySection {height: 150px; width: 80%}	
+	#searchBoxButton{height: 125px}
+	#searchBox {height: 150px; width: 20%; margin-top: 10px; margin-bottom: 25px;}
+	#aboutTagContainer {width: 100%}
+	#mainpage {width: 80%; min-height: calc(100vh - 349px) ; border-width: 1px 1px 1px 0px}
+	#tags {width:15%}
+}
+
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("Fonts/Montserrat-Regular.ttf");
+}

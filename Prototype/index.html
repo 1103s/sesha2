@@ -16,13 +16,22 @@
 	</head>
 
 	<body onLoad="displayCategories();displayHome()">
-		<header>			
+		<div id="codeEntryOverlay">
+			<div id="background" onClick="hideEnterCode()"></div>
+			<div id="codeEntry">
+				<h2>Enter code</h2>
+				<input type="text" id="textBox" name="Search" placeholder="xxxx-xxxx-xxxx">
+				<button onClick="hideEnterCode()">Enter</button>
+			</div>
+		</div>
+		<header>
+			<a id="seshaLogo" href="#"><img src="resources/images/sesha_logo.png" alt="sesha logo">	</a>			
             <h1 id="siteName">Sesha</h1>
 		</header>
 		<nav>
 			<div id ="selectorNav">
 				<div class="navBar current"><a href="#">Home</a></div>
-				<div class="navBar"><a href="#">Enter Code</a></div>
+				<div class="navBar"><a onclick="displayEnterCode()" href="#">Enter Code</a></div>
 				<div class="navBar"><a href="#">My Courses</a></div>
 				<div class="navBar"><a href="#">Support</a></div>
 				<div class="navBar"><a href="#">Instructor</a></div>

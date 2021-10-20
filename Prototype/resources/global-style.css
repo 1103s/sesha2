@@ -9,13 +9,41 @@ body{
 	min-height: 100vh;
 	flex-direction: column;
 }
+#codeEntry{
+	border: 3px solid black;   
+    top: 50%;
+    left: 50%;
+	position: fixed;
+    width: 400px;
+    height: 300px;
+    margin-top: -150px;
+    margin-left: -200px;
+	background-color: white;
+}
+#background{
+	opacity: 65%;
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+#codeEntryOverlay{
+	visibility: hidden;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
 
 header{
 	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
-	text-align: center;
 	background-color: #92B9FF;
 	margin: auto;
 	width: 100%;
+	height: 112px;
+}
+header #seshaLogo{	
+	position: absolute;
+	margin-top: 33px;
+	margin-left: 40px;
 }
 header h1{
 	color: #003557;
@@ -78,6 +106,10 @@ main #exampleCourses{
 	padding-left: 10vw;
 }
 
+main #exampleCourses a{
+	text-decoration: none;
+	color: black;
+}
 #exampleCourses h2{
 	clear: both;
 	width: 100%;
@@ -224,6 +256,9 @@ footer a{
 	#exampleCourses h2{	font-size: 35px;}
 	#selectorNav{width: 330px;}
 	nav{width: 330px;}
+}
+@media only screen and (max-width: 406px){
+	#codeEntry{width: 95%;left:0;  margin-left: auto;margin-right: auto;}
 }
 
 @media only screen and (max-width: 364px) {

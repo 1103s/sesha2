@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="shortcut icon" href="Bilder/Level 1.ico">
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Level 2</title>
+	<link rel="stylesheet" type="text/css" href="Quelle/css.css">
+</head>
+	<body>
+		<div id = "playercontainer">
+			<div id = "playertitle"></div>
+			<div id = "close" onClick="closeVideo()">Video schließen [X]</div>
+			<video controls id="player" autoplay></video>
+		</div>
+		<div id = "background" onClick="closeVideo()"></div>
+		<div id="selection">
+			<h1 id="title">Level 2</h1>
+			<div id="videos">
+				<div class="video"><a href="Video/Level 2 pdf/2.0) Die Tabulatur.pdf" target="_blank">2.0) Die Tabulatur - PDF</a></div>
+				<a><br></a>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.1) Übung Tabulatur.mp4','2.1) Übung Tabulatur')">2.1) Übung Tabulatur</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.1) Übung Tabulatur.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.2) Tabulatur erweitert.mp4','2.2) Tabulatur erweitert')">2.2) Tabulatur erweitert</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.2) Tabulatur erweitert.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.3) C-Dur Tonleiter.mp4','2.3) C-Dur Tonleiter')">2.3) C-Dur Tonleiter</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.3) Die C-Dur Tonleiter.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.3.1) Fingergymnastik C-Dur Tonleiter 100bpm.mp3','2.3.1) Fingergymnastik C-Dur Tonleiter 100bpm')">2.3.1) Fingergymnastik C-Dur Tonleiter 100bpm</a></div>
+				<a><br></a>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.3.2) Fingergymnastik 150BPM.mp3','2.3.2) Fingergymnastik 150BPM')">2.3.2) Fingergymnastik 150BPM</a></div>
+				<a><br></a>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.4) Vorübung Smoke on the water.mp4','2.4) Vorübung Smoke on the water')">2.4) Vorübung Smoke on the water</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.4) Vorübung Smoke on the water.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.4.1) Smoke on the water Backing Track 112bpm.mp3','2.4.1) Smoke on the water Backing Track 112bpm')">2.4.1) Smoke on the water Backing Track 112bpm</a></div>
+				<a><br></a>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.5) Song Smoke on the water.mp4','2.5) Song Smoke on the water')">2.5) Song Smoke on the water</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.5) Song Smoke on the water.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.6) Song Beat it Teil 1.mp4','2.6) Song Beat it Teil 1')">2.6) Song Beat it Teil 1</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.6) Song Beat it.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.6.1) Song Beat it Teil 2.mp4','2.6.1) Song Beat it Teil 2')">2.6.1) Song Beat it Teil 2</a></div>
+				<a><br></a>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.6.2) Song Beat it Backing Track.mp3','2.6.2) Song Beat it Backing Track')">2.6.2) Song Beat it Backing Track</a></div>
+				<a><br></a>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.7) Akkord A-Moll.mp4','2.7) Akkord A-Moll')">2.7) Akkord A-Moll</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.7) Akkord A-Moll.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.8) Akkord C-Dur.mp4','2.8) Akkord C-Dur')">2.8) Akkord C-Dur</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.8) Der Akkord C-Dur.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.9.1) Song Ein Kompliment Teil 2.mp4','2.9.1) Song Ein Kompliment Teil 2')">2.9.1) Song Ein Kompliment Teil 2</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.9) Song Ein Kompliment.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.9.2) Song Ein Kompliment Backing Track.mp3','2.9.2) Song Ein Kompliment Backing Track')">2.9.2) Song Ein Kompliment Backing Track</a></div>
+				<a><br></a>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.10) Schlagmuster Whiskey in the jar Playalong.mp4','2.10) Schlagmuster Whiskey in the jar Playalong')">2.10) Schlagmuster Whiskey in the jar Playalong</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.10) Schlagmuster Whsikey in the jar.pdf" target="_blank">PDF</a></div>
+				<div class="video"><a onclick="displayVideo('Video/Level 2/2.11) Song Whiskey in the jar Backing Track 130bpm.mp3','2.11) Song Whiskey in the jar Backing Track 130bpm')">2.11) Song Whiskey in the jar Backing Track 130bpm</a></div>
+				<div class="pdf"><a href="Video/Level 2 pdf/2.11) Song Whiskey in the jar.pdf" target="_blank">PDF</a></div>
+				<div class="end"></div>
+			</div>
+		</div>
+		<div id="logo" width="450px"><a href="../index.html"><img src="Bilder/Logo emusikids.png" alt="emusikids (Hauptmenü)" width="450px"></a></div>
+		<div id="thumbnail"><img src="Bilder/level 2 - thumbnail.jpg" alt="Video Thumbnail" width="80%"></div>
+		<a href="../index.html" id="back"><img src="Bilder/Pfeil zurück.png" width="75px" alt="zurück"></a>	
+		<div id="copyright">© 2020<br>Copyright by Emusika</div>
+	</body>
+	<script src="Quelle/javascript.js">		
+	</script>
+</html>

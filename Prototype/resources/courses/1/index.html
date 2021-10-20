@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="shortcut icon" href="Ressourcen/Bilder/favicon.ico">
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>Emusikids</title>
+</head>
+
+
+<body>
+	<header>
+		<a id="seshaLogo" href="../../../index.html"><img src="../../images/sesha_logo.png" alt="sesha logo"></a>
+		<h1 id="siteName">Sesha</h1>
+	</header>
+	<div id="bg"></div>
+	<div id="logo"><img src="Ressourcen/Bilder/Logo emusikids.png" alt="emusikids" width="450px"></div>
+	<div id="sections">
+		<table>
+			<tr>
+				<td class="totalselect" width="155" align="center">
+					<div><a href="Ressourcen/level 1.html" ><img src="Ressourcen/Bilder/Level 1.png" alt="Level 1"></a></div>
+					<div><a href="Ressourcen/level 1.html" class = "caption">Level 1</a></div>
+				</td>
+				<td class="totalselect" width="155" align="center">
+					<div><a href="Ressourcen/level 2.html" ><img src="Ressourcen/Bilder/Level 2.png" alt="Level 2"></a></div>
+					<div><a href="Ressourcen/level 2.html" class = "caption">Level 2</a></div>
+				</td>
+				<td class="totalselect" width="155" align="center">
+					<div><a href="Ressourcen/level 3.html" ><img src="Ressourcen/Bilder/Level 3.png" alt="Level 3"></a></div>
+					<div><a href="Ressourcen/level 3.html" class = "caption">Level 3</a></div>
+				</td>
+				<td class="totalselect" width="155" align="center">
+					<div><a href="Ressourcen/level 4.html" ><img src="Ressourcen/Bilder/Level 4.png" alt="Level 4"></a></div>
+					<div><a href="Ressourcen/level 4.html" class = "caption">Level 4</a></div>
+				</td>
+				<td class="totalselect" width="155" align="center">
+					<div><a href="Ressourcen/level 5.html" ><img src="Ressourcen/Bilder/Level 5.png" alt="Level 5"></a></div>
+					<div><a href="Ressourcen/level 5.html" class = "caption">Level 5</a></div>
+				</td>
+				<td class="totalselect" width="155" align="center">
+					<div><a href="Ressourcen/level 6.html" ><img src="Ressourcen/Bilder/Level 6.png" alt="Level 6"></a></div>
+					<div><a href="Ressourcen/level 6.html" class = "caption">Level 6</a></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="copyright">© 2020<br>Copyright by Emusika</div>
+	
+</body>
+	
+	<style>
+		.totalselect:hover{
+			-webkit-filter: drop-shadow(0px 0px 8px rgba(255,231,255,0.8));
+		}
+		.totalselect{			
+			-webkit-filter: drop-shadow(0px 0px 0px rgba(255,255,255,0.80));
+		}
+		header{
+			margin-top: 0px;
+			width: 100%;
+			height: 112px;
+			background-color: green;
+		}
+		#seshaLogo{	z-index: 10;
+			position: absolute;
+			margin-top: 33px;
+			margin-left: 40px;
+		}
+		#siteName{		
+			width: 100%;
+			position: absolute;
+			font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+			color: #000000;
+			font-weight: bold;
+			font-size: 50px;
+			margin-top: 25px;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		body, html {
+		  height: 100%;
+		  margin: 0;
+		}
+
+		tr {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		
+		#bg {
+		  /* The image used */
+		  background-image: url("./Ressourcen/Bilder/Hintergrund Bild.jpeg");
+
+		  /* Full height */
+		  height: 100%; 
+
+		  /* Center and scale the image nicely */
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: cover;
+		}
+		#sections{
+			position: absolute;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -80%);
+		}
+		.caption{
+			font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+			text-decoration: none;
+			font-size: 30px;
+			color: black;
+  			font-weight: bolder;
+			text-shadow: 0px 0px 5px white;
+  			-webkit-text-stroke-width: 1px;
+  			-webkit-text-stroke-color: white;
+		}
+		#copyright{
+			font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+			font-size: 12px;
+			text-shadow: 0px 0px 5px white;
+			text-align: center;
+			position: absolute;
+			bottom: 0%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -50%);			
+		}
+		
+		@media only screen and (min-width: 963) {
+			#logo{ 				
+				position: absolute;
+				top: 15%;
+				left: 73%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+			}
+			#sections{
+				transform: translate(-50%, -50%);
+			}
+		}
+		@media only screen and (min-width: 890px) {
+			#logo{			
+				position: absolute;
+				top: 25%;
+				left: 73%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+		
+		@media only screen and (max-width: 890px) {
+			#logo{			
+				position: absolute;
+				right: 0%;		
+				top: 25%;
+				transform: translate(-0%, -50%);
+			}
+		}
+		
+		@media only screen and (min-height: 700px){
+			#sections{top: 78%}
+		}
+		
+		@media only screen and (max-height: 700px){
+			#sections{top: 70%}
+		}
+		
+	</style>
+</html>
