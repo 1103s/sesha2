@@ -104,7 +104,7 @@ main #bigContent{
 	margin-left: auto;
 }
 
-main{
+#main{
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
 	padding-left: 10vw;
 }
@@ -194,6 +194,9 @@ footer a{
 		background-color: none;
 		height: 0px;
 		margin: 0px;
+	}
+	#main{
+		padding-left: 0px
 	}
 	#bigContent h2{
 	font-size: 45px;
