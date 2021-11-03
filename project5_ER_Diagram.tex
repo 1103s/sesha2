@@ -365,19 +365,19 @@ Implementation details for each page follow.
     \includegraphics[height=10cm]{mobile_course_page}
 \end{figure}
 
-
+\clearpage
 \section{ER Diagram Table}
 
 \subsection{Table of all users}
-\begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
+\begin{tabular}{|m{1cm} | m{2.5cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3.5cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & userID & int(32) & x & x & & x & Numeric ID for the user\\
+  x & userID & int(32) & x & x & & & Numeric ID for the user\\
   \hline
    & userEmail & varchar(64) & & x & & & Email related to the user\\
   \hline
-   & linkedAccount & binary & x & x & & & Information on the linked account used to log in\\
+   & linkedAccount & binary & x & x & x & & Information on the linked account used to log in\\
   \hline
    & firstName & varchar(16) & & & & & user's first name\\
   \hline
@@ -390,30 +390,38 @@ Implementation details for each page follow.
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & userID & int(32) & x & x & & & Numeric ID for the user\\
+   & userID & int(32) & x & & & x & Numeric ID for the user\\
   \hline
-   & courseID & int(16) & & & & x & ID of each course the user owns\\
+   & courseID & int(16) & x & & & x & ID of each course the user owns\\
   \hline
 \end{tabular}
 
 \subsection{Course table}
-\begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
+\begin{tabular}{|m{1cm} | m{2.75cm} | m{2cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & courseID & int(16) & & & & & ID of each course the user owns\\
+  x & courseID & int(16) & x & x & & & ID of each course the user owns\\
   \hline
-   & courseName & & & & & &\\
+   & previewURL & binary & x & & x & & Link to the preview embedded in the preview of it.\\
   \hline
-   & courseDesc & & & & & &\\
+   & courseName & varchar(16) & x & & & & Name of the course presented to the user\\
   \hline
-   & courseSkills & & & & & x &\\
+   & courseDesc & varchar(256) & & & & & Description about the course\\
   \hline
-   & bookDesc & & & & & x &\\
+   & courseSkills & varchar(128) & & & & & List of skills that will be taught by the course\\
   \hline
-   & purcaseLink & & & & & &\\
+   & bookDesc & varchar(128) & & & & & Description of the book related to the course\\
   \hline
-   & previewVideoURL & & & & & &\\
+   & purcaseLink & binary & x & & x & & link to purchase the course (just enables access to the course on the account)\\
+  \hline
+   & courseURL & binary & x & & x & & Link to the course as hosted on the website\\
+  \hline
+   & iconURL & binary & & & x & & link to the image featured for the course\\
+  \hline
+   & previewVideoURL & binary & & & x & & Link to the preview embedded in the preview of it.\\
+  \hline
+   & imageURL & binary & & & x & & link to the image\\
   \hline
 \end{tabular}
 
@@ -422,9 +430,9 @@ Implementation details for each page follow.
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & courseID & int(16) & & & & &\\
+   & courseID & int(16) & x & & & x & Id of the course associated with the category\\
   \hline
-   & categoryID & & & & & &\\
+   & categoryID & int(16) & x & & & x & ID of the category associated with the course\\
   \hline
 \end{tabular}
 
@@ -433,41 +441,45 @@ Implementation details for each page follow.
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & categoryID & int(16) & & & & &\\
+  x & categoryID & int(16) & x & & & & Category ID associated above\\
   \hline
-   & categoryName & & & & & &\\
+   & categoryName & varchar(16) & x & & & & Name of the category\\
   \hline
 \end{tabular}
 
 \subsection{review table}
-\begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
+\begin{tabular}{|m{1cm} | m{2cm} | m{2.0cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3.5cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & courseID & int(16) & & & & x & ID of each course the user owns\\
+   & courseID & int(16) & x & & & x & ID of the course the rating is for\\
   \hline
-   & rating & & & & & &\\
+   & rating & int(8) & x & & & & Rating between 1-5\\
   \hline
-   & review & & & & & &\\
+   & review & varchar(128) & & & & & Text of the review\\
   \hline
-   & userID & & & & & &\\
+   & userID & int(16) & & & & x & Id of the user who wrote the review\\
   \hline
 \end{tabular}
 
 \subsection{Content Table}
-\begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
+\begin{tabular}{|m{1cm} | m{2cm} | m{2cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3.5cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & courseID & int(16) & & & & x &\\
+   & courseID & int(16) & x & & & x & Id of the course this content item is associated with\\
   \hline
-  x & contentID & & & & & &\\
+  x & contentID & int(32) & x & & & & ID of this content section\\
   \hline
-   & contentURL & binary & & & & &\\
+   & sectionNum & int(16) & & & & & Number of the section this is associated with\\
   \hline
-   & contentName & & & & & &\\
+   & contentType & int(8) & x & & & & Type of content linked in this table\\
   \hline
-   & contentDesc & & & & & &\\
+   & contentURL & binary & x & & & & The link to the content on the server\\
+  \hline
+   & contentName & varchar(16) & & & & & Title of the content for the user to click on\\
+  \hline
+   & contentDesc & varchar(128) & & & & & Description of this content\\
   \hline
 \end{tabular}
 
@@ -476,11 +488,13 @@ Implementation details for each page follow.
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & contentID & & & & & x &\\
+   & contentID & int(32) & x & & & x & The id of the content the extra is associated with\\
   \hline
-   & extraURL & binary & & & & &\\
+   & contentType & int(8) & x & & & & Type of content linked in this table\\
   \hline
-   & extraName & binary & & & & &\\
+   & extraURL & binary & x & & & & The link to the content on the server\\
+  \hline
+   & extraName & varchar(16) & & & & & Title of the content for the user to click on\\
   \hline
 \end{tabular}
 
@@ -489,9 +503,9 @@ Implementation details for each page follow.
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & contentID & & & & & x &\\
+   & contentID & int(32) & x & & & x & The id of the content the extra is associated with\\
   \hline
-   & tagID & & & & & &\\
+   & tagID & int(16) & x & & & x & The id of the tag, within this course\\
   \hline
 \end{tabular}
 
@@ -500,9 +514,9 @@ Implementation details for each page follow.
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & tagID & & & & & &\\
+  x & tagID & int(16) & x & & & & the id of the tag only within this course\\
   \hline
-   & tagName & & & & & &\\
+   & tagName & varchar(16) & & & & & the name of the tag only within this course\\
   \hline
 \end{tabular}
 
