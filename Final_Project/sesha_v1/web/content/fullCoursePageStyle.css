@@ -205,6 +205,26 @@ a{
 #tags{
 	float: left;
 }
+#displaySection p{
+    text-align: left;
+}
+
+#displaySection form{
+  float: left;
+  display: inline-block;
+}
+#displaySection input{
+    
+  border: none;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  padding: none;
+  width: auto;
+}
+.otherLink{
+    background-color: transparent;
+}
 
 footer{
 	margin-top: 10px;

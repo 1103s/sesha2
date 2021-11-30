@@ -7,8 +7,7 @@
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
 <%
-    int courseID = 1; 
-    //request.getParameter("courseID");
+    String courseID = request.getParameter("courseID");
     String sectionName = request.getParameter("displaySection");
     String driver = "org.mariadb.jdbc.Driver";
     Class.forName(driver);
@@ -43,10 +42,17 @@
     <% } %>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	<title>Digital Video Resource Library</title>
-	<link rel="stylesheet" type="text/css" href="fullCoursePageStyle.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+              rel="stylesheet" 
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+              crossorigin="anonymous">
+        <link href="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-styles.css"
+              rel="stylesheet"
+              type="text/css">
+	<link rel="stylesheet" type="text/css" href="https://weave.cs.nmt.edu/apollo8/sesha/content/fullCoursePageStyle.css">
 </head>
 
-<body onLoad="">
+<body onLoad="modiifyHeader()">
 <div id="videooverlay">
 	<div id = "playercontainer">
 		<div id = "close" onClick="closeVideo()">Close Video [X]</div>
@@ -56,7 +62,8 @@
 	<div id = "description"></div>			
 </div>
 <div id = "background" onClick="closeVideo()"></div>
-<div id="redSpacer"></div>	
+
+<jsp:include page="../resources/header.jsp"/>
 
 <div id="displaySection">
 	<table>
@@ -75,7 +82,9 @@
                         %>
                         
 			<th id="displaySectionText" valign="bottom">
+                            <p>
                             DISPLAY SECTION: 
+                            </p>
                             <% while(rs.next()){                            
                                 if(sectionName == null){
                                     sectionName = rs.getString("sectionName");
@@ -83,16 +92,22 @@
                                 String curSectionName = rs.getString("sectionName");
                                 %>
                                 
-                                <a href="?displaySection=<%=curSectionName%>"
+                                    <form action="seshaServlet" method="post">    
+                                        <input type="hidden" name="displaySection" value="<%=curSectionName%>">
+                                        
+                                        <input type="hidden" name="courseID" value="<%=courseID%>">
+                                        <input 
                                    <% if(sectionName.equals(curSectionName)){ %> 
                                          id="currentLink"
                                    <% }else{%>                                    
                                          class="otherLink" 
-                                   <% } %>                                   
-                                   ><%=curSectionName%></a>
-                                    <% if(!rs.isLast()) {%>
-                                    <a class="spacer"> | </a>  
-                                    <% } %>
+                                   <% } %>
+                                        type="submit" value="<%=curSectionName%>">
+                                         <% if(!rs.isLast()) {%>
+                                            <a class="spacer"> | </a>  
+                                        <% } %>
+                                        
+                                    </form>
                             <%  }  %>
 			</th>
                         <% stment.close(); %>
@@ -144,9 +159,8 @@
                     stment.close(); %>
                 </div>
 <div id="tags"></div>
-<footer>
-</footer>
-<script src="fullCoursePageScpript.js">
+<jsp:include page="../resources/footer.jsp"/>
+<script src="https://weave.cs.nmt.edu/apollo8/sesha/content/fullCoursePageScpript.js">
 
 </script>
 

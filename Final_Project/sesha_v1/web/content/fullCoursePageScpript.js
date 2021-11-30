@@ -9,6 +9,10 @@ $search.addEventListener('input', typeHandler)
 
 var outerDiv;
 
+function modiifyHeader(){
+    document.getElementById("myCoursesButton").classList.add("active");
+}
+
 function displayCurrentSet()
 {
 	//Resets all of the pages HTML
