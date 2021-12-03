@@ -9,18 +9,14 @@
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
 <%
-    int courseID = 1; 
-    //request.getParameter("courseID");
-    String sectionName = request.getParameter("displaySection");
     String driver = "org.mariadb.jdbc.Driver";
     Class.forName(driver);
     
-    String dbURL = "jdbc:mariadb://localhost:3306/apollo8_main";
+    String dbURL = "jdbc:mariadb://localhost:3306/apollo8_sesha";
     String username = "apollo8";
     String password = "Ea8AHNGh";
     
-    Connection conn = DriverManager.getConnection(dbURL, username, password);
-            
+    Connection conn = DriverManager.getConnection(dbURL, username, password);            
 %>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -73,17 +69,17 @@
                      while(rs.next()){                   %>
                         <div class="mb-3 col course">
                             <div class="card shadow" style="width: 18rem;">
-                                <img src="<%=rs.getString("courseImageURL")%>"
-                                     class="card-img-top" alt="<%=rs.getString("name")%> course image">
+                                <img src="<%=rs.getString("previewImageURL")%>"
+                                     class="card-img-top" alt="<%=rs.getString("courseName")%> course image">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        <%=rs.getString("name")%>
+                                        <%=rs.getString("courseName")%>
                                     </h5>
                                     <p class="card-text">
-                                        <%=rs.getString("about")%>
+                                        <%=rs.getString("courseDescription")%>
                                     </p>
                                     <form action="seshaServlet" method="post">    
-                                        <input type="hidden" name="courseID" value="<%=rs.getString("COURSEID")%>">
+                                        <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input class="btn btn-primary" type="submit" value="View">
                                     </form>
                                 </div>
@@ -91,51 +87,8 @@
                         </div>
                     <%} stment.close(); %>
                     </div>
-                </div>
-                <div class="col-3 align-self-start text-center text-wrap main-sidebar">
-                    <div class="row align-items-start justify-content-arround
-                        row-cols-auto text-center text-wrap">
-
-                        <div class="col pill-nav">
-                            <div class="input-group mb-3">
-                                <button class="btn btn-outline-secondary" 
-                                    type="button" id="button-addon1"
-                                    onclick="bysection(1000)">Reset</button>
-
-                                <input type="text" 
-                                    class="form-control" 
-                                    placeholder="search courses &#x1f50e;" 
-                                    aria-label="Search" 
-                                    aria-describedby="button-addon1">
-                            </div>
-                        </div>
-
-                        <div class="col pill-nav">
-                            <button type="button" class="mb-3 btn btn-info">Category</button>
-                        </div>
-                    
-                        <div class="col pill-nav">
-                            <button type="button" class="mb-3 btn btn-info">Category</button>
-                        </div>
-                    
-                        <div class="col pill-nav">
-                            <button type="button" class="mb-3 btn btn-info">Category</button>
-                        </div>
-                    
-                        <div class="col pill-nav">
-                            <button type="button" class="mb-3 btn btn-info">Category</button>
-                        </div>
-                    
-                        <div class="col pill-nav">
-                            <button type="button" class="mb-3 btn btn-info">Category</button>
-                        </div>
-                    
-                        <div class="col pill-nav">
-                            <button type="button" class="mb-3 btn btn-info">Category</button>
-                        </div>
-                    
-                    </div>
-                </div>
+                </div>                    
+                <jsp:include page="./resources/categories.jsp"/>
                 <div class="col-1">
                 </div>
             </div>            
