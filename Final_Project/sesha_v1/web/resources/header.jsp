@@ -36,9 +36,9 @@
             <a type="button" id="storeButton"
                 href="https://weave.cs.nmt.edu/apollo8/sesha/"
                 class="btn btn-outline-primary">Store</a> 
-            <a type="button" id="myCoursesButton"
-                href="https://weave.cs.nmt.edu/apollo8/sesha/myCourses.jsp"
-                class="btn btn-outline-primary">My Courses</a>  
+            <form  action="seshaServlet" method="post">   
+                <button id="myCoursesButton" class="btn btn-outline-primary" type="submit" name="action" value="myCourses">My Courses</button>
+            </form>
             <a type="button" id="enterCodeButton"
                 onclick="javascript:alert('TODO')"
                 class="btn btn-outline-primary">Enter Code</a>

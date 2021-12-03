@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+#previewPurchase{
+	display: inline-block;
+	
+}
+
+#previewVideo{
+	float: left;
+	width: 550px;
+}
+#purchase{
+	padding-left: 10vw;
+	float: left;
+}
+
+
+@media only screen and (max-width: 883px) {
+	#purchase{padding-left: 0; width: 100%;padding-top: 20px}
+}
+
+@media only screen and (max-width: 591px) {
+	#previewVideo{width: 95%}
+}
