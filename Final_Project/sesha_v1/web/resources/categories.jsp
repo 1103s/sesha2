@@ -20,25 +20,5 @@
             <button type="button" class="mb-3 btn btn-info">Category</button>
         </div>
 
-        <div class="col pill-nav">
-            <button type="button" class="mb-3 btn btn-info">Category</button>
-        </div>
-
-        <div class="col pill-nav">
-            <button type="button" class="mb-3 btn btn-info">Category</button>
-        </div>
-
-        <div class="col pill-nav">
-            <button type="button" class="mb-3 btn btn-info">Category</button>
-        </div>
-
-        <div class="col pill-nav">
-            <button type="button" class="mb-3 btn btn-info">Category</button>
-        </div>
-
-        <div class="col pill-nav">
-            <button type="button" class="mb-3 btn btn-info">Category</button>
-        </div>
-
     </div>
 </div>

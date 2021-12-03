@@ -8,32 +8,32 @@
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
 <%
     String courseID = request.getParameter("courseID");
-    String sectionName = request.getParameter("displaySection");
+    String sectionID = request.getParameter("displaySection");
+    
     String driver = "org.mariadb.jdbc.Driver";
     Class.forName(driver);
     
-    String dbURL = "jdbc:mariadb://localhost:3306/apollo8_main";
+    String dbURL = "jdbc:mariadb://localhost:3306/apollo8_sesha";
     String username = "apollo8";
     String password = "Ea8AHNGh";
-    
-    Connection conn = DriverManager.getConnection(dbURL, username, password);
-            
-%>
+    Connection conn = DriverManager.getConnection(dbURL, username, password);%>      
+   
 <!DOCTYPE html>
 <!doctype html>
 <html>
                     
 <%  Statement stment = conn.createStatement();
-    String sectionsQuery = "SELECT faviconURL, logoURL, name FROM courses where courseID = " + courseID;
+    String sectionsQuery = "SELECT faviconURL, logoImageURL, courseName FROM courses where courseID = " + courseID;
     ResultSet rs = stment.executeQuery(sectionsQuery);                          
     String favicon = null;
     String logo = null;
     String name = null;
     if(rs.next()){
         favicon = rs.getString("faviconURL");
-        logo = rs.getString("logoURL");
-        name = rs.getString("name");
+        logo = rs.getString("logoImageURL");
+        name = rs.getString("courseName");
     }
+    rs.close();
     stment.close();
 %>
 <head>
@@ -76,7 +76,7 @@
 			</th>       
                         
                         <%  stment = conn.createStatement();
-                            sectionsQuery = "SELECT DISTINCT sectionName FROM courseContent where courseID = " + courseID + " ORDER BY sectionOrder";
+                            sectionsQuery = "SELECT DISTINCT sectionName, sectionID FROM courseSections where courseID = " + courseID + " ORDER BY sectionOrder";
                             rs = stment.executeQuery(sectionsQuery);        
 
                         %>
@@ -86,23 +86,24 @@
                             DISPLAY SECTION: 
                             </p>
                             <% while(rs.next()){                            
-                                if(sectionName == null){
-                                    sectionName = rs.getString("sectionName");
+                                if(sectionID == null){
+                                    sectionID = rs.getString("sectionID");
                                 } 
-                                String curSectionName = rs.getString("sectionName");
+                                String curSectionID = rs.getString("sectionID");
                                 %>
                                 
                                     <form action="seshaServlet" method="post">    
-                                        <input type="hidden" name="displaySection" value="<%=curSectionName%>">
+                                        <input type="hidden" name="displaySection" value="<%=curSectionID%>">
                                         
+                                        <input type="hidden" name="action" value="viewCourse">
                                         <input type="hidden" name="courseID" value="<%=courseID%>">
                                         <input 
-                                   <% if(sectionName.equals(curSectionName)){ %> 
+                                   <% if(sectionID.equals(curSectionID)){ %> 
                                          id="currentLink"
                                    <% }else{%>                                    
                                          class="otherLink" 
                                    <% } %>
-                                        type="submit" value="<%=curSectionName%>">
+                                        type="submit" value="<%=rs.getString("sectionName")%>">
                                          <% if(!rs.isLast()) {%>
                                             <a class="spacer"> | </a>  
                                         <% } %>
@@ -110,7 +111,8 @@
                                     </form>
                             <%  }  %>
 			</th>
-                        <% stment.close(); %>
+                        <% rs.close();
+                            stment.close(); %>
 		</tr>
 	</table>
 </div>
@@ -127,7 +129,7 @@
                 <div id="mainpage">
                     <%  
                             stment = conn.createStatement();
-                            sectionsQuery = "SELECT * FROM `courseContent` WHERE courseID=" + courseID + " AND sectionName='"+ sectionName  + "' ORDER BY contentOrder";
+                            sectionsQuery = "SELECT * FROM `courseContent` WHERE courseID=" + courseID + " AND sectionID='"+ sectionID  + "' ORDER BY contentOrder";
                             rs = stment.executeQuery(sectionsQuery);
                         %>
                         
@@ -141,7 +143,7 @@
                                  <% } %>
                                  <% if(rs.getString("extraURL")!=null) {%>       
                                     <a class="spacer">&nbsp;&nbsp;|&nbsp;&nbsp;</a>                             
-                                    <% if(rs.getInt("extraContentType")== 2){%>
+                                    <% if(rs.getInt("extraType")== 2){%>
                                         <a class="pdf" href="<%=rs.getString("extraURL")%>" target="_blank"><%=rs.getString("extraName")%></a>
                                     <%} else if(rs.getInt("extraContentType")== 0){%>
                                        <a class="video" title="<%=rs.getString("contentDesc")%>" onclick="displayVideo('<%=rs.getString("extraContentURL")%>','<%=rs.getString("extraContentName")%>','<%=rs.getString("contentDesc")%>')"><%=rs.getString("extraContentName")%></a>
@@ -155,7 +157,7 @@
                             </div>
                             <div class="row3"></div>
                         </div>
-                    <%  }  
+                    <%  }  rs.close();
                     stment.close(); %>
                 </div>
 <div id="tags"></div>

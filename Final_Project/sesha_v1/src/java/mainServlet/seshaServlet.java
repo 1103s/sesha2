@@ -8,14 +8,15 @@ package mainServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.annotation.WebServlet;
 /**
  *
  * @author Natalie
@@ -77,17 +78,77 @@ public class seshaServlet extends HttpServlet {
             throws ServletException, IOException {
             String id = request.getParameter("courseID");
             String disp = request.getParameter("displaySection");
+            String action = request.getParameter("action");
+            String categoryID = request.getParameter("categoryID");
+            
+            if(action==null)
+            {
+                action = "shop";
+            }
             if(id==null){
                 id = "1";
             }
             
-            String url = "/content/fullCoursePage.jsp?courseID="+id;
-            if(disp!=null){
-                url+="&displaySection="+disp;
+            //connect to database to check ownership
+            String driver = "org.mariadb.jdbc.Driver";
+            try {
+                Class.forName(driver);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(seshaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+    
+            String dbURL = "jdbc:mariadb://localhost:3306/apollo8_sesha";
+            String username = "apollo8";
+            String password = "Ea8AHNGh";
+            try {
+                Connection conn = DriverManager.getConnection(dbURL, username, password);
+                Statement stment = conn.createStatement();
+                String sectionsQuery = "SELECT * FROM courseOwnership WHERE userID=1 and courseID = "+id;
+                ResultSet rs = stment.executeQuery(sectionsQuery);
+                
+                //decides on going to course ownership or course landing page based on ownership
+                
+                String url="";
+                
+                if(action.equals("shop")){
+                    url = "/index.jsp";
+                   if(categoryID!=null){
+                        url+="&categoryID="+categoryID;
+                   }
+                } else if(action.equals("viewPreview")){                     
+                    url = "/content/previewCoursePage.jsp?courseID="+id;
+                } else if(action.equals("viewCourse")){                  
+                   url = "/content/fullCoursePage.jsp?courseID="+id;
+                   if(disp!=null){
+                        url+="&displaySection="+disp;
+                   }
+                } else if(action.equals("myCourses")){
+                    url = "/content/myCoursesPage.jsp";
+                }
+                
+                /*if(rs.next()){
+                    
+                   url = "/content/fullCoursePage.jsp?courseID="+id;
+                   if(disp!=null){
+                        url+="&displaySection="+disp;
+                   }
+                }
+                else{
+                    url = "/content/previewCoursePage.jsp?courseID="+id;
+                }*/
+                    
+                stment.close();
+                conn.close();
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher(url);
             
-            dispatcher.forward(request, response);
+                dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(seshaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+
+
     }
     /**
      * Returns a short description of the servlet.
