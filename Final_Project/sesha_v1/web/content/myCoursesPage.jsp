@@ -8,6 +8,7 @@
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
+<jsp:include page="/content/auth.jsp" />
  <%
     String driver = "org.mariadb.jdbc.Driver";
     Class.forName(driver);
@@ -61,8 +62,11 @@
                         <div class="row align-items-center justify-content-arround
                             row-cols-auto">
 
-                    <%  Statement stment = conn.createStatement();
-                        String sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID WHERE courseOwnership.userID=1";
+                    <%  
+                        HttpSession session = request.getSession(true);
+                        String uuid = (String) session.getAttribute("uuid");
+                        Statement stment = conn.createStatement();
+                        String sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID WHERE courseOwnership.userID=" + uuid;
                         ResultSet rs = stment.executeQuery(sectionsQuery);    
                         if(!rs.isBeforeFirst()){%>
                         <div> There's nothing to show! Browse courses 
@@ -88,12 +92,12 @@
                                     <form class="viewCourse" action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewCourse">
-                                        <input class="btn btn-primary" type="submit" value="View Course">
+                                        <input class="btn btn-primary p-1" type="submit" value="View Course">
                                     </form>
                                     <form class="viewPreview" action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewPreview">
-                                        <input class="btn btn-primary" type="submit" value="View Preview">
+                                        <input class="btn btn-primary p-1" type="submit" value="View Preview">
                                     </form>
                                     
                                 </div>
