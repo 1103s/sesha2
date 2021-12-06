@@ -66,7 +66,7 @@
                     <%  
                         String uuid = (String) session.getAttribute("uuid");
                         Statement stment = conn.createStatement();
-                        String sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID WHERE courseOwnership.userID=" + uuid;
+                        String sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID WHERE courseOwnership.userID=" + uuid + " order by courseOwnership.accessDate  DESC";
                         ResultSet rs = stment.executeQuery(sectionsQuery);    
                         if(!rs.isBeforeFirst()){%>
                         <div> There's nothing to show! Browse courses 
