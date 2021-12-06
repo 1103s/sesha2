@@ -80,6 +80,11 @@ public class seshaServlet extends HttpServlet {
             String disp = request.getParameter("displaySection");
             String action = request.getParameter("action");
             String categoryID = request.getParameter("categoryID");
+            String uuid = request.getParameter("uuid");
+            if(uuid == null){
+                uuid ="-1";
+            }
+            
             
             if(action==null)
             {
@@ -103,7 +108,7 @@ public class seshaServlet extends HttpServlet {
             try {
                 Connection conn = DriverManager.getConnection(dbURL, username, password);
                 Statement stment = conn.createStatement();
-                String sectionsQuery = "SELECT * FROM courseOwnership WHERE userID=1 and courseID = "+id;
+                String sectionsQuery = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = "+id;
                 ResultSet rs = stment.executeQuery(sectionsQuery);
                 
                 //decides on going to course ownership or course landing page based on ownership
@@ -117,7 +122,12 @@ public class seshaServlet extends HttpServlet {
                    }
                 } else if(action.equals("viewPreview")){                     
                     url = "/content/previewCoursePage.jsp?courseID="+id;
-                } else if(action.equals("viewCourse")){                  
+                } else if(action.equals("viewCourse")){   
+                   if (!rs.isBeforeFirst())
+                   {
+                       int i = stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`) VALUES ('"+uuid+"', '"+id+"') ");                       
+                   }
+                    
                    url = "/content/fullCoursePage.jsp?courseID="+id;
                    if(disp!=null){
                         url+="&displaySection="+disp;
@@ -136,7 +146,7 @@ public class seshaServlet extends HttpServlet {
                 else{
                     url = "/content/previewCoursePage.jsp?courseID="+id;
                 }*/
-                    
+                rs.close();
                 stment.close();
                 conn.close();
                 

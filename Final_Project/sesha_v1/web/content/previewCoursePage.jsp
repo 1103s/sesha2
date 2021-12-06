@@ -9,8 +9,12 @@
 <%
     String courseID = request.getParameter("courseID");
     String sectionID = request.getParameter("displaySection");
- %>
- <%
+ 
+    String uuid = (String) session.getAttribute("uuid");
+    if(uuid == null){
+        uuid="-1";
+    }     
+     
     String driver = "org.mariadb.jdbc.Driver";
     Class.forName(driver);
     
@@ -70,8 +74,8 @@
                             <h2><%=rs.getString("courseName")%></h2>
                             <section id="previewPurchase">
                                 <video controls id="previewVideo" ><source src="<%=rs.getString("previewVideoUrl")%>"/></video>
-                                                                        <%  Statement stmentOwner = conn.createStatement();
-                                        String sectionsQueryOwner = "SELECT * FROM courseOwnership WHERE userID=1 and courseID = " + rs.getString("courseID");
+                                    <%  Statement stmentOwner = conn.createStatement();
+                                        String sectionsQueryOwner = "SELECT * FROM courseOwnership WHERE userID=" + uuid + " and courseID = " + rs.getString("courseID");
                                         ResultSet rsOwner = stment.executeQuery(sectionsQueryOwner);
                                         
                                     if(rsOwner.isBeforeFirst()){%>
@@ -84,6 +88,7 @@
                                     <form action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewCourse">
+                                        <input type="hidden" name="uuid" value="<%=uuid%>">
                                         <input class="btn btn-primary" type="submit" value="Purchase Course">
                                     </form>
                                     <%} rsOwner.close();
