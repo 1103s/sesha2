@@ -107,13 +107,13 @@ public class seshaServlet extends HttpServlet {
             String password = "Ea8AHNGh";
             try {
                 Connection conn = DriverManager.getConnection(dbURL, username, password);
-                Statement stment = conn.createStatement();
-                String sectionsQuery = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = "+id;
-                ResultSet rs = stment.executeQuery(sectionsQuery);
+                Statement stment = null;
+                String sectionsQuery = "";
+                ResultSet rs = null;
                 
                 //decides on going to course ownership or course landing page based on ownership
                 
-                String url="";
+                String url="/index.jsp";
                 
                 if(action.equals("shop")){
                     url = "/index.jsp";
@@ -123,16 +123,51 @@ public class seshaServlet extends HttpServlet {
                 } else if(action.equals("viewPreview")){                     
                     url = "/content/previewCoursePage.jsp?courseID="+id;
                 } else if(action.equals("viewCourse")){   
-                   if (!rs.isBeforeFirst())
-                   {
-                       int i = stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`) VALUES ('"+uuid+"', '"+id+"') ");                       
-                   }
-                    
                    url = "/content/fullCoursePage.jsp?courseID="+id;
                    if(disp!=null){
                         url+="&displaySection="+disp;
                    }
-                } else if(action.equals("myCourses")){
+                }else if(action.equals("purchaseCourse")){
+                    if(!uuid.equals("-1")){
+                        stment = conn.createStatement();
+                        sectionsQuery = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = "+id;
+                        rs = stment.executeQuery(sectionsQuery);
+                        if (!rs.isBeforeFirst())
+                        {
+                            rs.close();
+                            stment.close();
+                            stment = conn.createStatement();
+                            sectionsQuery = "SELECT * FROM courses WHERE courseID = "+id; 
+                            rs = stment.executeQuery(sectionsQuery);
+                            if (rs.isBeforeFirst())
+                            {
+                                rs.close();
+                                stment.close();  
+                                stment = conn.createStatement();                          
+                                int i = stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`) VALUES ('"+uuid+"', '"+id+"') ");   
+                            
+                                stment.close();
+                            }else{
+
+                                rs.close();
+                                stment.close();
+                            }
+                            
+                        } else{                            
+                            rs.close();
+                            stment.close();
+                        }
+                        
+                        url = "/content/fullCoursePage.jsp?courseID="+id;
+                        if(disp!=null){
+                             url+="&displaySection="+disp;
+                        }
+                    }  
+                    else{
+                        url = "/content/login.jsp";
+                    }
+                } 
+            else if(action.equals("myCourses")){
                     url = "/content/myCoursesPage.jsp";
                 }
                 
@@ -146,9 +181,6 @@ public class seshaServlet extends HttpServlet {
                 else{
                     url = "/content/previewCoursePage.jsp?courseID="+id;
                 }*/
-                rs.close();
-                stment.close();
-                conn.close();
                 
                 RequestDispatcher dispatcher = request.getRequestDispatcher(url);
             
