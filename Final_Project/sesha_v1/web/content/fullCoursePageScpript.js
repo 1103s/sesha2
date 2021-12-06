@@ -1,11 +1,4 @@
-var $search = document.querySelector('#search');
 
-const typeHandler = function(e) {
-	 bySearchTerm(e.target.value);
-}
-
-$search.addEventListener('input', typeHandler)
-	
 
 var outerDiv;
 

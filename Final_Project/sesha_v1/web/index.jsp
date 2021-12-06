@@ -148,7 +148,7 @@
                         
                         %><div class="row align-items-center justify-content-arround
                                  row-cols-auto">Serach Results for: <%=search%></div><%
-                        sectionsQuery = "SELECT * from (SELECT * FROM `courses` WHERE courseName LIKE '%"+searcher+"%'    UNION ALL SELECT * FROM `courses` WHERE courseDescription LIKE '%"+searcher+"%'	UNION ALL  SELECT * FROM `courses` WHERE bookDescription LIKE '%"+searcher+"%')s";
+                        sectionsQuery = "SELECT DISTINCT * from (SELECT * FROM `courses` WHERE courseName LIKE '%"+searcher+"%'    UNION ALL SELECT * FROM `courses` WHERE courseDescription LIKE '%"+searcher+"%'	UNION ALL  SELECT * FROM `courses` WHERE bookDescription LIKE '%"+searcher+"%')s";
                         
                         rs = stment.executeQuery(sectionsQuery);%>
                         <div class="row align-items-center justify-content-arround
