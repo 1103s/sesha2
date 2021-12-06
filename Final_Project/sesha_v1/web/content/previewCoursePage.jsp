@@ -82,14 +82,14 @@
                                     <form class="viewCourse" action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewCourse">
-                                        <input class="btn btn-primary" type="submit" value="View Course">
+                                        <input class="btn btn-primary" type="submit" value="View Course<%=uuid%>+<%=rs.getString("courseID")%>">
                                     </form>
                                     <%} else {%>
                                     <form action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewCourse">
                                         <input type="hidden" name="uuid" value="<%=uuid%>">
-                                        <input class="btn btn-primary" type="submit" value="Purchase Course">
+                                        <input class="btn btn-primary" type="submit" value="Purchase Course<%=uuid%>+<%=rs.getString("courseID")%>">
                                     </form>
                                     <%} rsOwner.close();
                                         stmentOwner.close();%>
