@@ -127,7 +127,7 @@ Author     : Tommy
                                             .append("?client_id=").append("412919532344-nmjojrndr95e02e6acrfg4gsgt064p20.apps.googleusercontent.com") 
                                             .append("&response_type=code")
                                             .append("&scope=profile%20email") 
-                                            .append("&redirect_uri=").append("https://weave.cs.nmt.edu/apollo8/sesha/auth_end") 
+                                            .append("&redirect_uri=").append("https://weave.cs.nmt.edu/apollo8/sesha/") 
                                             .append("&state=").append(request.getSession().getId())
                                             .append("&approval_prompt=force"); 
                                             %>
