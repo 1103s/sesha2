@@ -1,3 +1,7 @@
+<%  String uuid2 = (String) session.getAttribute("uuid");
+    if(uuid2 == null){
+        uuid2="-1";
+    }%>
 <div class="row p-4 rounded-bottom shadow-lg align-items-center justify-content-around header-top">
     <div class="col-1">
     </div>
@@ -18,7 +22,13 @@
     <div class="col-4 text-end login">
         <form  action="seshaServlet" method="post">   
             <input type="hidden" name="settings" value="yes">
-            <button id="myCoursesButton" class="btn btn-outline-primary" type="submit" name="action" value="myCourses">My Account</button>
+            <button id="myCoursesButton" class="btn btn-outline-primary" type="submit" name="action" value="myCourses">
+                <%if (uuid2.equals("-1")){%>
+                Login
+                <%}else{%>
+                My Account
+                <%}%>
+            </button>
         </form>
             <!--
             <img 
