@@ -91,13 +91,14 @@ if ((uuid == null)) {
         <jsp:forward page="/content/settings.jsp" />
         <%
     }
-    sectionsQuery = "SELECT * FROM courseOwnership WHERE userID='" + uuid + "';";
+    sectionsQuery = "SELECT * FROM courseOwnership WHERE userID=" + uuid + ";";
     rs = stment.executeQuery(sectionsQuery);    
     boolean has_course = false;
     if(rs.isBeforeFirst()){
         while(rs.next()) {
-            if (rs.getString("courseID") == courseID){
+            if (rs.getString("courseID").equalsIgnoreCase(courseID)){
                 has_course = true;
+                break;
             }
         }
     } 
