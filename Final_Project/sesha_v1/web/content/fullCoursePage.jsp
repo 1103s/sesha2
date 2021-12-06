@@ -11,6 +11,8 @@
     String courseID = request.getParameter("courseID");
     String sectionID = request.getParameter("displaySection");
     
+    String search = request.getParameter("search");
+    
     String driver = "org.mariadb.jdbc.Driver";
     Class.forName(driver);
     
@@ -116,21 +118,40 @@
                             stment.close(); %>
 		</tr>
 	</table>
-</div>
-<div id="searchBox">
-	<table class="headder">
-		<tr id="searchBoxButton"  valign="bottom">
-			<td id="search"><input type="text" id="textBox" name="Search" placeholder="Search All                &#x1F50E;"></td>
-		  	<td > <button id="reset" onclick="bySection(1000)">Reset</button></td>
-		</tr>
-		<tr id="about" valign="bottom">						
-		</tr>
-	</table>
-</div>
-                <div id="mainpage">
+</div>\
+<form action="seshaServlet" method="post">   
+                                        
+                <input type="text" 
+                       name="search"
+                       <%if (search!=null){%>value ="<%=search%>"<%}%>
+                    class="form-control" 
+                    placeholder="Search this course &#x1f50e;" 
+                    aria-label="Search" 
+                    aria-describedby="button-addon1">
+                                        <input type="hidden" name="courseID" value="<%=courseID%>">
+                        <button class="btn btn-outline-secondary" 
+                        type="submit" name="action" value="viewCourse" id="button-addon1">Search</button>
+                    </form>
+<div id="mainpage">
                     <%  
                             stment = conn.createStatement();
                             sectionsQuery = "SELECT * FROM `courseContent` WHERE courseID=" + courseID + " AND sectionID='"+ sectionID  + "' ORDER BY contentOrder";
+                            
+                            if(search !=null){
+
+                                String searcher = search;
+                                searcher = searcher.replaceAll("\\'","\\'\\'");
+                                searcher = searcher.replace("\"", "\\\"");
+                                searcher = searcher.replace("\\", "\\\\");
+                                searcher =  searcher.replace("%", "\\%");
+                                searcher = searcher.replace("_", "\\_");                                
+                                sectionsQuery =     "SELECT DISTINCT * from (SELECT * FROM `courseContent` WHERE courseID='" 
+                                    +courseID+"' and mainContentName LIKE '%"+searcher+"%'   UNION ALL SELECT * FROM `courseContent` WHERE courseID='" 
+                                    +courseID+"' and extraName LIKE '%"
+                                    +searcher+"%'UNION ALL  SELECT * FROM `courseContent` WHERE courseID='" 
+                                    +courseID+"' and contentDesc LIKE '%"+searcher+"%')s";
+                            }
+                            
                             rs = stment.executeQuery(sectionsQuery);
                         %>
                         
