@@ -65,7 +65,7 @@ if ((uuid == null) && (email != null) && (password != null)){
             conn.close();
         } else {
             while(rs.next()) {
-                if (rs.getString("email").equalsIgnoreCase(email) && rs.getString("password").equalsIgnoreCase(password)){
+                if (rs.getString("email").equalsIgnoreCase(email) && rs.getString("password").equals(password)){
                     uuid = rs.getString("userID");
                     session.setAttribute("uuid", uuid);
                     session.setAttribute("email", email);
