@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import = "javax.servlet.http.HttpSession" %>
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
 <jsp:include page="/content/auth.jsp" />
  <%
@@ -63,7 +64,6 @@
                             row-cols-auto">
 
                     <%  
-                        HttpSession session = request.getSession(true);
                         String uuid = (String) session.getAttribute("uuid");
                         Statement stment = conn.createStatement();
                         String sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID WHERE courseOwnership.userID=" + uuid;
