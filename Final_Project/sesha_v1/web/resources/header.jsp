@@ -7,7 +7,7 @@
     </div>
     <div class="col-1 logo">
         <a href="https://weave.cs.nmt.edu/apollo8/sesha/">
-        <img src="https://icon-library.com/images/flat-icon-library/flat-icon-library-17.jpg"
+        <img src="https://weave.cs.nmt.edu/apollo8/static/logo.png"
              alt="site logo"
              width="60%"/>
         </a>
