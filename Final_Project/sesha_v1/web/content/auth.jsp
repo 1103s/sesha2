@@ -4,6 +4,16 @@ pageEncoding="UTF-8"%>
 <%
 //Check to see if they are loged in
 //boolean is_loged_in = session.isNew();
+// Check to see if they need ot be loged out.
+if  (request.getParameter("exit") != null){
+    session.invalidate();
+    %>
+    <jsp:forward page="/content/login.jsp" >
+    <jsp:param name="login_status" value="You are now logged out." />
+    <jsp:param name="color" value="success" />
+    </jsp:forward >
+    <%
+}
 //Get there user id
 String uuid = (String) session.getAttribute("uuid");
 ResultSet rs;
@@ -58,6 +68,7 @@ if ((uuid == null) && (email != null) && (password != null)){
                 if (rs.getString("email").equalsIgnoreCase(email) && rs.getString("password").equalsIgnoreCase(password)){
                     uuid = rs.getString("userID");
                     session.setAttribute("uuid", uuid);
+                    session.setAttribute("email", email);
                     rs.close();
                     stment.close();
                     conn.close();
@@ -82,15 +93,14 @@ if ((uuid == null)) {
     <jsp:param name="color" value="primary" />
     </jsp:forward >
     <%
-} else if (courseID != null) {
-    //pass to user setings if needed
-    if (is_settings != null) {
+} else if (is_settings != null) {
         stment.close();
         conn.close();
         %>
         <jsp:forward page="/content/settings.jsp" />
         <%
-    }
+} else if (courseID != null) {
+    //pass to user setings if needed
     sectionsQuery = "SELECT * FROM courseOwnership WHERE userID=" + uuid + ";";
     rs = stment.executeQuery(sectionsQuery);    
     boolean has_course = false;
@@ -102,11 +112,11 @@ if ((uuid == null)) {
             }
         }
     } 
+    rs.close();
+    stment.close();
+    conn.close();
     // Check if user has access
     if (!has_course) {
-        rs.close();
-        stment.close();
-        conn.close();
         %>
         <jsp:forward page="/content/login.jsp" >
         <jsp:param name="login_status" value="You do not have access to this." />
