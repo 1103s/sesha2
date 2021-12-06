@@ -164,23 +164,12 @@ public class seshaServlet extends HttpServlet {
                         }
                     }  
                     else{
-                        url = "/content/login.jsp";
+                        url = "/content/login.jsp?actionFWD=viewPreview&courseID="+id;
                     }
                 } 
             else if(action.equals("myCourses")){
                     url = "/content/myCoursesPage.jsp";
                 }
-                
-                /*if(rs.next()){
-                    
-                   url = "/content/fullCoursePage.jsp?courseID="+id;
-                   if(disp!=null){
-                        url+="&displaySection="+disp;
-                   }
-                }
-                else{
-                    url = "/content/previewCoursePage.jsp?courseID="+id;
-                }*/
                 
                 RequestDispatcher dispatcher = request.getRequestDispatcher(url);
             

@@ -8,7 +8,8 @@
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
- <%     
+<jsp:include page="/content/auth.jsp?strict=false" /> 
+<%     
     String categoryID = request.getParameter("categoryID");
     String uuid = (String) session.getAttribute("uuid");
     if(uuid == null){

@@ -15,6 +15,13 @@ if  (request.getParameter("exit") != null){
     <%
 }
 //Get there user id
+String strictText = request.getParameter("strict");
+Boolean strict = true;
+if(strictText != null && strictText.equalsIgnoreCase("false")){
+    strict = false;
+}
+
+
 String uuid = (String) session.getAttribute("uuid");
 ResultSet rs;
 String sectionsQuery;
@@ -41,7 +48,6 @@ if ((uuid == null) && (email != null) && (password != null)){
     }
     if (error){
         stment.close();
-        conn.close();
         %>
         <jsp:forward page="/content/login.jsp" >
         <jsp:param name="login_status" value="Your login is invalid." />
@@ -62,7 +68,6 @@ if ((uuid == null) && (email != null) && (password != null)){
             <%
             rs.close();
             stment.close();
-            conn.close();
         } else {
             while(rs.next()) {
                 if (rs.getString("email").equalsIgnoreCase(email) && rs.getString("password").equals(password)){
@@ -71,7 +76,6 @@ if ((uuid == null) && (email != null) && (password != null)){
                     session.setAttribute("email", email);
                     rs.close();
                     stment.close();
-                    conn.close();
                     break;
                 }
             }
@@ -84,9 +88,11 @@ if ((uuid == null) && (email != null) && (password != null)){
 String courseID = request.getParameter("courseID");
 String is_settings = request.getParameter("settings");
 //Redirect them if they are not loged in
-if ((uuid == null)) {
+if (!strict){
+
+}
+else if((uuid == null)) {
     stment.close();
-    conn.close();
     %>
     <jsp:forward page="/content/login.jsp" >
     <jsp:param name="login_status" value="You are not loged in!" />
@@ -94,13 +100,13 @@ if ((uuid == null)) {
     </jsp:forward >
     <%
 } else if (is_settings != null) {
+    //pass to user setings if needed
         stment.close();
-        conn.close();
         %>
         <jsp:forward page="/content/settings.jsp" />
         <%
 } else if (courseID != null) {
-    //pass to user setings if needed
+    stment= conn.createStatement();
     sectionsQuery = "SELECT * FROM courseOwnership WHERE userID=" + uuid + ";";
     rs = stment.executeQuery(sectionsQuery);    
     boolean has_course = false;
@@ -114,7 +120,6 @@ if ((uuid == null)) {
     } 
     rs.close();
     stment.close();
-    conn.close();
     // Check if user has access
     if (!has_course) {
         %>
@@ -125,6 +130,7 @@ if ((uuid == null)) {
         <%
     }
 }
-%>
+
+                    conn.close();%>
 
 

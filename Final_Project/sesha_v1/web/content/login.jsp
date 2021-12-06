@@ -8,6 +8,14 @@ Author     : Tommy
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
+
+<%    
+    String actionFWD = request.getParameter("actionFWD");
+    if(actionFWD==null){
+        actionFWD = "myCourses";
+    }
+    String courseID = request.getParameter("courseID");
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -63,7 +71,10 @@ Author     : Tommy
                                         will be automagically made for you.
                                         </p>
                                         <form action="seshaServlet" method="post">
-                                            <input type="hidden" name="action" value="myCourses">
+                                            <input type="hidden" name="action" value="<%=actionFWD%>">
+                                            <%if(courseID!=null){%>
+                                                <input type="hidden" name="courseID" value="<%=courseID%>">                                            
+                                            <%}%>
                                             <div class="mb-3">
                                                 <label for="loginEmail" class="form-label">Email address</label>
                                                 <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" name="loginEmail">
