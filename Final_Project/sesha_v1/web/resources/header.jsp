@@ -2,6 +2,16 @@
     if(uuid2 == null){
         uuid2="-1";
     }%>
+    
+        <!-- Popup pages -->
+            <div id="codeEntryOverlay" class="invisible">
+                <div id="background" onClick="hideEnterCode()"></div>
+                <div id="codeEntry">
+                <h2>Enter code</h2>
+                <input type="text" id="codeTextBox" name="codeTextBox" placeholder="xxxx-xxxx-xxxx">
+                <button onClick="hideEnterCode()">Enter</button>
+                </div>
+            </div>
 <div class="row p-4 rounded-bottom shadow-lg align-items-center justify-content-around header-top">
     <div class="col-1">
     </div>
