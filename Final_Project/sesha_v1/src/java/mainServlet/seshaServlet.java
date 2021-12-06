@@ -80,7 +80,7 @@ public class seshaServlet extends HttpServlet {
             String disp = request.getParameter("displaySection");
             String action = request.getParameter("action");
             String categoryID = request.getParameter("categoryID");
-            String uuid = request.getParameter("uuid");
+            String uuid = (String) request.getSession(false).getAttribute("uuid");
             if(uuid == null){
                 uuid ="-1";
             }
@@ -91,7 +91,7 @@ public class seshaServlet extends HttpServlet {
                 action = "shop";
             }
             if(id==null){
-                id = "1";
+                id = "-1";
             }
             
             //connect to database to check ownership
@@ -122,7 +122,13 @@ public class seshaServlet extends HttpServlet {
                    }
                 } else if(action.equals("viewPreview")){                     
                     url = "/content/previewCoursePage.jsp?courseID="+id;
-                } else if(action.equals("viewCourse")){   
+                } else if(action.equals("viewCourse")){
+                    if(!uuid.equals("-1") && !id.equals("-1")){
+                        stment = conn.createStatement();
+                        stment.executeUpdate("UPDATE `courseOwnership` SET `accessDate` = CURRENT_TIMESTAMP WHERE `courseOwnership`.`userID` =" + uuid +" AND `courseOwnership`.`courseID` = " + id +"; ");
+                        stment.close();
+                    }
+                    
                    url = "/content/fullCoursePage.jsp?courseID="+id;
                    if(disp!=null){
                         url+="&displaySection="+disp;
@@ -143,8 +149,8 @@ public class seshaServlet extends HttpServlet {
                             {
                                 rs.close();
                                 stment.close();  
-                                stment = conn.createStatement();                          
-                                int i = stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`) VALUES ('"+uuid+"', '"+id+"') ");   
+                                stment = conn.createStatement();     
+                                stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`, `purchaseDate`, `accessDate`) VALUES ('"+uuid+"', '"+id+"', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) ");   
                             
                                 stment.close();
                             }else{

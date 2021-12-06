@@ -35,15 +35,6 @@ String email = (String) session.getAttribute("email");
     </head>
 
     <body onLoad="modiifyHeader()">
-        <!-- Popup pages 
-            <div id="codeEntryOverlay" class="invisible">
-            <div id="background" onClick="hideEnterCode()"></div>
-            <div id="codeEntry">
-            <h2>Enter code</h2>
-            <input type="text" id="codeTextBox" name="Search" placeholder="xxxx-xxxx-xxxx">
-            <button onClick="hideEnterCode()">Enter</button>
-            </div>
-            </div>-->
 
             <!--Site wide header -->
             <div class="container-flex global-shell">
