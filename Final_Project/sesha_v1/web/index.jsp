@@ -10,7 +10,10 @@
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
  <%     
     String categoryID = request.getParameter("categoryID");
-    
+    String uuid = (String) session.getAttribute("uuid");
+    if(uuid == null){
+        uuid="-1";
+    }
     String driver = "org.mariadb.jdbc.Driver";
     Class.forName(driver);
     
@@ -83,7 +86,7 @@
                                     </p>
                                     
                                     <%  Statement stmentOwner = conn.createStatement();
-                                        String sectionsQueryOwner = "SELECT * FROM courseOwnership WHERE userID=1 and courseID = " + rs.getString("courseID");
+                                        String sectionsQueryOwner = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = " + rs.getString("courseID");
                                         ResultSet rsOwner = stment.executeQuery(sectionsQueryOwner);
                                         
                                     if(rsOwner.isBeforeFirst()){%>
