@@ -16,14 +16,15 @@
         </h1>
     </div>
     <div class="col-4 text-end login">
-        <a href="javascript:alert('TODO')">
-            Login / Register
+        <form  action="seshaServlet" method="post">   
+            <input type="hidden" name="settings" value="yes">
+            <button id="myCoursesButton" class="btn btn-outline-primary" type="submit" name="action" value="myCourses">My Account</button>
+        </form>
             <!--
             <img 
             src="https://icons.veryicon.com/png/o/business/cloud-desktop/user-138.png" 
             width="9%"/>
             -->
-        </a>
     </div>
     <div class="col-1">
     </div>
