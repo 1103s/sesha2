@@ -10,6 +10,7 @@
 <%
     String courseID = request.getParameter("courseID");
     String sectionID = request.getParameter("displaySection");
+    String search = request.getParameter("search");
  
     String uuid = (String) session.getAttribute("uuid");
     if(uuid == null){
@@ -131,16 +132,62 @@
                         stment.close(); %>
                     </div>
                 </div>                    
-                <jsp:include page="../resources/categories.jsp"/>
+                <div class="col-3 align-self-start text-center text-wrap main-sidebar">
+                    <div class="row align-items-start justify-content-arround
+                        row-cols-auto text-center text-wrap">
+
+                        <div class="col pill-nav">
+                            <div class="input-group mb-3">
+
+                                
+                                
+                                    <form action="seshaServlet" method="post">   
+                                        
+                                <input type="text" 
+                                       name="search"
+                                       <%if (search!=null){%>value ="<%=search%>"<%}%>
+                                    class="form-control" 
+                                    placeholder="search courses &#x1f50e;" 
+                                    aria-label="Search" 
+                                    aria-describedby="button-addon1">
+                                        <button class="btn btn-outline-secondary" 
+                                        type="submit" name="action" value="store" id="button-addon1">Search</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <%   stment = conn.createStatement();
+                         sectionsQuery = "SELECT * FROM categoryName";
+                         rs = stment.executeQuery(sectionsQuery);
+                        while(rs.next()){%>
+                            <form class="col pill-nav" action="seshaServlet" method="post">    
+                                <input type="hidden" name="categoryID" value="<%=rs.getString("categoryID")%>">                    
+                                <button  class="mb-3 btn btn-info" type="submit" name="action" value="store"><%=rs.getString("categoryText")%></button>
+                            </form>
+                        <%} rs.close();
+                            stment.close();%>
+                            
+                                
+                                               <%   if ( search!=null)
+                                            {%>
+                                    <form action="seshaServlet" method="post">   
+                                        <button class="btn btn-outline-secondary" 
+                                        type="submit" name="action" value="store" id="button-addon1">Reset</button>
+                                    </form>
+                                    <%}%>
+                    </div>
+                </div>
                 <div class="col-1">
                 </div>
             </div>     
 <div id="tags"></div>
 <jsp:include page="../resources/footer.jsp"/>
+
+
 <script src="https://weave.cs.nmt.edu/apollo8/sesha/content/previewCoursePageScript.js">
 
 </script>
 
+        <script src="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-js.js"></script>
 </body>
 </html>
 

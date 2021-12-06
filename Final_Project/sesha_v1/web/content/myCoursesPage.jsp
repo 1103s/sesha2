@@ -11,7 +11,11 @@
 <%@ page import = "java.io.IOException,java.io.PrintWriter,javax.servlet.ServletException,javax.servlet.http.HttpServlet,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse"%>
 <jsp:include page="/content/auth.jsp" />
  <%
+    String categoryID = request.getParameter("categoryID");
+    String search = request.getParameter("search");
+    
     String driver = "org.mariadb.jdbc.Driver";
+    
     Class.forName(driver);
     
     String dbURL = "jdbc:mariadb://localhost:3306/apollo8_sesha";
@@ -60,21 +64,68 @@
                 <div class="col-1">
                 </div>
                 <div class="col-7 main-content">
-                        <div class="row align-items-center justify-content-arround
-                            row-cols-auto">
 
                     <%  
                         String uuid = (String) session.getAttribute("uuid");
                         Statement stment = conn.createStatement();
-                        String sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID WHERE courseOwnership.userID=" + uuid + " order by courseOwnership.accessDate  DESC";
+                        String sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID WHERE courseOwnership.userID=" + 
+                                uuid;
+                        if(categoryID!=null){
+                            sectionsQuery = "Select courses.* FROM courses join courseOwnership on courses.courseID = courseOwnership.courseID join categoryLinks ON courses.courseID = categoryLinks.courseID WHERE courseOwnership.userID=" + 
+                                    uuid + " and categoryLinks.categoryID=" + categoryID ;
+                        }
+                        if(search!=null){
+                        String searcher = search;
+                        searcher = searcher.replaceAll("\\'","\\'\\'");
+                        searcher = searcher.replace("\"", "\\\"");
+                        searcher = searcher.replace("\\", "\\\\");
+                        searcher =  searcher.replace("%", "\\%");
+                        searcher = searcher.replace("_", "\\_");
+                        
+                        %><div id="results" class="row align-items-center justify-content-arround
+                                 row-cols-auto">Search Results for: <%=search%> in My Courses</div><%
+                            sectionsQuery += " and (courses.courseName LIKE '%"+searcher+"%' or courses.courseDescription LIKE '%"+searcher+"%' or courses.bookDescription LIKE '%"+searcher+"%')";
+                        
+                        
+                        }
+                        sectionsQuery +=" order by courseOwnership.accessDate  DESC";
+                        
                         ResultSet rs = stment.executeQuery(sectionsQuery);    
-                        if(!rs.isBeforeFirst()){%>
-                        <div> There's nothing to show! Browse courses 
+                        if(!rs.isBeforeFirst()){
+                                 if(search==null){%>
+                        
+                        <div class="row align-items-center justify-content-arround
+                            row-cols-auto"> There's nothing to show! Browse courses 
                             <form class="shoppingButton" action="seshaServlet" method="post">    
                                 <button id="myCoursesButton" type="submit" value="shop" name="action">Here</button>
                             </form>
                         </div>
-                        <%}
+                        <%}else{%>
+                        
+                        <div class="row align-items-center justify-content-arround
+                            row-cols-auto"> There's nothing to show! Search courses 
+                            <form class="shoppingButton" action="seshaServlet" method="post">
+                                
+                                        <input type="hidden" name="search" value="<%=search%>">
+                                <button id="myCoursesButton" type="submit" value="shop" name="action">Here</button>
+                            </form>
+                        </div><% }}
+                        
+                        if(categoryID!=null){
+                        Statement stment2 = conn.createStatement();
+                        ResultSet rs2 =stment2.executeQuery("Select * from categoryName where categoryID = " +categoryID);
+                        if(rs2.next()){
+                       %>
+                            
+                            <h2 class="row align-items-center justify-content-arround
+                            row-cols-auto categoryText" width="100%" >My <%=rs2.getString("categoryText")%> Courses</h2>
+                        <%rs2.close();
+                            stment2.close();}} %> 
+                            
+                        <div class="row align-items-center justify-content-arround
+                            row-cols-auto"><%
+                        
+                       
                         
                      while(rs.next()){%>
                         <div class="mb-3 col course">
@@ -103,11 +154,55 @@
                                 </div>
                             </div>
                         </div>
-                    <%} stment.close(); %>
+                    <%} rs.close();
+                        stment.close(); %>
                     </div>
                 </div>
 
-                <jsp:include page="../resources/categories.jsp"/>
+                                <div class="col-3 align-self-start text-center text-wrap main-sidebar">
+                    <div class="row align-items-start justify-content-arround
+                        row-cols-auto text-center text-wrap">
+
+                        <div class="col pill-nav">
+                            <div class="input-group mb-3">
+
+                                
+                                
+                                    <form action="seshaServlet" method="post">   
+                                        
+                                <input type="text" 
+                                       name="search"
+                                       <%if (search!=null){%>value ="<%=search%>"<%}%>
+                                    class="form-control" 
+                                    placeholder="search my courses &#x1f50e;" 
+                                    aria-label="Search" 
+                                    aria-describedby="button-addon1">
+                                        <button class="btn btn-outline-secondary" 
+                                        type="submit" name="action" value="myCourses" id="button-addon1">Search</button>
+                                    </form>
+                            </div>
+                        </div>
+                        <%   stment = conn.createStatement();
+                         sectionsQuery = "SELECT DISTINCT  categoryName.categoryID, categoryName.categoryText FROM categoryName join categoryLinks on categoryLinks.categoryID = categoryName.categoryID  JOIN courseOwnership on categoryLinks.courseID = courseOwnership.courseID where courseOwnership.userID = " + uuid;
+                         rs = stment.executeQuery(sectionsQuery);
+                        while(rs.next()){%>
+                            <form class="col pill-nav" action="seshaServlet" method="post">    
+                                <input type="hidden" name="categoryID" value="<%=rs.getString("categoryID")%>">                    
+                                <button  class="mb-3 btn btn-info" type="submit" name="action" value="myCourses"><%=rs.getString("categoryText")%></button>
+                            </form>
+                        <%} rs.close();
+                            stment.close();%>
+                            
+                                
+                                               <%   if ( search!=null||categoryID!=null)
+                                            {%>
+                                    <form action="seshaServlet" method="post">   
+                                        <button class="btn btn-outline-secondary" 
+                                        type="submit" name="action" value="myCourses" id="button-addon1">Reset</button>
+                                    </form>
+                                    <%}%>
+                    </div>
+                </div>
                 <div class="col-1">
                 </div>
             </div>            
@@ -116,10 +211,8 @@
             <jsp:include page="../resources/footer.jsp"/>
         </div>
         <!-- bootstrap JavaScript followed by Global JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
-            crossorigin="anonymous"></script>
         <script src="https://weave.cs.nmt.edu/apollo8/sesha/content/myCoursesPageScript.js"></script>
+        <script src="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-js.js"></script>
     </body>
 </html>
 

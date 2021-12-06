@@ -99,13 +99,7 @@ else if((uuid == null)) {
     <jsp:param name="color" value="primary" />
     </jsp:forward >
     <%
-} else if (is_settings != null) {
-    //pass to user setings if needed
-        stment.close();
-        %>
-        <jsp:forward page="/content/settings.jsp" />
-        <%
-} else if (courseID != null) {
+}  else if (courseID != null) {
     stment= conn.createStatement();
     sectionsQuery = "SELECT * FROM courseOwnership WHERE userID=" + uuid + ";";
     rs = stment.executeQuery(sectionsQuery);    
@@ -129,6 +123,12 @@ else if((uuid == null)) {
         </jsp:forward >
         <%
     }
+} else if (is_settings != null) {
+    //pass to user setings if needed
+        stment.close();
+        %>
+        <jsp:forward page="/content/settings.jsp" />
+        <%
 }
 
                     conn.close();%>
