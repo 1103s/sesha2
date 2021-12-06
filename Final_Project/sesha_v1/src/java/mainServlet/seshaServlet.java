@@ -81,6 +81,10 @@ public class seshaServlet extends HttpServlet {
             String action = request.getParameter("action");
             String categoryID = request.getParameter("categoryID");
             String uuid = (String) request.getSession(false).getAttribute("uuid");
+            String search = request.getParameter("search");
+            
+            String code = request.getParameter("codeText");
+            
             if(uuid == null){
                 uuid ="-1";
             }
@@ -115,70 +119,135 @@ public class seshaServlet extends HttpServlet {
                 
                 String url="/index.jsp";
                 
-                if(action.equals("shop")){
-                    url = "/index.jsp";
-                   if(categoryID!=null){
-                        url+="&categoryID="+categoryID;
-                   }
-                } else if(action.equals("viewPreview")){                     
-                    url = "/content/previewCoursePage.jsp?courseID="+id;
-                } else if(action.equals("viewCourse")){
-                    if(!uuid.equals("-1") && !id.equals("-1")){
-                        stment = conn.createStatement();
-                        stment.executeUpdate("UPDATE `courseOwnership` SET `accessDate` = CURRENT_TIMESTAMP WHERE `courseOwnership`.`userID` =" + uuid +" AND `courseOwnership`.`courseID` = " + id +"; ");
-                        stment.close();
-                    }
-                    
-                   url = "/content/fullCoursePage.jsp?courseID="+id;
-                   if(disp!=null){
-                        url+="&displaySection="+disp;
-                   }
-                }else if(action.equals("purchaseCourse")){
-                    if(!uuid.equals("-1")){
-                        stment = conn.createStatement();
-                        sectionsQuery = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = "+id;
-                        rs = stment.executeQuery(sectionsQuery);
-                        if (!rs.isBeforeFirst())
-                        {
-                            rs.close();
-                            stment.close();
+                switch (action) {
+                    case "shop":
+                        url = "/index.jsp";
+                        if(categoryID!=null){
+                            url+="?categoryID="+categoryID;
+                        }    
+                        if(search!=null){
+                            url+="?search="+search;                            
+                        }
+                        if(code!=null){
+                            url+="?search="+code;  
+                            
+                        }
+                        break;
+                    case "viewPreview":
+                        url = "/content/previewCoursePage.jsp?courseID="+id;
+                        break;
+                    case "viewCourse":
+                        if(!uuid.equals("-1") && !id.equals("-1")){
                             stment = conn.createStatement();
-                            sectionsQuery = "SELECT * FROM courses WHERE courseID = "+id; 
+                            stment.executeUpdate("UPDATE `courseOwnership` SET `accessDate` = CURRENT_TIMESTAMP WHERE `courseOwnership`.`userID` =" + uuid +" AND `courseOwnership`.`courseID` = " + id +"; ");
+                            stment.close();
+                        }   url = "/content/fullCoursePage.jsp?courseID="+id;
+                        if(disp!=null){
+                            url+="&displaySection="+disp;
+                        }    break;
+                    case "purchaseCourse":
+                        if(code != null){
+                            if (code.length() == 14){                                
+                                stment = conn.createStatement();
+                                code = code.replace("'", "");
+                                code = code.replace("%", "");
+                                code = code.replace("\"", "");
+                                code = code.replace("_", "");
+                                code = code.replace("\\", "");
+                                
+                                sectionsQuery = "SELECT * FROM `codesChart` where code = '"+code+"'";
+                                rs = stment.executeQuery(sectionsQuery);
+                                if(rs.next()){
+                                    id = rs.getString("courseID");
+                                    if(rs.getString("userID") == null){
+                                        
+                                        rs.close();                                        
+                                        stment.close();
+                                        
+                                        
+                                        if(!uuid.equals("-1")){   
+                                            stment = conn.createStatement();
+                                            sectionsQuery = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = "+id; 
+                                            rs = stment.executeQuery(sectionsQuery);
+                                            if (!rs.isBeforeFirst()){
+                                                rs.close();                                        
+                                                stment.close();
+                                                
+                                                stment = conn.createStatement();                                        
+                                                stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`, `purchaseDate`, `accessDate`) VALUES ('"+uuid+"', '"+id+"', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) ");
+                                                stment.close();
+                                                
+                                                stment = conn.createStatement();                                        
+                                                stment.executeUpdate("UPDATE `codesChart` SET `userID` = '"+uuid+"' WHERE `codesChart`.`code` = '"+code+"' ");
+                                                stment.close();
+                                                
+                                                url = "/content/fullCoursePage.jsp?courseID="+id;
+                                            } else{                                                
+                                                rs.close();                                        
+                                                stment.close();
+                                                url = "/content/fullCoursePage.jsp?courseID="+id+"&alert=You already own this course";
+                                            }
+                                        }else{
+                                            url = "/content/login.jsp?purchaseCourse=store&codeText="+code+"&alert=Please log in to claim this code.";
+                                        }
+                                        
+                                    }else{
+                                        url = "/content/previewCoursePage.jsp?courseID="+id+"&alert=Code has been used, consider purchasing.";
+                                        
+                                    }
+                                }else{
+                                    //TODO Forward Invalid Code Notice
+                                     url = "/index.jsp"+"?alert=Invalid Code.";
+                                    
+                                }
+                            }else{
+                               url = "/index.jsp"+"?alert=Invalid Code Length.";
+                            }
+                        }else if(!uuid.equals("-1")){
+                            stment = conn.createStatement();
+                            sectionsQuery = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = "+id; 
                             rs = stment.executeQuery(sectionsQuery);
-                            if (rs.isBeforeFirst())
+                            if (!rs.isBeforeFirst())
                             {
                                 rs.close();
-                                stment.close();  
-                                stment = conn.createStatement();     
-                                stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`, `purchaseDate`, `accessDate`) VALUES ('"+uuid+"', '"+id+"', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) ");   
-                            
                                 stment.close();
-                            }else{
-
+                                stment = conn.createStatement();
+                                sectionsQuery = "SELECT * FROM courses WHERE courseID = "+id;
+                                rs = stment.executeQuery(sectionsQuery);
+                                if (rs.isBeforeFirst())
+                                {
+                                    rs.close();
+                                    stment.close();
+                                    stment = conn.createStatement();
+                                    stment.executeUpdate("INSERT INTO `courseOwnership` (`userID`, `courseID`, `purchaseDate`, `accessDate`) VALUES ('"+uuid+"', '"+id+"', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) ");
+                                    
+                                    stment.close();
+                                }else{
+                                    
+                                    rs.close();
+                                    stment.close();
+                                }
+                                
+                            } else{
                                 rs.close();
                                 stment.close();
                             }
                             
+                            url = "/content/fullCoursePage.jsp?courseID="+id;
+                            if(disp!=null){
+                                url+="&displaySection="+disp;
+                            }
                         } else{                            
-                            rs.close();
-                            stment.close();
-                        }
-                        
-                        url = "/content/fullCoursePage.jsp?courseID="+id;
-                        if(disp!=null){
-                             url+="&displaySection="+disp;
-                        }
-                    }  
-                    else{
-                        url = "/content/login.jsp?actionFWD=viewPreview&courseID="+id;
-                    }
-                } 
-            else if(action.equals("myCourses")){
-                    url = "/content/myCoursesPage.jsp";
+                            url = "/content/login.jsp?actionFWD=viewPreview&courseID="+id;
+                        }break;
+                    case "myCourses":
+                        url = "/content/myCoursesPage.jsp";
+                        break;
+                    default:
+                        break;
                 }
                 
-                RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            
+                RequestDispatcher dispatcher = request.getRequestDispatcher(url);            
                 dispatcher.forward(request, response);
             } catch (SQLException ex) {
                 Logger.getLogger(seshaServlet.class.getName()).log(Level.SEVERE, null, ex);

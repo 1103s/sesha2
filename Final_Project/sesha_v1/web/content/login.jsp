@@ -14,6 +14,8 @@ Author     : Tommy
     if(actionFWD==null){
         actionFWD = "myCourses";
     }
+    String codeText = request.getParameter("codeText");
+    
     String courseID = request.getParameter("courseID");
 %>
 <!DOCTYPE html>
@@ -74,6 +76,10 @@ Author     : Tommy
                                             <input type="hidden" name="action" value="<%=actionFWD%>">
                                             <%if(courseID!=null){%>
                                                 <input type="hidden" name="courseID" value="<%=courseID%>">                                            
+                                            <%}%>
+                                            
+                                            <%if(codeText!=null){%>
+                                                <input type="hidden" name="codeText" value="<%=codeText%>">                                            
                                             <%}%>
                                             <div class="mb-3">
                                                 <label for="loginEmail" class="form-label">Email address</label>

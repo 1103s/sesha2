@@ -42,7 +42,7 @@
 	<link rel="shortcut icon" href="<%=favicon%>">
     <% } %>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-	<title>Digital Video Resource Library</title>
+	<title><%if (name==null){%>Sesha<%}else{%><%=name%><%}%></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
               rel="stylesheet" 
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
@@ -137,8 +137,20 @@
                     <% while(rs.next()){ %> 
                         <div class="element">
                             <div class="row1">
-                                <% if(rs.getInt("mainContentType")== 0){%>
-                                    <a class="video" title="<%=rs.getString("contentDesc")%>" onclick="displayVideo('<%=rs.getString("mainContentURL")%>','<%=rs.getString("mainContentName")%>','<%=rs.getString("contentDesc")%>')"><%=rs.getString("mainContentName")%></a>
+                                <% if(rs.getInt("mainContentType")== 0){
+                                    
+                                    
+                                    String contentDesc = rs.getString("contentDesc");
+                                    
+                                    if(contentDesc != null){
+                                    contentDesc = contentDesc.replace("\"", "");
+                                    contentDesc = contentDesc.replace("\'","\\\'");
+                                    }
+                                    String contentName = rs.getString("mainContentName");
+                                    contentName = contentName.replace("\"", "");
+                                    contentName = contentName.replace("\'","\\\'");
+                                %>
+                                    <a class="video" onclick="displayVideo('<%=rs.getString("mainContentURL")%>','<%=contentName%>','<%=contentDesc%>')"><%=rs.getString("mainContentName")%></a>
                                  <% } else if(rs.getInt("mainContentType")== 2){%>
                                     <a class="pdf" href="<%=rs.getString("mainContentURL")%>" target="_blank"><%=rs.getString("mainContentName")%></a>
                                  <% } %>
@@ -147,7 +159,7 @@
                                     <% if(rs.getInt("extraType")== 2){%>
                                         <a class="pdf" href="<%=rs.getString("extraURL")%>" target="_blank"><%=rs.getString("extraName")%></a>
                                     <%} else if(rs.getInt("extraContentType")== 0){%>
-                                       <a class="video" title="<%=rs.getString("contentDesc")%>" onclick="displayVideo('<%=rs.getString("extraContentURL")%>','<%=rs.getString("extraContentName")%>','<%=rs.getString("contentDesc")%>')"><%=rs.getString("extraContentName")%></a>
+                                       <a class="video" onclick="displayVideo('<%=rs.getString("extraContentURL")%>','<%=rs.getString("extraContentName")%>','<%=rs.getString("contentDesc")%>')"><%=rs.getString("extraContentName")%></a>
                                     <% } %>
                                  <% } %>
                             </div>
@@ -163,10 +175,15 @@
                 </div>
 <div id="tags"></div>
 <jsp:include page="../resources/footer.jsp"/>
+
+        
+
 <script src="https://weave.cs.nmt.edu/apollo8/sesha/content/fullCoursePageScpript.js">
+    
 
 </script>
 
+        <script src="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-js.js"></script>
 </body>
 </html>
 
