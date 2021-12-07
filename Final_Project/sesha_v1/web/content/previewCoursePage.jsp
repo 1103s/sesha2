@@ -58,7 +58,7 @@
 	<link rel="stylesheet" type="text/css" href="https://weave.cs.nmt.edu/apollo8/sesha/content/previewCoursePageStyle.css">
 </head>
 
-<body onLoad="modiifyHeader()">
+<body onLoad="modifyHeader()">
 
 <jsp:include page="../resources/header.jsp"/>
             <div class="row p-1 align-items-center justify-cosntent-center main">
@@ -186,7 +186,12 @@
 <script src="https://weave.cs.nmt.edu/apollo8/sesha/content/previewCoursePageScript.js">
 
 </script>
-
+<script>
+    function modifyHeader(){
+        document.getElementById("storeButton").classList.add("active");
+    }
+    
+</script>
         <script src="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-js.js"></script>
 </body>
 </html>

@@ -56,18 +56,25 @@
     <div class="col-1">
     </div>
 </div>
-  <%if(alert!=null){ %>  
-  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
+  <%if(alert!=null){ %>  
+  
+  
   <div class="alert alert-warning" id="warning-alert">      
     <button type="button" class="close" data-dismiss="alert">x</button>
     <%=alert%>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
+  <script>
+      $(document).ready(function() {
+  $("#warning-alert").hide();
+    $("#warning-alert").fadeTo(2000, 500).slideUp(500, function() {
+      $("#warning-alert").slideUp(500);
+    });
+});
+  </script>
   <%}%>
 <div class="row p-3 align-items-center justify-content-center text-center header-nav rounded">
     <div class="col-3">
@@ -94,3 +101,6 @@
     <div class="col-4">
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
