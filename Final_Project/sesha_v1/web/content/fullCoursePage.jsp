@@ -55,7 +55,7 @@
 	<link rel="stylesheet" type="text/css" href="https://weave.cs.nmt.edu/apollo8/sesha/content/fullCoursePageStyle.css">
 </head>
 
-<body onLoad="modiifyHeader()">
+<body onLoad="modifyHeader()">
 <div id="videooverlay">
 	<div id = "playercontainer">
 		<div id = "close" onClick="closeVideo()">Close Video [X]</div>
@@ -203,8 +203,12 @@
     
 
 </script>
+<script>
+    function modiifyHeader(){
+    document.getElementById("myCoursesButton").classList.add("active");
+}
+</script>
 
-        <script src="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-js.js"></script>
 </body>
 </html>
 

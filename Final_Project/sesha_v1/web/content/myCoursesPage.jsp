@@ -44,7 +44,7 @@
               href="./resources/images/favicon.ico">
     </head>
 
-    <body onLoad="modiifyHeader()">
+    <body onLoad="modifyHeader()">
         <!-- Popup pages 
         <div id="codeEntryOverlay" class="invisible">
             <div id="background" onClick="hideEnterCode()"></div>
@@ -211,6 +211,10 @@
             <jsp:include page="../resources/footer.jsp"/>
         </div>
         <!-- bootstrap JavaScript followed by Global JS -->
+        <script>
+            function modifyHeader(){
+                document.getElementById("myCoursesButton").classList.add("active");
+            }</script>
         <script src="https://weave.cs.nmt.edu/apollo8/sesha/content/myCoursesPageScript.js"></script>
         <script src="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-js.js"></script>
     </body>

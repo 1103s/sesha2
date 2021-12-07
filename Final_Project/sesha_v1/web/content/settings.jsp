@@ -34,7 +34,7 @@ String email = (String) session.getAttribute("email");
                                   href="./resources/images/favicon.ico">
     </head>
 
-    <body onLoad="modiifyHeader()">
+    <body onLoad="modifyHeader()">
 
             <!--Site wide header -->
             <div class="container-flex global-shell">

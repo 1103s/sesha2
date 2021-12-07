@@ -1,6 +1,5 @@
 // JavaScript Document
-var $search = document.querySelector('#search');
-function modiifyHeader(){
+function modifyHeader(){
     document.getElementById("storeButton").classList.add("active");
 }
 
@@ -123,5 +122,3 @@ function displayEnterCode(){
 function hideEnterCode(){	
 	document.getElementById("codeEntryOverlay").style.visibility = "hidden";
 }*/
-
-$search.addEventListener('input', typeHandler)
