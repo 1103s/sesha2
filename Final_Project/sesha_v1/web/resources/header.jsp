@@ -79,7 +79,7 @@
 <div class="row p-3 align-items-center justify-content-center text-center header-nav rounded">
     <div class="col-3">
     </div>
-    <div class="col-5 nav-link">
+    <div class="col-5 col-sm-1 nav-link">
         <div class="btn-group" role="group">
             <a type="button" id="storeButton"
                 href="https://weave.cs.nmt.edu/apollo8/sesha/"
