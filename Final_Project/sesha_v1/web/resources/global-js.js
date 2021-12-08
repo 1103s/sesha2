@@ -21,9 +21,3 @@ function addHyphen (element) {
     document.getElementById(element.id).value = finalVal;
 }
 
-$(document).ready(function() {
-  $("#warning-alert").hide();
-    $("#warning-alert").fadeTo(2000, 500).slideUp(500, function() {
-      $("#warning-alert").slideUp(500);
-    });
-});

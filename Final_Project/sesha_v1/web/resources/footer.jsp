@@ -1,4 +1,4 @@
-<footer class="row align-items-center justify-content-center footer">
+<footer class="row align-items-center justify-content-center  footer">
     <div class="col text-center">
         <div id="copyright">©2021 Team Purple Rabbits</div>
         <div id="techLink">

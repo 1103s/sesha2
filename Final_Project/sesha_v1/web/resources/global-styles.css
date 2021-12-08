@@ -46,3 +46,27 @@ a {
         
   z-index: 100;
 }
+
+.navButton{
+    width: 150px;    
+    display: flex;
+}
+td{
+    padding: 0px;
+    vertical-align: middle;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .navButton{width:19vw; height: 62px;}
+}
+@media only screen and (max-width: 450px) {
+    .navButton{width:auto;}
+    tr{display: block;}
+    td{float:left;}
+    #storeButton,#myCoursesButton,#enterCodeButton{width:30vw;}
+    #supportButton,#instructorButton{width:45vw;}
+}
+@media only screen and (max-width: 340px) {
+    #supportButton,#instructorButton,#storeButton,#myCoursesButton,#enterCodeButton{width:90vw;}
+}

@@ -56,7 +56,7 @@
             <div class="row p-1 align-items-center justify-cosntent-center main">
                 <div class="col-1">
                 </div>
-                <div class="col-7 main-content">
+                <div class="col-10 col-lg-7  main-content">
                         
 
                     <%  Statement stment = conn.createStatement();
@@ -68,7 +68,7 @@
                         }
                         ResultSet rs = stment.executeQuery(sectionsQuery);
                         
-                        if(search==null){
+                        if(search==null && (categoryID==null || !categoryID.equals("0"))){
                         
                         while(rs.next()){%>
                         <div id="category<%=rs.getString("categoryID")%>">
@@ -146,11 +146,20 @@
 
                             </div> <%}%>
                             </div>
+                            
                             <%rsInner.close();
                             }
+
                         rs.close();
-                        stment.close(); }
+                        stment.close(); %>
+                        
+                            <form class="pill-nav" action="seshaServlet" method="post">    
+                                <input type="hidden" name="categoryID" value="0">                    
+                                <button  class="mb-3 btn btn-info" type="submit" name="action" value="store">View All Courses</button>
+                            </form>
+                        <%}
                         else{
+                        if(search!=null){
                         stment = conn.createStatement();
                         String searcher = search;
                         searcher = searcher.replaceAll("\\'","\\'\\'");
@@ -163,12 +172,15 @@
                                  row-cols-auto">Serach Results for: <%=search%></div><%
                         sectionsQuery = "SELECT DISTINCT * from (SELECT * FROM `courses` WHERE courseName LIKE '%"+searcher+"%'    UNION ALL SELECT * FROM `courses` WHERE courseDescription LIKE '%"+searcher+"%'	UNION ALL  SELECT * FROM `courses` WHERE bookDescription LIKE '%"+searcher+"%')s";
                         
+                        }else{
+                            sectionsQuery = "Select * FROM courses";
+                        }
                         rs = stment.executeQuery(sectionsQuery);%>
                         <div class="row align-items-center justify-content-arround
                                  row-cols-auto">
                         
                          <%while( rs.next() ){%>
-                            <div class="mb-3 col course">
+                            <div class="mb-3  col course">
                                    <div class="card shadow" style="width: 18rem;">
                                        <img src="<%=rs.getString("previewImageURL")%>"
                                             class="card-img-top" alt="<%=rs.getString("courseName")%> course image">
@@ -211,7 +223,7 @@
                         <%}%></div><%}%>
                     </div>
                     
-                <div class="col-3 align-self-start text-center text-wrap main-sidebar">
+                <div class="col-md-12 col-lg-3  align-self-start text-center text-wrap main-sidebar">
                     <div class="align-items-start justify-content-arround
                         row-cols-auto text-center text-wrap">
 

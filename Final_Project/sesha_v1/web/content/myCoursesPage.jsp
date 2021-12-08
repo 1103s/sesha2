@@ -23,7 +23,6 @@
     String password = "Ea8AHNGh";
     Connection conn = DriverManager.getConnection(dbURL, username, password);%>   
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -63,7 +62,7 @@
             <div class="row p-1 align-items-center justify-cosntent-center main">
                 <div class="col-1">
                 </div>
-                <div class="col-7 main-content">
+                <div class="col-10 col-md-7 main-content">
 
                     <%  
                         String uuid = (String) session.getAttribute("uuid");
@@ -161,7 +160,7 @@
                     </div>
                 </div>
 
-                                <div class="col-3 align-self-start text-center text-wrap main-sidebar">
+                                <div class="col-md-3 col-12 align-self-start text-center text-wrap main-sidebar">
                     <div class="align-items-start justify-content-arround
                         row-cols-auto text-center text-wrap">
 
