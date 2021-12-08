@@ -41,12 +41,12 @@
         <a href="https://weave.cs.nmt.edu/apollo8/sesha/">
         <img src="https://weave.cs.nmt.edu/apollo8/static/logo.png"
              alt="site logo"
-             width="60%"/>
+             width="50px"/>
         </a>
     </div>
     <div class="col-5 text-center site-name">
         <h1 id="siteName" class="text-start">
-            <a id="seshaLogo" href="#">
+            <a id="seshaLogo" href="https://weave.cs.nmt.edu/apollo8/sesha/">
                 SESHA
             </a>
         </h1>
@@ -54,7 +54,7 @@
     <div class="col-4 text-end login">
         <form  action="seshaServlet" method="post">   
             <input type="hidden" name="settings" value="yes">
-            <button id="myCoursesButton" class="btn btn-outline-primary" type="submit" name="action" value="myCourses">
+            <button id="loginButton" class="btn btn-outline-primary" type="submit" name="action" value="myCourses">
                 <%if (uuid2.equals("-1")){%>
                 Login
                 <%}else{%>
@@ -92,30 +92,29 @@
 });
   </script>
   <%}%>
-<div class="row p-3 align-items-center justify-content-center text-center header-nav rounded">
-    <div class="col-3">
-    </div>
-    <div class="col-5 col-sm-1 nav-link">
-        <div class="btn-group" role="group">
-            <a type="button" id="storeButton"
-                href="https://weave.cs.nmt.edu/apollo8/sesha/"
-                class="btn btn-outline-primary">Store</a> 
-            <button form="go_to_courses" id="myCoursesButton" class="btn btn-outline-primary <%= is_active%>" type="submit" name="action" value="myCourses">My Courses</button>
-            <a type="button" id="enterCodeButton"
+<div class="row p-3 align-items-center text-center header-nav rounded">
+    <div class="col-sm-12 col-12 nav-link">
+        <table class="btn-group" role="group">
+            <tr>
+                <td><button  id="storeButton"  onclick="location.href='https://weave.cs.nmt.edu/apollo8/sesha/'" type="button"
+                class="navButton btn btn-outline-primary">Store</button> </td>
+            <td><button form="go_to_courses"  id="myCoursesButton" class="navButton btn btn-outline-primary <%= is_active%>" type="submit" name="action" value="myCourses">My Courses</button></td>
+            <td><button type="button" id="enterCodeButton" 
                 data-bs-toggle="modal"
                 href="#enter_code_modal"
-                class="btn btn-outline-primary">Enter Code</a>
-            <a type="button" id="supportButton"
+                class="navButton btn btn-outline-primary">Enter Code</button></td>
+            <td><button type="button" id="supportButton" 
                 onclick="javascript:alert('Requested Empy By Instructor')"
-                class="btn btn-outline-primary">Get Support</a>
-            <a type="button" id="instructorButton"
+                class="navButton btn btn-outline-primary">Get Support</button></td>
+            <td><button type="button" id="instructorButton"
                 onclick="javascript:alert('Requested Empy By Instructor')"
-                class="btn btn-outline-primary">Instructor Portal</a>
-        </div>
-    </div>
-    <div class="col-4">
+                class="navButton btn btn-outline-primary">Instructor Portal</button></td>
+            </tr>
+        </table>
     </div>
 </div>
+            
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   

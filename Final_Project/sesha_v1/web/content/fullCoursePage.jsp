@@ -118,20 +118,22 @@
                             stment.close(); %>
 		</tr>
 	</table>
-</div>\
+</div>
 <form action="seshaServlet" method="post">   
-                                        
-                <input type="text" 
-                       name="search"
-                       <%if (search!=null){%>value ="<%=search%>"<%}%>
-                    class="form-control" 
-                    placeholder="Search this course &#x1f50e;" 
-                    aria-label="Search" 
-                    aria-describedby="button-addon1">
-                                        <input type="hidden" name="courseID" value="<%=courseID%>">
-                        <button class="btn btn-outline-secondary" 
-                        type="submit" name="action" value="viewCourse" id="button-addon1">Search</button>
-                    </form>
+    <div class="input-group mb-3" id="courseSearch">
+
+    <input type="text" 
+           name="search"
+           <%if (search!=null){%>value ="<%=search%>"<%}%>
+        class="form-control" 
+        placeholder="Search this course &#x1f50e;" 
+        aria-label="Search" 
+        aria-describedby="button-addon1">
+        <input type="hidden" name="courseID" value="<%=courseID%>">
+            <button class="btn btn-outline-secondary" 
+            type="submit" name="action" value="viewCourse" id="button-addon1">Search</button>
+    </div>
+</form>
 <div id="mainpage">
                     <%  
                             stment = conn.createStatement();

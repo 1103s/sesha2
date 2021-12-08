@@ -196,11 +196,13 @@ a{
 	margin-left: 20px;
 }
 #mainpage{
+    width: 100%;
 	padding-top: 10px;
 	margin-top: 10px;
 	float: left;
 	border-style: solid;
 	min-height: inherit;
+        border-width: 1px 0px 1px 0px;
 }
 #tags{
 	float: left;
@@ -246,7 +248,7 @@ footer{
 	#displaySection {width: 100%}
 	#searchBox {width: 100%}
 	#aboutTagContainer {width: 100%}
-	#mainpage {width: 100%; border-width: 1px 0px 1px 0px}
+	#mainpage { border-width: 1px 0px 1px 0px}
 	#tags {width: 100%}
 }
 @media only screen and (min-width: 960px) {
@@ -254,7 +256,7 @@ footer{
 	#displaySection {height: 150px; width: 100%}
 	#searchBox {width: 100%}
 	#aboutTagContainer{width: 100%}
-	#mainpage {width: 80%;  min-height: calc(100vh - 399px) ; border-width: 1px 1px 1px 0px}
+	#mainpage {  min-height: calc(100vh - 399px) ; border-width: 1px 0px 1px 0px}
 	#tags {width: 15%}
 }
 @media only screen and (min-width: 1140px) {
@@ -263,12 +265,11 @@ footer{
 	#searchBoxButton{height: 125px}
 	#searchBox {height: 150px; width: 20%; margin-top: 10px; margin-bottom: 25px;}
 	#aboutTagContainer {width: 100%}
-	#mainpage {width: 80%; min-height: calc(100vh - 349px) ; border-width: 1px 1px 1px 0px}
+	#mainpage { min-height: calc(100vh - 349px) ; border-width: 1px 0px 1px 0px}
 	#tags {width:15%}
 }
 
 
 @font-face {
 	font-family: "Montserrat";
-	src: url("Fonts/Montserrat-Regular.ttf");
 }
