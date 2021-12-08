@@ -84,14 +84,14 @@
                                     <form class="viewCourse" action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewCourse">
-                                        <input class="btn btn-primary" type="submit" value="View Course">
+                                        <input class="btn my-5 btn-primary" type="submit" value="Open Course">
                                     </form>
                                     <%} else {%>
                                     <form action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="purchaseCourse">
                                         <input type="hidden" name="uuid" value="<%=uuid%>">
-                                        <input class="btn btn-primary" type="submit" value="Purchase Course">
+                                        <input class="btn my-5 btn-primary" type="submit" value="Purchase Course">
                                     </form>
                                     <%} rsOwner.close();
                                         stmentOwner.close();%>
@@ -133,48 +133,10 @@
                     </div>
                 </div>                    
                 <div class="col-3 align-self-start text-center text-wrap main-sidebar">
-                    <div class="row align-items-start justify-content-arround
-                        row-cols-auto text-center text-wrap">
+                <a type="button" id="storeButton"
+                    href="https://weave.cs.nmt.edu/apollo8/sesha/"
+                    class="btn btn-outline-primary">Back</a> 
 
-                        <div class="col pill-nav">
-                            <div class="input-group mb-3">
-
-                                
-                                
-                                    <form action="seshaServlet" method="post">   
-                                        
-                                <input type="text" 
-                                       name="search"
-                                       <%if (search!=null){%>value ="<%=search%>"<%}%>
-                                    class="form-control" 
-                                    placeholder="search courses &#x1f50e;" 
-                                    aria-label="Search" 
-                                    aria-describedby="button-addon1">
-                                        <button class="btn btn-outline-secondary" 
-                                        type="submit" name="action" value="store" id="button-addon1">Search</button>
-                                    </form>
-                            </div>
-                        </div>
-                        <%   stment = conn.createStatement();
-                         sectionsQuery = "SELECT * FROM categoryName";
-                         rs = stment.executeQuery(sectionsQuery);
-                        while(rs.next()){%>
-                            <form class="col pill-nav" action="seshaServlet" method="post">    
-                                <input type="hidden" name="categoryID" value="<%=rs.getString("categoryID")%>">                    
-                                <button  class="mb-3 btn btn-info" type="submit" name="action" value="store"><%=rs.getString("categoryText")%></button>
-                            </form>
-                        <%} rs.close();
-                            stment.close();%>
-                            
-                                
-                                               <%   if ( search!=null)
-                                            {%>
-                                    <form action="seshaServlet" method="post">   
-                                        <button class="btn btn-outline-secondary" 
-                                        type="submit" name="action" value="store" id="button-addon1">Reset</button>
-                                    </form>
-                                    <%}%>
-                    </div>
                 </div>
                 <div class="col-1">
                 </div>

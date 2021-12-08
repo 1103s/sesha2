@@ -63,7 +63,7 @@ Author     : Tommy
                                     row-cols-auto">
 
                             <div class="mb-3 col align-center course">
-                                <div class="card shadow" style="width: 18rem;">
+                                <div class="card shadow mx-auto" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-header">
                                             Login / Register
@@ -99,7 +99,7 @@ Author     : Tommy
                         </div>
                     </div>
                     <div class="col-5 main-content">
-                        <div class="row align-items-center justify-content-center
+                        <div class="align-items-center justify-content-center
                                     row-cols-1">
 
 

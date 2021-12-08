@@ -140,16 +140,18 @@
                                         <%=rs.getString("courseDescription")%>
                                     </p>
                                     
-                                    <form class="viewCourse" action="seshaServlet" method="post">    
+                                    <form id="view_<%=rs.getString("courseID")%>" class="viewCourse invisible" action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewCourse">
-                                        <input class="btn btn-primary p-1" type="submit" value="View Course">
                                     </form>
-                                    <form class="viewPreview" action="seshaServlet" method="post">    
+                                    <form id="preview_<%=rs.getString("courseID")%>" class="viewPreview invisible" action="seshaServlet" method="post">    
                                         <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
                                         <input type="hidden" name="action" value="viewPreview">
-                                        <input class="btn btn-primary p-1" type="submit" value="View Preview">
                                     </form>
+                                    <div class="btn-group">
+                                        <input form="view_<%=rs.getString("courseID")%>"  class="btn btn-primary" type="submit" value="Open">
+                                        <input form="preview_<%=rs.getString("courseID")%>"  class="btn btn-primary" type="submit" value="Preview">
+                                    </div>
                                     
                                 </div>
                             </div>
@@ -160,15 +162,15 @@
                 </div>
 
                                 <div class="col-3 align-self-start text-center text-wrap main-sidebar">
-                    <div class="row align-items-start justify-content-arround
+                    <div class="align-items-start justify-content-arround
                         row-cols-auto text-center text-wrap">
 
                         <div class="col pill-nav">
-                            <div class="input-group mb-3">
 
                                 
                                 
-                                    <form action="seshaServlet" method="post">   
+                            <form action="seshaServlet" method="post">   
+                                <div class="input-group mb-3">
                                         
                                 <input type="text" 
                                        name="search"
@@ -179,27 +181,34 @@
                                     aria-describedby="button-addon1">
                                         <button class="btn btn-outline-secondary" 
                                         type="submit" name="action" value="myCourses" id="button-addon1">Search</button>
-                                    </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                    <div class="row px-1 align-items-start justify-content-arround
+                        text-center text-nowrap">
                         <%   stment = conn.createStatement();
                          sectionsQuery = "SELECT DISTINCT  categoryName.categoryID, categoryName.categoryText FROM categoryName join categoryLinks on categoryLinks.categoryID = categoryName.categoryID  JOIN courseOwnership on categoryLinks.courseID = courseOwnership.courseID where courseOwnership.userID = " + uuid;
                          rs = stment.executeQuery(sectionsQuery);
                         while(rs.next()){%>
-                            <form class="col pill-nav" action="seshaServlet" method="post">    
+                            <div class="col p-1">
+                            <form class="pill-nav" action="seshaServlet" method="post">    
                                 <input type="hidden" name="categoryID" value="<%=rs.getString("categoryID")%>">                    
                                 <button  class="mb-3 btn btn-info" type="submit" name="action" value="myCourses"><%=rs.getString("categoryText")%></button>
                             </form>
+                            </div>
                         <%} rs.close();
                             stment.close();%>
                             
                                 
                                                <%   if ( search!=null||categoryID!=null)
                                             {%>
+                            <div class="col p-1">
                                     <form action="seshaServlet" method="post">   
                                         <button class="btn btn-outline-secondary" 
                                         type="submit" name="action" value="myCourses" id="button-addon1">Reset</button>
                                     </form>
+                            </div>
                                     <%}%>
                     </div>
                 </div>
