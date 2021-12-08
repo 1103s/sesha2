@@ -3,22 +3,37 @@
         uuid2="-1";
     }
     String alert = request.getParameter("alert");
+    String action = request.getParameter("action");
+    String is_active = "";
+    if (action != null && action.equals("myCourses")){
+        is_active = " active "; 
+    } 
     %>
     
         <!-- Popup pages -->
-            <div id="codeEntryOverlay">
-                <div id="codeBackground" onClick="hideEnterCode()"></div>
-                <div id="codeEntry">
-                <h2>Enter code</h2>
-                
-                <form  action="seshaServlet" method="post">   
-                    <input type="hidden" name="settings" value="yes">
-                        <input type="text" id="codeTextBox" name="codeText" onkeyup="addHyphen(this)" placeholder="xxxx-xxxx-xxxx" maxlength="14">
-                        <button class="btn btn-outline-primary" type="submit" name="action" value="purchaseCourse">Enter</button>
+            <div class="modal fade" tabindex="-1" id="enter_code_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Enter Code</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Enter the class code given to you by your instructor.</p>
+                        <form  id="add_code" action="seshaServlet" method="post">   
+                            <input type="hidden" name="settings" value="yes">
+                            <input type="text" id="codeTextBox" name="codeText" onkeyup="addHyphen(this)" placeholder="xxxx-xxxx-xxxx" maxlength="14">
 
-                </form>
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-outline-primary" type="submit" name="action" value="purchaseCourse" form="add_code">Add Class</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
 <div class="row p-4 rounded-bottom shadow-lg align-items-center justify-content-around header-top">
     <div class="col-1">
     </div>
@@ -57,6 +72,7 @@
     </div>
 </div>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <form id="go_to_courses" class="invisible" action="seshaServlet" method="post">   </form>
 
 
   <%if(alert!=null){ %>  
@@ -84,11 +100,10 @@
             <a type="button" id="storeButton"
                 href="https://weave.cs.nmt.edu/apollo8/sesha/"
                 class="btn btn-outline-primary">Store</a> 
-            <form  action="seshaServlet" method="post">   
-                <button id="myCoursesButton" class="btn btn-outline-primary" type="submit" name="action" value="myCourses">My Courses</button>
-            </form>
+            <button form="go_to_courses" id="myCoursesButton" class="btn btn-outline-primary <%= is_active%>" type="submit" name="action" value="myCourses">My Courses</button>
             <a type="button" id="enterCodeButton"
-                onclick="displayEnterCode()"
+                data-bs-toggle="modal"
+                href="#enter_code_modal"
                 class="btn btn-outline-primary">Enter Code</a>
             <a type="button" id="supportButton"
                 onclick="javascript:alert('Requested Empy By Instructor')"

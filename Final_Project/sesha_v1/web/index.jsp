@@ -104,19 +104,26 @@
                                                String sectionsQueryOwner = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = " + rsInner.getString("courseID");
                                                ResultSet rsOwner = stment.executeQuery(sectionsQueryOwner);
 
+                                            %>
+                                            <form id="view_<%=rsInner.getString("courseID")%>" class="viewCourse invisible" action="seshaServlet" method="post">    
+                                                <input type="hidden" name="courseID" value="<%=rsInner.getString("courseID")%>">
+                                                <input type="hidden" name="action" value="viewCourse">
+                                            </form>
+                                            <form id="preview_<%=rsInner.getString("courseID")%>" class="viewPreview invisible" action="seshaServlet" method="post">    
+                                                <input type="hidden" name="courseID" value="<%=rsInner.getString("courseID")%>">
+                                                <input type="hidden" name="action" value="viewPreview">
+                                            </form>
+                                            <div class="btn-group text-center">
+
+                                            <%
+
                                            if(rsOwner.isBeforeFirst()){%>
-                                           <form class="viewCourse" action="seshaServlet" method="post">    
-                                               <input type="hidden" name="courseID" value="<%=rsInner.getString("courseID")%>">
-                                               <input type="hidden" name="action" value="viewCourse">
-                                               <input class="btn btn-primary p-1" type="submit" value="View Course">
-                                           </form>
+                                                <input form="view_<%=rsInner.getString("courseID")%>"  class="btn btn-primary" type="submit" value="Open">
                                            <%} rsOwner.close();
                                                %>
-                                           <form class="viewPreview" action="seshaServlet" method="post">    
-                                               <input type="hidden" name="courseID" value="<%=rsInner.getString("courseID")%>">
-                                               <input type="hidden" name="action" value="viewPreview">
-                                               <input class="btn btn-primary p-1" type="submit" value="View Preview">
-                                           </form>
+                                                <input form="preview_<%=rsInner.getString("courseID")%>"  class="btn btn-primary" type="submit" value="Preview">
+                                            
+                                            </div>
                                             
                                        </div>
                                    </div>
@@ -124,11 +131,17 @@
                             <%}%> 
                             </div>
                             <%if(numCourses>limit){%>
-                            <div class="row align-items-center justify-content-arround
-                                 row-cols-auto expander"> 
+                            <div class="align-items-center justify-content-end
+                                 row expander"> 
+                                <div class="col-5">
+                                </div>
+                                <div class="col-5">
                             
                                            
-                                <input class="btn btn-primary p-1" onclick="expandSection('category<%=rs.getString("categoryID")%>')" type="submit" value="Expand Section">
+                                <input class="btn px-3 btn-light btn-sm" onclick="expandSection('category<%=rs.getString("categoryID")%>')" type="submit" value="Show More">
+                                </div>
+                                <div class="col-2">
+                                </div>
                                            
 
                             </div> <%}%>
@@ -170,21 +183,27 @@
                                            <%  
                                                String sectionsQueryOwner = "SELECT * FROM courseOwnership WHERE userID="+uuid+" and courseID = " + rs.getString("courseID");
                                                ResultSet rsOwner = stment.executeQuery(sectionsQueryOwner);
+                                            %>
+                                            <form id="view_<%=rs.getString("courseID")%>" class="viewCourse invisible" action="seshaServlet" method="post">    
+                                                <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
+                                                <input type="hidden" name="action" value="viewCourse">
+                                            </form>
+                                            <form id="preview_<%=rs.getString("courseID")%>" class="viewPreview invisible" action="seshaServlet" method="post">    
+                                                <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
+                                                <input type="hidden" name="action" value="viewPreview">
+                                            </form>
+                                            <div class="btn-group text-center">
+
+                                            <%
 
                                            if(rsOwner.isBeforeFirst()){%>
-                                           <form class="viewCourse" action="seshaServlet" method="post">    
-                                               <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
-                                               <input type="hidden" name="action" value="viewCourse">
-                                               <input class="btn btn-primary p-1" type="submit" value="View Course">
-                                           </form>
+                                                <input form="view_<%=rs.getString("courseID")%>"  class="btn btn-primary" type="submit" value="Open">
                                            <%} rsOwner.close();
                                                %>
-                                           <form class="viewPreview" action="seshaServlet" method="post">    
-                                               <input type="hidden" name="courseID" value="<%=rs.getString("courseID")%>">
-                                               <input type="hidden" name="action" value="viewPreview">
-                                               <input class="btn btn-primary p-1" type="submit" value="View Preview">
-                                           </form>
+                                                <input form="preview_<%=rs.getString("courseID")%>"  class="btn btn-primary" type="submit" value="Preview">
                                             
+                                            </div>
+
                                        </div>
                                    </div>
                                </div>
@@ -193,15 +212,15 @@
                     </div>
                     
                 <div class="col-3 align-self-start text-center text-wrap main-sidebar">
-                    <div class="row align-items-start justify-content-arround
+                    <div class="align-items-start justify-content-arround
                         row-cols-auto text-center text-wrap">
 
                         <div class="col pill-nav">
-                            <div class="input-group mb-3">
 
                                 
                                 
-                                    <form action="seshaServlet" method="post">   
+                            <form action="seshaServlet" method="post">   
+                                <div class="input-group mb-3">
                                         
                                 <input type="text" 
                                        name="search"
@@ -212,17 +231,22 @@
                                     aria-describedby="button-addon1">
                                         <button class="btn btn-outline-secondary" 
                                         type="submit" name="action" value="store" id="button-addon1">Search</button>
-                                    </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                    <div class="row px-1 align-items-start justify-content-arround
+                        text-center text-nowrap">
                         <%   stment = conn.createStatement();
                          sectionsQuery = "SELECT * FROM categoryName";
                          rs = stment.executeQuery(sectionsQuery);
                         while(rs.next()){%>
-                            <form class="col pill-nav" action="seshaServlet" method="post">    
+                            <div class="col p-1">
+                            <form class="pill-nav" action="seshaServlet" method="post">    
                                 <input type="hidden" name="categoryID" value="<%=rs.getString("categoryID")%>">                    
                                 <button  class="mb-3 btn btn-info" type="submit" name="action" value="store"><%=rs.getString("categoryText")%></button>
                             </form>
+                            </div>
                         <%} rs.close();
                             stment.close();%>
                             
