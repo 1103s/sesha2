@@ -1,6 +1,6 @@
 <div class="col-3 align-self-start text-center text-wrap main-sidebar">
     <div class="row align-items-start justify-content-arround
-        row-cols-auto text-center text-wrap">
+        row-cols-1 text-center text-wrap">
 
         <div class="col pill-nav">
             <div class="input-group mb-3">
