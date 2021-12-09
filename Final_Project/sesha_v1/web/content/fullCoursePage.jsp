@@ -52,7 +52,6 @@
         <link href="https://weave.cs.nmt.edu/apollo8/sesha/resources/global-styles.css"
               rel="stylesheet"
               type="text/css">
-	<link rel="stylesheet" type="text/css" href="https://weave.cs.nmt.edu/apollo8/sesha/content/fullCoursePageStyle.css">
 </head>
 
 <body onLoad="modifyHeader()">
@@ -73,7 +72,7 @@
 		<tr>    
 			<th width="300px">
                             <%if(logo!=null){ %>                            
-				<a href="" ><img src="<%=logo%>" alt="<%=name%> logo" width = "250" ></a>                                
+                            <img  src="<%=logo%>" alt="<%=name%> logo" width = "250" >                                
                             <% } %>
                                 
 			</th>       
@@ -108,7 +107,7 @@
                                    <% } %>
                                         type="submit" value="<%=rs.getString("sectionName")%>">
                                          <% if(!rs.isLast()) {%>
-                                            <a class="spacer"> | </a>  
+                                            <span class="spacer"> | </span>  
                                         <% } %>
                                         
                                     </form>
@@ -178,7 +177,7 @@
                                     <a class="pdf" href="<%=rs.getString("mainContentURL")%>" target="_blank"><%=rs.getString("mainContentName")%></a>
                                  <% } %>
                                  <% if(rs.getString("extraURL")!=null) {%>       
-                                    <a class="spacer">&nbsp;&nbsp;|&nbsp;&nbsp;</a>                             
+                                    <span class="spacer">&nbsp;&nbsp;|&nbsp;&nbsp;</span>                             
                                     <% if(rs.getInt("extraType")== 2){%>
                                         <a class="pdf" href="<%=rs.getString("extraURL")%>" target="_blank"><%=rs.getString("extraName")%></a>
                                     <%} else if(rs.getInt("extraContentType")== 0){%>
@@ -197,6 +196,8 @@
                     stment.close(); %>
                 </div>
 <div id="tags"></div>
+
+	<link rel="stylesheet" type="text/css" href="https://weave.cs.nmt.edu/apollo8/sesha/content/fullCoursePageStyle.css">
 <jsp:include page="../resources/footer.jsp"/>
 
         
