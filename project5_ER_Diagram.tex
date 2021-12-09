@@ -5,6 +5,7 @@
 \usepackage{array}
 \usepackage[utf8]{inputenc}
 \usepackage{chngcntr}
+\usepackage{pdfpages}
 \counterwithin*{subsection}{section}
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 \graphicspath{ {./images/} }
@@ -366,58 +367,59 @@ Implementation details for each page follow.
 \end{figure}
 
 \clearpage
-\section{ER Diagram Table}
 
-\subsection{Table of all users}
+\section{ER Diagram}
+
+The purpose of this section is to show how the database will be constructed to generate the various pages of the website. It includes the ER diagram, as well as a table for each node of the diagram explaining what variables are used in the table and how they relate to each other. 
+
+\includepdf[pages=-,pagecommand={},width=1.5\textwidth]{er_diagram.pdf}
+
+\subsection{Table Design}
+\subsubsection{allUsers}
+A table of all usesrs, used authenticate if the user is who they say they are and then to let the session know who is logged in and what they should have access to. This is linked to the courseOnwership and review table through the userID primary key. \\
 \begin{tabular}{|m{1cm} | m{2.5cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3.5cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & userID & int(32) & x & x & & & Numeric ID for the user\\
-  \hline
-   & userEmail & varchar(64) & & x & & & Email related to the user\\
+  x & userID & int(32) & x & x & & & Numeric ID for the user generated when a user is created, used to allow the user to change linked accounts\\
   \hline
    & linkedAccount & binary & x & x & x & & Information on the linked account used to log in\\
   \hline
-   & firstName & varchar(16) & & & & & user's first name\\
-  \hline
-   & lastName & varchar(16) & & & & & user's last name\\
-  \hline
 \end{tabular}
 
-\subsection{Ownership of courses}
+\subsubsection{courseOwnership}
+This table is an association table that associates each user with the courses that they own, while stating the last time the course was accessed in order to enable sorting. \\
 \begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
    & userID & int(32) & x & & & x & Numeric ID for the user\\
   \hline
-   & courseID & int(16) & x & & & x & ID of each course the user owns\\
+   & courseID & int(32) & x & & & x & ID of each course the user owns\\
+  \hline
+   & courseID & timestamp & x & & & x & Time the user last accessed the course\\
   \hline
 \end{tabular}
 
-\subsection{Course table}
+\subsubsection{courses}
+A list of all the courses in the system, associated to the course content with the courseID field as a foriegn key and the primary key of this table.\\
 \begin{tabular}{|m{1cm} | m{2.75cm} | m{2cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & courseID & int(16) & x & x & & & ID of each course the user owns\\
+  x & courseID & int(32) & x & x & & & ID of the course within the system, generated automatically when the course is added to the database\\
   \hline
-   & previewURL & binary & x & & x & & Link to the preview embedded in the preview of it.\\
-  \hline
-   & courseName & varchar(16) & x & & & & Name of the course presented to the user\\
+   & courseName & varchar(32) & x & & & & Name of the course presented to the user\\
   \hline
    & courseDesc & varchar(256) & & & & & Description about the course\\
   \hline
    & courseSkills & varchar(128) & & & & & List of skills that will be taught by the course\\
   \hline
-   & bookDesc & varchar(128) & & & & & Description of the book related to the course\\
+   & bookDesc & varchar(128) & & & & & Description of the book related to the course, if there is one\\
   \hline
-   & purcaseLink & binary & x & & x & & link to purchase the course (just enables access to the course on the account)\\
+   & bookImageUrl & binary & & & x & & Link to the image of the book related to the course, if there is one\\
   \hline
-   & courseURL & binary & x & & x & & Link to the course as hosted on the website\\
-  \hline
-   & iconURL & binary & & & x & & link to the image featured for the course\\
+   & courseImageURL & binary & & & x & & Link to the image featured for the course\\
   \hline
    & previewVideoURL & binary & & & x & & Link to the preview embedded in the preview of it.\\
   \hline
@@ -425,18 +427,20 @@ Implementation details for each page follow.
   \hline
 \end{tabular}
 
-\subsection{Category Associations}
+\subsubsection{categoryAssociations}
+an association table with two foreign keys linking them to the course table and category table to assoiciate courses and categories for the sorting of courses. \\
 \begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & courseID & int(16) & x & & & x & Id of the course associated with the category\\
+   & courseID & int(32) & x & & & x & Id of the course associated with the category\\
   \hline
    & categoryID & int(16) & x & & & x & ID of the category associated with the course\\
   \hline
 \end{tabular}
 
-\subsection{Category Information}
+\subsubsection{categoryNames}
+an end table that simply contains each unique category and its name so that it can be retrieved by the primary key of courseID whenever the category needs to have it's name displayed. \\
 \begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
@@ -447,58 +451,66 @@ Implementation details for each page follow.
   \hline
 \end{tabular}
 
-\subsection{review table}
+\subsubsection{reviews}
+A table of reviews, where each course and user combination serves together as the primary key as each user can only leave one review on each course. When aggregating the courseID or userID is used as a foriegn key to associate courses with reviews or a user with their reviews. \\
 \begin{tabular}{|m{1cm} | m{2cm} | m{2.0cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3.5cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & courseID & int(16) & x & & & x & ID of the course the rating is for\\
+  x & courseID & int(32) & x & & & x & ID of the course the rating is for\\
   \hline
-   & rating & int(8) & x & & & & Rating between 1-5\\
+   & rating & decimal(4) & x & & & & Rating between 1-5\\
   \hline
    & review & varchar(128) & & & & & Text of the review\\
   \hline
-   & userID & int(16) & & & & x & Id of the user who wrote the review\\
+  x & userID & int(32) & & & & x & Id of the user who wrote the review\\
   \hline
 \end{tabular}
 
-\subsection{Content Table}
+\subsubsection{courseSections}
+An association table for each individual course that details the list of sections and what content items are associated with that section. The courseID is used as a forign key so that the course knows what sections it has and the contentID Foreign key is used to associate the name and order of the section to the individual piece of content. \\
 \begin{tabular}{|m{1cm} | m{2cm} | m{2cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{3.5cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & courseID & int(16) & x & & & x & Id of the course this content item is associated with\\
+   & courseID & int(32) & x & & & x & Id of the course this content item is associated with\\
   \hline
-  x & contentID & int(32) & x & & & & ID of this content section\\
+   & contentID & int(32) & x & & & x & ID of the content associated with this course\\
   \hline
-   & sectionNum & int(16) & & & & & Number of the section this is associated with\\
+   & sectionName & varchar(16) & & & & & Number of the section this is associated with\\
   \hline
-   & contentType & int(8) & x & & & & Type of content linked in this table\\
-  \hline
-   & contentURL & binary & x & & & & The link to the content on the server\\
-  \hline
-   & contentName & varchar(16) & & & & & Title of the content for the user to click on\\
-  \hline
-   & contentDesc & varchar(128) & & & & & Description of this content\\
+   & sectionOrder & int(8) & & & & & Order in which the section should appear when generating the course\\
   \hline
 \end{tabular}
 
-\subsection{Content Extras}
-\begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
+\subsubsection{courseContent}
+The table for each course containing every individual piece of content. Each piece of content can be associated with the contentID primary key to a tag in the contentTags table. Each piece of content can contain a main and extra piece of content with the extra content being not required.\\
+\begin{tabular}{|m{1cm} | m{2.7cm} | m{2cm}| m{.8cm} | m{.8cm}| m{.8cm} | m{.8cm}| m{3.5cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-   & contentID & int(32) & x & & & x & The id of the content the extra is associated with\\
+  x & contentID & int(32) & x & & & & ID of this content section, automatically generated when added to the system\\
   \hline
-   & contentType & int(8) & x & & & & Type of content linked in this table\\
+   & mainContentType & int(4) & x & & & & Type of content linked in this table, either a pdf, video, or audio file, denoted by 0,1,2\\
   \hline
-   & extraURL & binary & x & & & & The link to the content on the server\\
+   & mainContentURL & binary & x & & & & The link to the content on the server\\
   \hline
-   & extraName & varchar(16) & & & & & Title of the content for the user to click on\\
+   & mainContentName & varchar(16) & x & & & & Title of the content for the user to click on\\
+  \hline
+   & contentDesc & varchar(128) & & & & & Description of this content\\
+  \hline
+   & extraContentType & int(4) & & & & & Type of extra content linked in this table, either a pdf, video, or audio file, denoted by 0,1,2\\
+  \hline
+   & extraURL & binary & & & & & The link to the extra content on the server\\
+  \hline
+   & extraName & varchar(16) & & & & & Title of the extra content for the user to click on\\
+  \hline
+   & contentOrder & int(16) & x & & & & The order in which the content should be presented to the user on the generated page\\
   \hline
 \end{tabular}
 
-\subsection{Content tags}
+\subsubsection{contentTags}
+An association table that associates each piece of content to the tags it goes with using the contentID as the foreign key to associate with.\\
 \begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
@@ -509,15 +521,96 @@ Implementation details for each page follow.
   \hline
 \end{tabular}
 
-\subsection{Tag Names}
+\subsubsection{tagNames}
+A table with the primary key being the tag ID to list each unique tag as well as it's name within the system.\\
 \begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
   \hline
   Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
   \hline
-  x & tagID & int(16) & x & & & & the id of the tag only within this course\\
+  x & tagID & int(16) & x & & & & The id of the tag only within this course, generated when added to the table\\
   \hline
    & tagName & varchar(16) & & & & & the name of the tag only within this course\\
   \hline
 \end{tabular}
+
+\subsubsection{Sessions}
+While session data is primarily managed with serverlet sessions, this table is used to maintain a log of logons for audit purposes. It is indexed by a unique session ID and with the foreign key of the userID of the user the log on was linked to. The cookie used and when it was valid for is tracked to identify rouge sessions.\\
+\begin{tabular}{|m{1cm} | m{2cm} | m{1.5cm}| m{1cm} | m{1cm}| m{1cm} | m{1cm}| m{4cm}| }
+  \hline
+  Primary Key & Field Name & Data Type & Non-null & unique & binary & Foreign Key & Comments\\ 
+  \hline
+  x & sessionID & int(32) & x & x & & & Used to index sessions.\\
+  \hline
+   & userID & int(32) & x & & & x & The account that the session is tied to.\\
+  \hline
+   & sessionCookie & int(32) & x & x & & & The session cookie issued.\\
+  \hline
+   & grantDate & int(32) & x &  & &  & Time Session was granted (unix time).\\
+  \hline
+   & endDate & int(32) & x &  & &  & Time Session expires (unix time).\\
+  \hline
+\end{tabular}
+
+\section{System Architecture}
+\subsection{5.a}
+    The structure of our site folows a MCV system higlighted in the figure below.
+\begin{figure}[h!]
+    \caption{MCV flow of Sesha.}
+    \includegraphics[height=10cm]{mcv}
+\end{figure}
+\subsection{5.b}
+    To acchieve the goals of Sesha we implemented two objects for our model: a User and Course object.
+    \begin{enumerate}
+        \item \textit{Object}
+            \begin{enumerate}
+                \item Tracks user credentials for authentication.
+                \item Contians the courseIDs of of courses owned by the user.
+            \end{enumerate}
+        \item \textit{Course}
+            \begin{enumerate}
+                \item Made up of organized sections.
+                \item Sections are filled with rich content.
+                \item Courses also contain metadata.
+                \item Metadat allows for catagory sorting and the access code feature.
+            \end{enumerate}
+    \end{enumerate}
+    The controler is simple but robust, taking the requested view as the "action" parameter and sanatizing the all other paramters. Once sanatized, if all inputs are valid, the requested view is generated.
+    
+    Views are generated in via a pipeline. First the header and footer is generated, including sitewide scripts and css. Then an authntication check is made. If the user is loged in and has permision to see the requested view they are directed to the requested view. Otherwise, they are redirected to the login screen. Since the settings are tied into the authenitcation system, this is where that redirect is also perforemd. A visual representation of each of the final views can be seen in the system snapshot section. The general idea of these remianing views beingn ways to view courses at varing levels of grainularity. With the homepage you can see all avalable courses; with the myCourses view you can see owned courses; with the preview page you can see an overview of the course; and finaly, with the view page you can actualy interact with the content of a course. Each of these levels are accesable from any of the others asuuming the user has permisions for the course in question.
+
+\section{System Snapshot}
+
+\includepdf[pages=-,pagecommand={},width=2\textwidth,height=1.5\textheight]{system snapshot.pdf}
+
+\section{conclusion}
+
+\subsection{Project as it is}
+Currently the project has this functionality  
+\begin{itemize}
+  \item A home page, with the ability to search for courses by text and by category
+  \item The ability to expand each section to display more courses
+  \item The ability to preview each of theses courses, with a video and then some details, and then purchase the course, adding it to your account when you log in
+  \item A login system and account creation system
+  \item The ability to log out of the system
+  \item A code redemption system
+  \item The ability to view a course, generated with videos and PDF files
+  \item The ability to switch sections in a course.
+  \item The ability to view what courses you own, search within that by text and category
+  \item Automatic sorting of courses in my courses by when the user accessed them
+\end{itemize}
+\subsection{future works}
+In the future these should be added:
+\begin{itemize}
+    \item A rating system should be added.
+    \item A way to generate statistics about how many people own a courses, what the ratings are, etc, in order to customize the home page, possibly with personal customization for courses similar to those the user owns
+    \item Courses should not be duplicated in multiple sections on the main page 
+    \item Courses on the main page should be loaded in upon pressing the (show more) button instead of all being loaded upon the page load.
+    \item The ability to upload a course, as well as fine instructor controls
+    \item the login page should be improved to redirect correctly every time, as there are currently two cases in which it fails (entering a correct code then logging in, purchasing a course without an established account)
+    \item The servlet needs to be made so that it displays a unique url for each of the pages, currently whenever in the servlet it just displays the servlet.
+    \item the design needs a massive amount of work to not look like a template site
+    \item Account management features need to be added
+\end{itemize}
+
 
 \end{document}
