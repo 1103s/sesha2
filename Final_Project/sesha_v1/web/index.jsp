@@ -168,8 +168,8 @@
                         searcher =  searcher.replace("%", "\\%");
                         searcher = searcher.replace("_", "\\_");
                         
-                        %><div class="row align-items-center justify-content-arround
-                                 row-cols-auto">Serach Results for: <%=search%></div><%
+                        %><h3 class="row align-items-center justify-content-arround
+                                 row-cols-auto">Search Results for: <%=search%></h3><%
                         sectionsQuery = "SELECT DISTINCT * from (SELECT * FROM `courses` WHERE courseName LIKE '%"+searcher+"%'    UNION ALL SELECT * FROM `courses` WHERE courseDescription LIKE '%"+searcher+"%'	UNION ALL  SELECT * FROM `courses` WHERE bookDescription LIKE '%"+searcher+"%')s";
                         
                         }else{

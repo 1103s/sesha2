@@ -81,6 +81,7 @@ html, body {
 
 .spacer{
 	color: #DF1717;
+        display: inline;
 }
 .element{
 	margin-left: 50px;

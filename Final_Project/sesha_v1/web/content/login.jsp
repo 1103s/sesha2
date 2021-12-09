@@ -56,9 +56,7 @@ Author     : Tommy
                 <jsp:include page="/resources/header.jsp"/>
 
                 <div class="row p-1 align-items-center justify-cosntent-center main">
-                    <div class="col-1">
-                    </div>
-                    <div class="col-10 col-md-5 main-content">
+                    <div class="col-12 col-md-6 main-content">
                         <div class="row align-items-center justify-content-center
                                     row-cols-auto">
 
@@ -98,7 +96,7 @@ Author     : Tommy
 
                         </div>
                     </div>
-                    <div class="col-10 col-md-5 main-content">
+                    <div class="col-12 col-md-6 main-content">
                         <div class="align-items-center justify-content-center
                                     row-cols-1">
 
@@ -155,8 +153,6 @@ Author     : Tommy
                             </div>
 
                         </div>
-                    </div>
-                    <div class="col-1">
                     </div>
                 </div>            
                 <jsp:include page="/resources/footer.jsp"/>
