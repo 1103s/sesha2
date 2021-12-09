@@ -1,2 +1,2 @@
 #!/bin/bash
-gitinspector -HTrm -f html,css,js -F html > cse321_group8_project4_1_report.html
+gitinspector -HTrm -f html,css,js,jsp -F html > cse321_group8_project_final_report.html
